@@ -241,6 +241,32 @@ export default function HomePage() {
           </motion.div>
         </div>
       </section>
-    </div>);
 
+      {/* Floating WhatsApp Button */}
+      <motion.a
+        href="https://wa.me/919324148255?text=hi"
+        target="_blank"
+        rel="noopener noreferrer"
+        initial={{ opacity: 0, scale: 0.5 }}
+        animate={{ opacity: 1, scale: 1 }}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+        className="fixed z-50 flex items-center justify-center rounded-full"
+        style={{
+          bottom: '32px',
+          right: '32px',
+          width: '60px',
+          height: '60px',
+          backgroundColor: '#25D366',
+          color: '#FFFFFF',
+          boxShadow: '0 8px 24px rgba(37, 211, 102, 0.3)',
+        }}
+        aria-label="Chat with us on WhatsApp"
+      >
+        <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor">
+          <path d="M12.031 0C5.385 0 .002 5.385.002 12.031c0 2.124.553 4.195 1.603 6.01L.001 24l6.108-1.597c1.745.967 3.738 1.479 5.922 1.479 6.646 0 12.029-5.385 12.029-12.031C24.06 5.385 18.677 0 12.031 0zm3.847 17.279c-.168.475-.98.905-1.353.94-.343.033-.804.148-2.617-.591-2.18-.891-3.568-3.111-3.676-3.284-.108-.172-.876-1.164-.876-2.22 0-1.056.551-1.579.749-1.801.196-.222.428-.278.571-.278.143 0 .285.002.411.008.134.008.315-.052.493.376.183.438.625 1.536.681 1.651.056.115.093.25.019.394-.075.143-.113.232-.226.365-.113.133-.238.293-.342.404-.113.119-.233.248-.103.456.129.208.576.938 1.205 1.498.81.722 1.517.944 1.731 1.052.214.108.338.09.464-.055.126-.144.542-.634.689-.854.145-.221.293-.183.501-.105.208.077 1.311.618 1.536.732.225.114.375.172.431.267.056.095.056.552-.112 1.027z" />
+        </svg>
+      </motion.a>
+    </div>
+  );
 }

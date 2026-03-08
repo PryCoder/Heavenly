@@ -170,7 +170,7 @@ export default function Header() {
             </span>
             {/* WEDS - Script font */}
             <span
-              className="text-[46px] leading-[46px] -mt-[6px] font-normal text-[#C9A7A0]"
+              className="var(--font-heading) text-[46px] leading-[46px] -mt-[6px] font-normal text-[#C9A7A0]"
             >
               Weds
             </span>
