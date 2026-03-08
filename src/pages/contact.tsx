@@ -84,13 +84,9 @@ export default function ContactPage() {
     setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
+ 
   return (
     <div className="bg-white" style={{ paddingTop: '117px' }}>
-      {/* Toast */}
-      <AnimatePresence>
-        {toast && <Toast type={toast.type} message={toast.message} onClose={closeToast} />}
-      </AnimatePresence>
-
       {/* Hero Section */}
       <section style={{ padding: '80px 0 60px' }}>
         <div className="mx-auto text-center" style={{ maxWidth: '800px', padding: '0 60px' }}>
@@ -99,13 +95,13 @@ export default function ContactPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <p className="mb-4" style={{ fontFamily: 'Great Vibes, cursive', fontSize: '38px', color: '#C9A7A0' }}>
+            <p className="mb-4 uppercase tracking-widest" style={{ fontSize: '11px', letterSpacing: '3px', color: '#9A9A9A' }}>
               Get in Touch
             </p>
-            <h1 className="mb-6" style={{ fontFamily: 'Playfair, serif', fontSize: '56px', lineHeight: '1.2', color: '#6F6F6F', fontWeight: 400 }}>
+            <h1 className="font-heading mb-6" style={{ fontSize: '56px', lineHeight: '1.2', color: '#C9A7A0', fontWeight: 400 }}>
               Schedule Your Consultation
             </h1>
-            <p className="leading-relaxed" style={{ fontFamily: 'Montserrat, sans-serif', fontSize: '16px', lineHeight: '1.8', color: '#6F6F6F' }}>
+            <p className="leading-relaxed" style={{ fontSize: '16px', lineHeight: '1.8', color: '#6F6F6F' }}>
               Begin your journey with a complimentary consultation. Share your vision with us, and let's start planning the celebration of your dreams.
             </p>
           </motion.div>
@@ -121,13 +117,11 @@ export default function ContactPage() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="mb-8" style={{ fontFamily: 'Playfair, serif', fontSize: '32px', lineHeight: '1.3', color: '#C9A7A0', fontWeight: 400 }}>
+            <h2 className="font-heading mb-8" style={{ fontSize: '32px', lineHeight: '1.3', color: '#C9A7A0', fontWeight: 400 }}>
               Tell Us About Your Vision
             </h2>
 
-            {/* ── No inline success/error banners — toasts handle feedback ── */}
-
-            <form onSubmit={handleSubmit} style={{ fontFamily: 'Montserrat, sans-serif' }} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid gap-6 md:grid-cols-2">
                 <div>
                   <label htmlFor="name" className="mb-2 block uppercase tracking-wider" style={{ fontSize: '11px', letterSpacing: '2px', color: '#6F6F6F' }}>
@@ -379,7 +373,7 @@ export default function ContactPage() {
                   fontSize: '11px', 
                   letterSpacing: '2px', 
                   backgroundColor: isSubmitting ? '#E5E5E5' : '#F2E8E6', 
-                  color: isSubmitting ? '#9A9A9A' : '#6F6F6F', 
+                  color: '#6F6F6F', 
                   border: '1px solid transparent',
                   cursor: isSubmitting ? 'not-allowed' : 'pointer'
                 }}
@@ -397,15 +391,7 @@ export default function ContactPage() {
                 }}
               >
                 <Calendar className="h-4 w-4" />
-                {isSubmitting ? (
-                  <span className="flex items-center gap-2">
-                    <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24" fill="none">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/>
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"/>
-                    </svg>
-                    Sending...
-                  </span>
-                ) : 'Submit Inquiry'}
+                {isSubmitting ? 'Sending...' : 'Submit Inquiry'}
               </button>
             </form>
           </motion.div>
@@ -416,11 +402,11 @@ export default function ContactPage() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <h2 className="mb-8" style={{ fontFamily: 'Betania, serif', fontSize: '42px', lineHeight: '1.3', color: '#C9A7A0', fontWeight: 400 }}>
-              Contact Details
+            <h2 className="font-heading mb-8" style={{ fontSize: '32px', lineHeight: '1.3', color: '#C9A7A0', fontWeight: 400 }}>
+              Get in Touch
             </h2>
 
-            <div className="space-y-8" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+            <div className="space-y-8">
               <div className="flex gap-4">
                 <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full" style={{ backgroundColor: '#F2E8E6' }}>
                   <Mail className="h-5 w-5" style={{ color: '#C9A7A0' }} />
@@ -490,10 +476,20 @@ export default function ContactPage() {
                 </li>
               </ul>
             </div>
-
           </motion.div>
         </div>
       </section>
+
+      {/* Toast Notification */}
+      <AnimatePresence>
+        {toast && (
+          <Toast
+            type={toast.type}
+            message={toast.message}
+            onClose={closeToast}
+          />
+        )}
+      </AnimatePresence>
     </div>
   );
 }

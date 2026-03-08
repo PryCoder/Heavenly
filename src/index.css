@@ -1,33 +1,6 @@
 @import "tailwindcss";
 
-/* Local Fonts */
-
-@font-face {
-  font-family: "Great Vibes";
-  src: url("./assets/fonts/GreatVibes-Regular.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Betania";
-  src: url("./assets/fonts/BetaniaPatmosGDL-Regular.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Montserrat";
-  src: url("./assets/fonts/Montserrat-VariableFont_wght.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Playfair";
-  src: url("./assets/fonts/Playfair-VariableFont_opsz,wdth,wght.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@400;500&family=Allura&display=swap');
 
 @layer base {
   :root {
@@ -70,17 +43,15 @@
     --sidebar-ring: 10 28% 71%;
 
     /* Typography */
-    --font-sans: "Montserrat", sans-serif;
-    --font-heading: "Cinzel", serif;
-    --font-script: "Great Vibes", cursive;
+    --font-sans: "Montserrat", -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-heading: "Cormorant Garamond", Georgia, serif;
+    --font-script: "Allura", cursive;
     --font-serif: ui-serif, Georgia, "Times New Roman", serif;
-
+    
     /* Custom Text Colors */
-    --text-primary: 0 0% 44%;
-    --text-secondary: 0 0% 60%;
-
-    --font-mono: ui-monospace, "SF Mono", Monaco, "Cascadia Code",
-      "Roboto Mono", Consolas, "Courier New", monospace;
+    --text-primary: 0 0% 44%; /* #6F6F6F */
+    --text-secondary: 0 0% 60%; /* #9A9A9A */
+    --font-mono: ui-monospace, "SF Mono", Monaco, "Cascadia Code", "Roboto Mono", Consolas, "Courier New", monospace;
 
     /* Border Radius */
     --radius: 0.5rem;
@@ -102,21 +73,17 @@
   }
 
   body {
-    background: hsl(var(--background));
+    background-color: hsl(0 0% 100%);
     color: hsl(var(--text-primary));
     font-family: var(--font-sans);
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-heading);
-  }
-
-  /* Wedding couple names */
-  .couple-name {
-    font-family: var(--font-script);
+    font-family: var(--font-heading) !important;
   }
 }
 
+/* Custom utility classes */
 @layer utilities {
   .animate-in {
     animation-duration: 0.2s;
@@ -137,6 +104,7 @@
   }
 }
 
+/* Unless told otherwise, keep it for smooth scrolling */
 html {
   scroll-behavior: smooth;
 }
