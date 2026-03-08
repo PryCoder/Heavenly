@@ -1,0 +1,142 @@
+@import "tailwindcss";
+
+/* Local Fonts */
+
+@font-face {
+  font-family: "Great Vibes";
+  src: url("./assets/fonts/GreatVibes-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Betania";
+  src: url("./assets/fonts/BetaniaPatmosGDL-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("./assets/fonts/Montserrat-VariableFont_wght.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Playfair";
+  src: url("./assets/fonts/Playfair-VariableFont_opsz,wdth,wght.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@layer base {
+  :root {
+    /* Core Colors */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 4%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 4%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 4%;
+    --primary: 10 28% 71%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 10 32% 93%;
+    --secondary-foreground: 0 0% 39%;
+    --muted: 0 0% 93%;
+    --muted-foreground: 0 0% 4%;
+    --accent: 190 28% 71%;
+    --accent-foreground: 0 0% 29%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 93%;
+    --input: 0 0% 93%;
+    --ring: 10 28% 71%;
+
+    /* Extended Colors */
+    --chart-1: 0 0% 100%;
+    --chart-2: 9 28% 86%;
+    --chart-3: 10 28% 71%;
+    --chart-4: 11 27% 56%;
+    --chart-5: 10 28% 41%;
+
+    /* Sidebar Colors */
+    --sidebar: 0 0% 93%;
+    --sidebar-foreground: 0 0% 4%;
+    --sidebar-primary: 10 28% 71%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 190 28% 71%;
+    --sidebar-accent-foreground: 0 0% 29%;
+    --sidebar-border: 0 0% 93%;
+    --sidebar-ring: 10 28% 71%;
+
+    /* Typography */
+    --font-sans: "Montserrat", sans-serif;
+    --font-heading: "Cinzel", serif;
+    --font-script: "Great Vibes", cursive;
+    --font-serif: ui-serif, Georgia, "Times New Roman", serif;
+
+    /* Custom Text Colors */
+    --text-primary: 0 0% 44%;
+    --text-secondary: 0 0% 60%;
+
+    --font-mono: ui-monospace, "SF Mono", Monaco, "Cascadia Code",
+      "Roboto Mono", Consolas, "Courier New", monospace;
+
+    /* Border Radius */
+    --radius: 0.5rem;
+
+    /* Shadows */
+    --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
+    --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
+    --shadow-sm: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 1px 2px -1px hsl(0 0% 0% / 0.10);
+    --shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 1px 2px -1px hsl(0 0% 0% / 0.10);
+    --shadow-md: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 2px 4px -1px hsl(0 0% 0% / 0.10);
+    --shadow-lg: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 4px 6px -1px hsl(0 0% 0% / 0.10);
+    --shadow-xl: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 8px 10px -1px hsl(0 0% 0% / 0.10);
+    --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
+  }
+
+  * {
+    border-color: hsl(0 0% 93%);
+    box-sizing: border-box;
+  }
+
+  body {
+    background: hsl(var(--background));
+    color: hsl(var(--text-primary));
+    font-family: var(--font-sans);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+  }
+
+  /* Wedding couple names */
+  .couple-name {
+    font-family: var(--font-script);
+  }
+}
+
+@layer utilities {
+  .animate-in {
+    animation-duration: 0.2s;
+    animation-fill-mode: both;
+  }
+
+  .fade-in {
+    animation-name: fadeIn;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
