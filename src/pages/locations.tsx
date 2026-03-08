@@ -84,22 +84,22 @@ export default function LocationsPage() {
   ];
 
   return (
-    <div className="bg-white" style={{ paddingTop: '117px' }}>
+    <div className="bg-white pt-[117px]">
       {/* Hero Section */}
-      <section style={{ padding: '100px 0 80px' }}>
-        <div className="mx-auto text-center" style={{ maxWidth: '900px', padding: '0 60px' }}>
+      <section className="py-16 md:py-20 lg:py-24 px-4 md:px-8">
+        <div className="mx-auto max-w-[900px] px-4 sm:px-8 md:px-12 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <p className="mb-4 uppercase tracking-widest" style={{ fontSize: '11px', letterSpacing: '3px', color: '#9A9A9A' }}>
+            <p className="mb-4 uppercase tracking-[3px] text-[11px] text-[#9A9A9A]">
               Destination Weddings
             </p>
-            <h1 className="font-heading mb-8" style={{ fontSize: '64px', lineHeight: '1.15', color: '#C9A7A0', fontWeight: 400 }}>
+            <h1 className="font-heading mb-6 md:mb-8 text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight text-[#C9A7A0] font-light">
               Celebrate in Paradise
             </h1>
-            <p className="leading-relaxed" style={{ fontSize: '18px', lineHeight: '1.8', color: '#6F6F6F' }}>
+            <p className="text-base sm:text-lg leading-relaxed text-[#6F6F6F] max-w-3xl mx-auto">
               From the romantic shores of Europe to the vibrant palaces of India, we bring your dream 
               destination wedding to life in the world's most breathtaking locations.
             </p>
@@ -108,9 +108,9 @@ export default function LocationsPage() {
       </section>
 
       {/* Stats Bar */}
-      <section style={{ padding: '60px 0', backgroundColor: '#F2E8E6' }}>
-        <div className="mx-auto" style={{ maxWidth: '1200px', padding: '0 60px' }}>
-          <div className="grid grid-cols-2 gap-12 md:grid-cols-4">
+      <section className="py-12 md:py-16 bg-[#F2E8E6] px-4 md:px-8">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid grid-cols-2 gap-8 md:gap-12 lg:grid-cols-4">
             {destinationStats.map((stat, index) => (
               <motion.div
                 key={stat.label}
@@ -119,10 +119,10 @@ export default function LocationsPage() {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="text-center"
               >
-                <div className="font-heading mb-2" style={{ fontSize: '48px', lineHeight: '1', color: '#C9A7A0', fontWeight: 400 }}>
+                <div className="font-heading mb-2 text-3xl sm:text-4xl md:text-5xl text-[#C9A7A0] font-light">
                   {stat.number}
                 </div>
-                <div className="uppercase tracking-wider" style={{ fontSize: '11px', letterSpacing: '2px', color: '#6F6F6F' }}>
+                <div className="uppercase tracking-[2px] text-[10px] sm:text-[11px] text-[#6F6F6F]">
                   {stat.label}
                 </div>
               </motion.div>
@@ -132,9 +132,9 @@ export default function LocationsPage() {
       </section>
 
       {/* Locations Showcase */}
-      <section style={{ padding: '120px 0' }}>
-        <div className="mx-auto" style={{ maxWidth: '1400px', padding: '0 60px' }}>
-          <div className="space-y-32">
+      <section className="py-16 md:py-24 lg:py-32 px-4 md:px-8">
+        <div className="mx-auto max-w-7xl">
+          <div className="space-y-24 md:space-y-32">
             {locations.map((location, index) => (
               <motion.div
                 key={location.id}
@@ -143,26 +143,24 @@ export default function LocationsPage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.7 }}
               >
-                <div className={`grid gap-16 lg:grid-cols-2 items-center ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
+                <div className={`grid gap-8 lg:gap-16 xl:gap-20 lg:grid-cols-2 items-center`}>
                   {/* Image */}
                   <div className={`${index % 2 === 1 ? 'lg:order-2' : ''}`}>
-                    <div className="relative overflow-hidden rounded-sm" style={{ height: '600px' }}>
+                    <div className="relative overflow-hidden rounded-sm h-[400px] sm:h-[500px] md:h-[600px]">
                       <img
                         src={location.image}
                         alt={`${location.name} wedding destination`}
-                        className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
-                        style={{ filter: 'brightness(0.98) saturate(0.85)' }}
+                        className="h-full w-full object-cover transition-transform duration-700 hover:scale-105 brightness-[0.98] saturate-[0.85]"
                       />
                       {/* Country Badge */}
                       <div
-                        className="absolute top-8 left-8"
+                        className="absolute top-4 sm:top-6 md:top-8 left-4 sm:left-6 md:left-8 py-2 px-4 sm:py-3 sm:px-6 md:py-3 md:px-8"
                         style={{
-                          padding: '12px 24px',
                           backgroundColor: 'rgba(255, 255, 255, 0.95)',
                           backdropFilter: 'blur(10px)',
                         }}
                       >
-                        <p className="font-heading" style={{ fontSize: '18px', color: '#C9A7A0', fontWeight: 500 }}>
+                        <p className="font-heading text-base sm:text-lg md:text-xl text-[#C9A7A0] font-medium">
                           {location.country}
                         </p>
                       </div>
@@ -171,29 +169,29 @@ export default function LocationsPage() {
 
                   {/* Content */}
                   <div className={`${index % 2 === 1 ? 'lg:order-1' : ''}`}>
-                    <p className="mb-3 uppercase tracking-widest" style={{ fontSize: '11px', letterSpacing: '3px', color: '#9A9A9A' }}>
+                    <p className="mb-3 uppercase tracking-[3px] text-[11px] text-[#9A9A9A]">
                       Destination
                     </p>
-                    <h2 className="font-heading mb-4" style={{ fontSize: '52px', lineHeight: '1.1', color: '#C9A7A0', fontWeight: 400 }}>
+                    <h2 className="font-heading mb-3 text-4xl sm:text-5xl md:text-6xl leading-tight text-[#C9A7A0] font-light">
                       {location.name}
                     </h2>
-                    <p className="font-heading mb-6 italic" style={{ fontSize: '20px', lineHeight: '1.4', color: '#9A9A9A' }}>
+                    <p className="font-heading mb-4 md:mb-6 italic text-lg sm:text-xl text-[#9A9A9A]">
                       {location.tagline}
                     </p>
-                    <p className="leading-relaxed mb-8" style={{ fontSize: '16px', lineHeight: '1.8', color: '#6F6F6F' }}>
+                    <p className="leading-relaxed mb-6 md:mb-8 text-sm sm:text-base text-[#6F6F6F]">
                       {location.description}
                     </p>
 
                     {/* Highlights */}
-                    <div className="mb-8">
-                      <p className="mb-4 uppercase tracking-wider" style={{ fontSize: '11px', letterSpacing: '2px', color: '#9A9A9A' }}>
+                    <div className="mb-6 md:mb-8">
+                      <p className="mb-3 md:mb-4 uppercase tracking-[2px] text-[11px] text-[#9A9A9A]">
                         Why Choose {location.name}
                       </p>
-                      <div className="grid gap-3 md:grid-cols-2">
+                      <div className="grid gap-2 md:gap-3 grid-cols-1 sm:grid-cols-2">
                         {location.highlights.map((highlight, idx) => (
                           <div key={idx} className="flex items-start gap-2">
-                            <Heart className="h-4 w-4 flex-shrink-0 mt-1" style={{ color: '#C9A7A0' }} />
-                            <span style={{ fontSize: '14px', lineHeight: '1.6', color: '#6F6F6F' }}>
+                            <Heart className="h-4 w-4 flex-shrink-0 mt-1 text-[#C9A7A0]" />
+                            <span className="text-xs sm:text-sm text-[#6F6F6F]">
                               {highlight}
                             </span>
                           </div>
@@ -202,27 +200,27 @@ export default function LocationsPage() {
                     </div>
 
                     {/* Best Time & Venues */}
-                    <div className="grid gap-6 md:grid-cols-2 mb-8">
-                      <div className="p-5 rounded-sm" style={{ backgroundColor: '#F2E8E6' }}>
+                    <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 mb-6 md:mb-8">
+                      <div className="p-4 sm:p-5 rounded-sm bg-[#F2E8E6]">
                         <div className="flex items-center gap-2 mb-2">
-                          <Calendar className="h-5 w-5" style={{ color: '#C9A7A0' }} />
-                          <p className="uppercase tracking-wider" style={{ fontSize: '10px', letterSpacing: '2px', color: '#9A9A9A' }}>
+                          <Calendar className="h-5 w-5 text-[#C9A7A0]" />
+                          <p className="uppercase tracking-[2px] text-[10px] text-[#9A9A9A]">
                             Best Time to Visit
                           </p>
                         </div>
-                        <p style={{ fontSize: '16px', color: '#6F6F6F', fontWeight: 500 }}>
+                        <p className="text-sm sm:text-base text-[#6F6F6F] font-medium">
                           {location.bestTime}
                         </p>
                       </div>
 
-                      <div className="p-5 rounded-sm" style={{ backgroundColor: '#F2E8E6' }}>
+                      <div className="p-4 sm:p-5 rounded-sm bg-[#F2E8E6]">
                         <div className="flex items-center gap-2 mb-2">
-                          <MapPin className="h-5 w-5" style={{ color: '#C9A7A0' }} />
-                          <p className="uppercase tracking-wider" style={{ fontSize: '10px', letterSpacing: '2px', color: '#9A9A9A' }}>
+                          <MapPin className="h-5 w-5 text-[#C9A7A0]" />
+                          <p className="uppercase tracking-[2px] text-[10px] text-[#9A9A9A]">
                             Popular Venues
                           </p>
                         </div>
-                        <p style={{ fontSize: '14px', color: '#6F6F6F', lineHeight: '1.6' }}>
+                        <p className="text-xs sm:text-sm text-[#6F6F6F] leading-relaxed">
                           {location.venues.slice(0, 3).join(' • ')}
                         </p>
                       </div>
@@ -231,24 +229,7 @@ export default function LocationsPage() {
                     {/* CTA Button */}
                     <Link
                       to={location.href}
-                      className="inline-flex items-center gap-2 uppercase tracking-widest transition-all duration-500"
-                      style={{
-                        padding: '16px 40px',
-                        fontSize: '11px',
-                        letterSpacing: '2px',
-                        backgroundColor: '#F2E8E6',
-                        color: '#6F6F6F',
-                        border: '1px solid transparent',
-                        textDecoration: 'none',
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.backgroundColor = '#C9A7A0';
-                        e.currentTarget.style.color = '#FFFFFF';
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.backgroundColor = '#F2E8E6';
-                        e.currentTarget.style.color = '#6F6F6F';
-                      }}
+                      className="inline-flex items-center gap-2 uppercase tracking-[2px] transition-all duration-500 px-8 py-4 text-[11px] bg-[#F2E8E6] text-[#6F6F6F] border border-transparent hover:bg-[#C9A7A0] hover:text-white"
                     >
                       Explore {location.name}
                       <ArrowRight className="h-4 w-4" />
@@ -262,26 +243,26 @@ export default function LocationsPage() {
       </section>
 
       {/* Global Reach Section */}
-      <section style={{ padding: '80px 0 100px', backgroundColor: '#FAFAFA' }}>
-        <div className="mx-auto text-center" style={{ maxWidth: '900px', padding: '0 60px' }}>
+      <section className="py-16 md:py-20 lg:py-24 bg-[#FAFAFA] px-4 md:px-8">
+        <div className="mx-auto max-w-4xl px-4 sm:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div className="inline-flex items-center justify-center mb-8 rounded-full" style={{ width: '100px', height: '100px', backgroundColor: '#F2E8E6' }}>
-              <Globe className="h-12 w-12" style={{ color: '#C9A7A0' }} />
+            <div className="inline-flex items-center justify-center mb-6 md:mb-8 rounded-full w-20 h-20 md:w-24 md:h-24 bg-[#F2E8E6]">
+              <Globe className="h-8 w-8 md:h-10 md:w-10 lg:h-12 lg:w-12 text-[#C9A7A0]" />
             </div>
-            <h2 className="font-heading mb-6" style={{ fontSize: '48px', lineHeight: '1.2', color: '#C9A7A0', fontWeight: 400 }}>
+            <h2 className="font-heading mb-4 md:mb-6 text-3xl sm:text-4xl md:text-5xl leading-tight text-[#C9A7A0] font-light">
               Beyond These Destinations
             </h2>
-            <p className="leading-relaxed mb-6" style={{ fontSize: '16px', lineHeight: '1.8', color: '#6F6F6F' }}>
+            <p className="leading-relaxed mb-4 md:mb-6 text-sm sm:text-base text-[#6F6F6F]">
               While Italy, France, and India are our specialty destinations, our global network extends to over 
               25 countries worldwide. From the Greek Islands to the Caribbean, from Morocco to Thailand—wherever 
               your dream destination may be, we have the expertise and connections to make it extraordinary.
             </p>
-            <p className="leading-relaxed mb-10" style={{ fontSize: '15px', lineHeight: '1.8', color: '#9A9A9A' }}>
+            <p className="leading-relaxed text-xs sm:text-sm text-[#9A9A9A]">
               Our team has planned celebrations in castles, beaches, vineyards, palaces, and private estates 
               across the globe. Let us know your dream location, and we'll bring it to life.
             </p>
@@ -290,43 +271,26 @@ export default function LocationsPage() {
       </section>
 
       {/* CTA Section */}
-      <section style={{ padding: '100px 0' }}>
-        <div className="mx-auto text-center" style={{ maxWidth: '800px', padding: '0 60px' }}>
+      <section className="py-16 md:py-20 lg:py-24 px-4 md:px-8">
+        <div className="mx-auto max-w-3xl px-4 sm:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="font-heading mb-6" style={{ fontSize: '48px', lineHeight: '1.2', color: '#C9A7A0', fontWeight: 400 }}>
+            <h2 className="font-heading mb-4 md:mb-6 text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight text-[#C9A7A0] font-light">
               Ready to Plan Your Destination Wedding?
             </h2>
-            <p className="leading-relaxed mb-10" style={{ fontSize: '16px', lineHeight: '1.8', color: '#6F6F6F' }}>
+            <p className="leading-relaxed mb-8 md:mb-10 text-sm sm:text-base text-[#6F6F6F]">
               Schedule a complimentary consultation to discuss your dream destination and discover how we can 
               create an unforgettable celebration in the location of your dreams.
             </p>
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 uppercase tracking-widest transition-all duration-500"
-              style={{
-                padding: '18px 48px',
-                fontSize: '12px',
-                letterSpacing: '2px',
-                backgroundColor: '#F2E8E6',
-                color: '#6F6F6F',
-                border: '1px solid transparent',
-                textDecoration: 'none',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = '#C9A7A0';
-                e.currentTarget.style.color = '#FFFFFF';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = '#F2E8E6';
-                e.currentTarget.style.color = '#6F6F6F';
-              }}
+              className="inline-flex items-center gap-2 uppercase tracking-[2px] transition-all duration-500 px-6 sm:px-8 md:px-12 py-4 sm:py-5 text-[11px] sm:text-xs bg-[#F2E8E6] text-[#6F6F6F] border border-transparent hover:bg-[#C9A7A0] hover:text-white"
             >
-              <Calendar className="h-5 w-5" />
+              <Calendar className="h-4 w-4 sm:h-5 sm:w-5" />
               Schedule Consultation
             </Link>
           </motion.div>

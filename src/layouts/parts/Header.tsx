@@ -52,6 +52,7 @@ export default function Header() {
   const location = useLocation();
   const headerRef = useRef<HTMLElement>(null);
   const dropdownTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
 
   // Handle scroll for shadow effect
   useEffect(() => {
@@ -69,7 +70,7 @@ export default function Header() {
     setOpenDropdown(null);
   }, [location.pathname]);
 
-  // Close mobile menu on Escape key
+  // Handle escape key
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
@@ -82,16 +83,32 @@ export default function Header() {
     return () => document.removeEventListener('keydown', handleEscape);
   }, []);
 
-  // Close mobile menu when clicking outside
+  // Handle click outside
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
-      if (isMenuOpen && headerRef.current && !headerRef.current.contains(e.target as Node)) {
+      if (isMenuOpen && 
+          headerRef.current && 
+          !headerRef.current.contains(e.target as Node) &&
+          menuButtonRef.current &&
+          !menuButtonRef.current.contains(e.target as Node)) {
         setIsMenuOpen(false);
         setMobileOpenDropdown(null);
       }
     };
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [isMenuOpen]);
+
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
   }, [isMenuOpen]);
 
   // Clean up timeout on unmount
@@ -122,7 +139,7 @@ export default function Header() {
   const handleMouseLeave = () => {
     dropdownTimeoutRef.current = setTimeout(() => {
       setOpenDropdown(null);
-    }, 200); // Small delay for better UX
+    }, 200);
   };
 
   // Toggle mobile dropdown
@@ -132,35 +149,57 @@ export default function Header() {
     setMobileOpenDropdown(mobileOpenDropdown === name ? null : name);
   };
 
+  // Handle mobile menu link click
+  const handleMobileLinkClick = (hasChildren: boolean, itemName?: string) => {
+    if (!hasChildren) {
+      setIsMenuOpen(false);
+    }
+  };
+
+  // Responsive padding values
+  const getHeaderPadding = () => {
+    if (typeof window !== 'undefined') {
+      if (window.innerWidth < 640) return '16px';
+      if (window.innerWidth < 1024) return '32px';
+      return '82px';
+    }
+    return '82px'; // Default for SSR
+  };
+
   return (
     <header 
       ref={headerRef}
       className="fixed top-0 z-50 w-full bg-white transition-shadow duration-300" 
       style={{ 
         boxShadow: scrolled 
-          ? '0 4px 12px rgba(0,0,0,0.08)' 
+          ? '0 4px 20px rgba(0,0,0,0.08)' 
           : '0 1px 3px rgba(0,0,0,0.04)',
         backdropFilter: scrolled ? 'blur(8px)' : 'none',
         backgroundColor: scrolled ? 'rgba(255,255,255,0.98)' : '#FFFFFF'
       }}
     >
-      {/* Main Header - 117px height */}
-      <div className="relative" style={{ height: '117px' }}>
-        <div className="mx-auto flex h-full max-w-[1902px] items-center justify-between" style={{ paddingLeft: '82px', paddingRight: '82px' }}>
+      {/* Main Header - Responsive height */}
+      <div className="relative" style={{ 
+        height: 'clamp(90px, 15vw, 117px)'
+      }}>
+        <div className="mx-auto flex h-full max-w-[1902px] items-center justify-between px-4 sm:px-8 lg:px-[82px]">
           
-          {/* Logo - Two Font Treatment */}
+          {/* Logo - Responsive sizing */}
           <Link 
             to="/" 
             className="flex flex-col transition-opacity duration-300 hover:opacity-70" 
-            style={{ marginTop: '27px', alignSelf: 'flex-start' }}
+            style={{ 
+              marginTop: 'clamp(10px, 3vw, 27px)', 
+              alignSelf: 'flex-start' 
+            }}
             aria-label="HeavenlyWeds Home"
           >
-            {/* HEAVENLY - Serif uppercase */}
+            {/* HEAVENLY - Responsive font */}
             <span 
               className="font-heading uppercase"
               style={{
-                fontSize: '32px',
-                lineHeight: '32px',
+                fontSize: 'clamp(24px, 5vw, 32px)',
+                lineHeight: 'clamp(24px, 5vw, 32px)',
                 letterSpacing: '1.5px',
                 fontWeight: 400,
                 color: '#6F6F6F',
@@ -168,18 +207,23 @@ export default function Header() {
             >
               HEAVENLY
             </span>
-            {/* WEDS - Script font */}
+            {/* WEDS - Responsive script font */}
             <span
-              className="var(--font-heading) text-[46px] leading-[46px] -mt-[6px] font-normal text-[#C9A7A0]"
-            >
-              Weds
-            </span>
+  style={{
+    fontFamily: "'Allura', cursive",
+    fontSize: 'clamp(34px, 7vw, 46px)',
+    lineHeight: 'clamp(34px, 7vw, 46px)',
+    color: 'pink'
+  }}
+>
+  Weds
+</span>
           </Link>
 
-          {/* Right Side Container */}
+          {/* Desktop Navigation - Hidden on mobile/tablet */}
           <div className="hidden lg:flex flex-col items-end gap-3">
             {/* Top Right CTA Section */}
-            <div className="flex items-center" style={{ gap: '20px', marginTop: '16px' }}>
+            <div className="flex items-center gap-5 mt-4">
               <Link
                 to="/contact"
                 className="uppercase tracking-wider transition-colors duration-300 hover:text-[#C9A7A0]"
@@ -213,7 +257,7 @@ export default function Header() {
             </div>
 
             {/* Main Navigation */}
-            <nav className="flex" style={{ gap: '30px', marginTop: '4px' }} role="navigation" aria-label="Main navigation">
+            <nav className="flex gap-[30px] mt-1" role="navigation" aria-label="Main navigation">
               {menuStructure.map((item) => (
                 <div 
                   key={item.name} 
@@ -223,7 +267,7 @@ export default function Header() {
                 >
                   <Link
                     to={item.href}
-                    className="uppercase tracking-wider transition-colors duration-300 relative group"
+                    className="uppercase tracking-wider transition-colors duration-300 relative group whitespace-nowrap"
                     style={{
                       fontSize: '12px',
                       lineHeight: '14px',
@@ -239,7 +283,13 @@ export default function Header() {
                     aria-expanded={openDropdown === item.name}
                   >
                     {item.name}
-                    {item.children && <ChevronDown className={`h-3 w-3 transition-transform duration-200 ${openDropdown === item.name ? 'rotate-180' : ''}`} />}
+                    {item.children && (
+                      <ChevronDown 
+                        className={`h-3 w-3 transition-transform duration-200 ${
+                          openDropdown === item.name ? 'rotate-180' : ''
+                        }`} 
+                      />
+                    )}
                     
                     {/* Active/Hover underline */}
                     <span 
@@ -250,7 +300,7 @@ export default function Header() {
                     />
                   </Link>
 
-                  {/* Dropdown Menu */}
+                  {/* Desktop Dropdown */}
                   {item.children && openDropdown === item.name && (
                     <div 
                       className="absolute top-full left-0 mt-4 bg-white rounded-sm shadow-lg z-50"
@@ -288,10 +338,11 @@ export default function Header() {
 
           {/* Mobile Menu Button */}
           <button
-            className="lg:hidden transition-colors duration-300"
+            ref={menuButtonRef}
+            className="lg:hidden transition-colors duration-300 p-2 -mr-2"
             onClick={() => {
               setIsMenuOpen(!isMenuOpen);
-              setMobileOpenDropdown(null); // Close any open mobile dropdowns
+              setMobileOpenDropdown(null);
             }}
             aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={isMenuOpen}
@@ -304,15 +355,16 @@ export default function Header() {
 
       {/* Mobile Menu - Slide-in from right */}
       <div 
-        className={`fixed top-[117px] right-0 bottom-0 w-full max-w-md bg-white shadow-2xl transform transition-transform duration-300 ease-in-out lg:hidden z-40 ${
+        className={`fixed top-[clamp(90px,15vw,117px)] right-0 bottom-0 w-full sm:w-[400px] bg-white shadow-2xl transform transition-transform duration-300 ease-in-out lg:hidden z-40 ${
           isMenuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
         style={{
           borderLeft: '1px solid #ECECEC',
           overflowY: 'auto',
+          WebkitOverflowScrolling: 'touch', // Smooth scrolling on iOS
         }}
       >
-        <div className="px-8 py-8 space-y-2">
+        <div className="px-6 sm:px-8 py-8 space-y-2">
           {menuStructure.map((item) => (
             <div key={item.name} className="border-b border-gray-100 last:border-0">
               {/* Menu Item */}
@@ -321,7 +373,7 @@ export default function Header() {
                   to={item.href}
                   className="block py-3 uppercase tracking-widest transition-colors flex-1"
                   style={{
-                    fontSize: '13px',
+                    fontSize: '14px',
                     letterSpacing: '2px',
                     color: isActive(item.href) ? '#C9A7A0' : '#6F6F6F',
                     fontWeight: isActive(item.href) ? 500 : 400,
@@ -348,7 +400,11 @@ export default function Header() {
                     aria-label={`Toggle ${item.name} submenu`}
                     aria-expanded={mobileOpenDropdown === item.name}
                   >
-                    <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${mobileOpenDropdown === item.name ? 'rotate-180' : ''}`} />
+                    <ChevronDown 
+                      className={`h-4 w-4 transition-transform duration-200 ${
+                        mobileOpenDropdown === item.name ? 'rotate-180' : ''
+                      }`} 
+                    />
                   </button>
                 )}
               </div>
@@ -359,12 +415,8 @@ export default function Header() {
                   className={`overflow-hidden transition-all duration-300 ease-in-out ${
                     mobileOpenDropdown === item.name ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
                   }`}
-                  style={{
-                    borderLeft: mobileOpenDropdown === item.name ? '2px solid #F2E8E6' : '2px solid transparent',
-                    marginLeft: '8px',
-                  }}
                 >
-                  <div className="pl-4 space-y-1 py-2">
+                  <div className="pl-4 space-y-1 py-2 border-l-2 border-[#F2E8E6] ml-2">
                     {item.children.map((child) => (
                       <Link
                         key={child.name}
@@ -394,7 +446,7 @@ export default function Header() {
               to="/contact"
               className="block text-center py-3 uppercase tracking-wider transition-colors hover:text-[#C9A7A0]"
               style={{
-                fontSize: '12px',
+                fontSize: '13px',
                 letterSpacing: '2px',
                 color: '#9A9A9A',
                 textDecoration: 'none',
@@ -407,9 +459,9 @@ export default function Header() {
               to="/lets-plan"
               className="block text-center uppercase transition-all duration-300 hover:bg-[#E8DCD8] hover:text-[#6F6F6F]"
               style={{
-                borderRadius: '16px',
-                padding: '12px 24px',
-                fontSize: '12px',
+                borderRadius: '30px',
+                padding: '14px 24px',
+                fontSize: '13px',
                 letterSpacing: '2px',
                 backgroundColor: '#F2E8E6',
                 color: '#6F6F6F',
@@ -426,8 +478,11 @@ export default function Header() {
       {/* Mobile Menu Overlay */}
       {isMenuOpen && (
         <div 
-          className="fixed inset-0 bg-black/20 lg:hidden z-30"
-          style={{ top: '117px' }}
+          className="fixed inset-0 bg-black/40 lg:hidden z-30 transition-opacity duration-300"
+          style={{ 
+            top: 'clamp(90px, 15vw, 117px)',
+            backdropFilter: 'blur(2px)'
+          }}
           onClick={() => {
             setIsMenuOpen(false);
             setMobileOpenDropdown(null);

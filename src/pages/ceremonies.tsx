@@ -126,22 +126,22 @@ export default function CeremoniesPage() {
   ];
 
   return (
-    <div className="bg-white" style={{ paddingTop: '117px' }}>
+    <div className="bg-white pt-[117px]">
       {/* Hero Section */}
-      <section style={{ padding: '100px 0 80px' }}>
-        <div className="mx-auto text-center" style={{ maxWidth: '900px', padding: '0 60px' }}>
+      <section className="py-16 md:py-20 lg:py-24 px-4 md:px-8">
+        <div className="mx-auto max-w-[900px] px-4 sm:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <p className="mb-4 uppercase tracking-widest" style={{ fontSize: '11px', letterSpacing: '3px', color: '#9A9A9A' }}>
+            <p className="mb-4 uppercase tracking-[3px] text-[11px] text-[#9A9A9A]">
               Traditional Celebrations
             </p>
-            <h1 className="font-heading mb-8" style={{ fontSize: '64px', lineHeight: '1.15', color: '#C9A7A0', fontWeight: 400 }}>
+            <h1 className="font-heading mb-6 md:mb-8 text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight text-[#C9A7A0] font-light">
               Sacred Ceremonies & Rituals
             </h1>
-            <p className="leading-relaxed" style={{ fontSize: '18px', lineHeight: '1.8', color: '#6F6F6F' }}>
+            <p className="text-base sm:text-lg leading-relaxed text-[#6F6F6F] max-w-3xl mx-auto">
               Indian weddings are a beautiful tapestry of ceremonies, each with its own significance and traditions. 
               We honor these sacred rituals while creating celebrations that reflect your unique love story.
             </p>
@@ -150,9 +150,9 @@ export default function CeremoniesPage() {
       </section>
 
       {/* Ceremonies List */}
-      <section style={{ padding: '60px 0 120px' }}>
-        <div className="mx-auto" style={{ maxWidth: '1200px', padding: '0 60px' }}>
-          <div className="space-y-24">
+      <section className="py-12 md:py-16 lg:py-24 px-4 md:px-8">
+        <div className="mx-auto max-w-7xl">
+          <div className="space-y-16 md:space-y-20 lg:space-y-24">
             {ceremonies.map((ceremony, index) => (
               <motion.div
                 key={ceremony.id}
@@ -161,42 +161,45 @@ export default function CeremoniesPage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.7, delay: index * 0.1 }}
               >
-                <div className="rounded-sm p-12" style={{ border: '1px solid #ECECEC', backgroundColor: index % 2 === 0 ? '#FFFFFF' : '#FAFAFA' }}>
+                <div 
+                  className="rounded-sm p-6 sm:p-8 md:p-10 lg:p-12 border border-[#ECECEC]"
+                  style={{ backgroundColor: index % 2 === 0 ? '#FFFFFF' : '#FAFAFA' }}
+                >
                   {/* Header */}
-                  <div className="mb-8 text-center">
-                    <p className="mb-2 uppercase tracking-widest" style={{ fontSize: '11px', letterSpacing: '3px', color: '#9A9A9A' }}>
+                  <div className="mb-6 md:mb-8 text-center">
+                    <p className="mb-2 uppercase tracking-[3px] text-[11px] text-[#9A9A9A]">
                       {ceremony.subtitle}
                     </p>
-                    <h2 className="font-heading mb-4" style={{ fontSize: '48px', lineHeight: '1.1', color: '#C9A7A0', fontWeight: 400 }}>
+                    <h2 className="font-heading mb-3 md:mb-4 text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight text-[#C9A7A0] font-light">
                       {ceremony.name}
                     </h2>
-                    <p className="mx-auto leading-relaxed" style={{ maxWidth: '800px', fontSize: '16px', lineHeight: '1.8', color: '#6F6F6F' }}>
+                    <p className="mx-auto leading-relaxed text-sm sm:text-base text-[#6F6F6F] max-w-3xl">
                       {ceremony.description}
                     </p>
                   </div>
 
                   {/* Content Grid */}
-                  <div className="grid gap-8 md:grid-cols-2 mb-8">
+                  <div className="grid gap-6 md:gap-8 grid-cols-1 lg:grid-cols-2 mb-6 md:mb-8">
                     {/* Significance */}
                     <div>
-                      <h3 className="mb-4 uppercase tracking-wider" style={{ fontSize: '12px', letterSpacing: '2px', color: '#9A9A9A' }}>
+                      <h3 className="mb-3 md:mb-4 uppercase tracking-[2px] text-[11px] sm:text-xs text-[#9A9A9A]">
                         Significance
                       </h3>
-                      <p className="leading-relaxed" style={{ fontSize: '15px', lineHeight: '1.8', color: '#6F6F6F' }}>
+                      <p className="leading-relaxed text-sm sm:text-base text-[#6F6F6F]">
                         {ceremony.significance}
                       </p>
                     </div>
 
                     {/* Traditions */}
                     <div>
-                      <h3 className="mb-4 uppercase tracking-wider" style={{ fontSize: '12px', letterSpacing: '2px', color: '#9A9A9A' }}>
+                      <h3 className="mb-3 md:mb-4 uppercase tracking-[2px] text-[11px] sm:text-xs text-[#9A9A9A]">
                         Key Traditions
                       </h3>
                       <ul className="space-y-2">
                         {ceremony.traditions.map((tradition, idx) => (
                           <li key={idx} className="flex items-start gap-2">
-                            <Sparkles className="h-4 w-4 flex-shrink-0 mt-1" style={{ color: '#C9A7A0' }} />
-                            <span style={{ fontSize: '14px', lineHeight: '1.6', color: '#6F6F6F' }}>
+                            <Sparkles className="h-4 w-4 flex-shrink-0 mt-1 text-[#C9A7A0]" />
+                            <span className="text-xs sm:text-sm text-[#6F6F6F] leading-relaxed">
                               {tradition}
                             </span>
                           </li>
@@ -206,25 +209,25 @@ export default function CeremoniesPage() {
                   </div>
 
                   {/* Details Bar */}
-                  <div className="grid gap-4 md:grid-cols-2 pt-8" style={{ borderTop: '1px solid #ECECEC' }}>
+                  <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 pt-6 md:pt-8 border-t border-[#ECECEC]">
                     <div className="flex items-center gap-3">
-                      <Calendar className="h-5 w-5" style={{ color: '#C9A7A0' }} />
+                      <Calendar className="h-5 w-5 text-[#C9A7A0] flex-shrink-0" />
                       <div>
-                        <p className="uppercase tracking-wider" style={{ fontSize: '10px', letterSpacing: '2px', color: '#9A9A9A' }}>
+                        <p className="uppercase tracking-[2px] text-[10px] text-[#9A9A9A]">
                           Typical Duration
                         </p>
-                        <p style={{ fontSize: '14px', color: '#6F6F6F', fontWeight: 500 }}>
+                        <p className="text-sm sm:text-base text-[#6F6F6F] font-medium">
                           {ceremony.duration}
                         </p>
                       </div>
                     </div>
                     <div className="flex items-center gap-3">
-                      <Sparkles className="h-5 w-5" style={{ color: '#C9A7A0' }} />
+                      <Sparkles className="h-5 w-5 text-[#C9A7A0] flex-shrink-0" />
                       <div>
-                        <p className="uppercase tracking-wider" style={{ fontSize: '10px', letterSpacing: '2px', color: '#9A9A9A' }}>
+                        <p className="uppercase tracking-[2px] text-[10px] text-[#9A9A9A]">
                           Color Theme
                         </p>
-                        <p style={{ fontSize: '14px', color: '#6F6F6F', fontWeight: 500 }}>
+                        <p className="text-sm sm:text-base text-[#6F6F6F] font-medium">
                           {ceremony.colorTheme}
                         </p>
                       </div>
@@ -238,28 +241,28 @@ export default function CeremoniesPage() {
       </section>
 
       {/* Planning Features */}
-      <section style={{ padding: '80px 0 100px', backgroundColor: '#F2E8E6' }}>
-        <div className="mx-auto" style={{ maxWidth: '1200px', padding: '0 60px' }}>
+      <section className="py-16 md:py-20 lg:py-24 bg-[#F2E8E6] px-4 md:px-8">
+        <div className="mx-auto max-w-7xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-16"
+            className="text-center mb-10 md:mb-12 lg:mb-16"
           >
-            <p className="mb-4 uppercase tracking-widest" style={{ fontSize: '11px', letterSpacing: '3px', color: '#9A9A9A' }}>
+            <p className="mb-4 uppercase tracking-[3px] text-[11px] text-[#9A9A9A]">
               Our Expertise
             </p>
-            <h2 className="font-heading mb-6" style={{ fontSize: '48px', lineHeight: '1.2', color: '#C9A7A0', fontWeight: 400 }}>
+            <h2 className="font-heading mb-4 md:mb-6 text-3xl sm:text-4xl md:text-5xl leading-tight text-[#C9A7A0] font-light">
               Planning Multi-Day Celebrations
             </h2>
-            <p className="mx-auto leading-relaxed" style={{ maxWidth: '700px', fontSize: '16px', lineHeight: '1.8', color: '#6F6F6F' }}>
+            <p className="mx-auto leading-relaxed text-sm sm:text-base text-[#6F6F6F] max-w-3xl">
               Coordinating multiple ceremonies requires expertise, cultural knowledge, and meticulous attention to detail. 
               We ensure each event flows seamlessly into the next.
             </p>
           </motion.div>
 
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-6 sm:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
             {planningFeatures.map((feature, index) => (
               <motion.div
                 key={feature.title}
@@ -267,19 +270,17 @@ export default function CeremoniesPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="text-center p-8 rounded-sm"
-                style={{ backgroundColor: '#FFFFFF' }}
+                className="text-center p-6 sm:p-8 rounded-sm bg-white"
               >
                 <div
-                  className="inline-flex items-center justify-center mb-6 rounded-full"
-                  style={{ width: '80px', height: '80px', backgroundColor: '#F2E8E6' }}
+                  className="inline-flex items-center justify-center mb-4 md:mb-6 rounded-full w-16 h-16 sm:w-20 sm:h-20 bg-[#F2E8E6]"
                 >
-                  <feature.icon className="h-8 w-8" style={{ color: '#C9A7A0' }} />
+                  <feature.icon className="h-6 w-6 sm:h-8 sm:w-8 text-[#C9A7A0]" />
                 </div>
-                <h3 className="font-heading mb-3" style={{ fontSize: '20px', color: '#6F6F6F', fontWeight: 500 }}>
+                <h3 className="font-heading mb-2 md:mb-3 text-lg sm:text-xl text-[#6F6F6F] font-medium">
                   {feature.title}
                 </h3>
-                <p style={{ fontSize: '14px', lineHeight: '1.7', color: '#9A9A9A' }}>
+                <p className="text-xs sm:text-sm leading-relaxed text-[#9A9A9A]">
                   {feature.description}
                 </p>
               </motion.div>
@@ -289,23 +290,23 @@ export default function CeremoniesPage() {
       </section>
 
       {/* Custom Ceremonies */}
-      <section style={{ padding: '100px 0' }}>
-        <div className="mx-auto text-center" style={{ maxWidth: '900px', padding: '0 60px' }}>
+      <section className="py-16 md:py-20 lg:py-24 px-4 md:px-8">
+        <div className="mx-auto max-w-4xl px-4 sm:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="font-heading mb-6" style={{ fontSize: '48px', lineHeight: '1.2', color: '#C9A7A0', fontWeight: 400 }}>
+            <h2 className="font-heading mb-4 md:mb-6 text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight text-[#C9A7A0] font-light">
               Your Traditions, Your Way
             </h2>
-            <p className="leading-relaxed mb-6" style={{ fontSize: '16px', lineHeight: '1.8', color: '#6F6F6F' }}>
+            <p className="leading-relaxed mb-4 md:mb-6 text-sm sm:text-base text-[#6F6F6F]">
               Every family has unique traditions and customs. Whether you're planning all five ceremonies or 
               selecting specific events, we work with you to honor your heritage while creating a celebration 
               that feels authentically yours.
             </p>
-            <p className="leading-relaxed mb-10" style={{ fontSize: '15px', lineHeight: '1.8', color: '#9A9A9A' }}>
+            <p className="leading-relaxed text-xs sm:text-sm text-[#9A9A9A]">
               We also specialize in fusion weddings, blending Indian traditions with Western elements, 
               and can accommodate regional variations from across India and the diaspora.
             </p>
@@ -314,46 +315,29 @@ export default function CeremoniesPage() {
       </section>
 
       {/* CTA Section */}
-      <section style={{ padding: '80px 0 100px', backgroundColor: '#FAFAFA' }}>
-        <div className="mx-auto text-center" style={{ maxWidth: '800px', padding: '0 60px' }}>
+      <section className="py-16 md:py-20 lg:py-24 bg-[#FAFAFA] px-4 md:px-8">
+        <div className="mx-auto max-w-3xl px-4 sm:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div className="inline-flex items-center justify-center mb-8 rounded-full" style={{ width: '100px', height: '100px', backgroundColor: '#F2E8E6' }}>
-              <Heart className="h-12 w-12" style={{ color: '#C9A7A0' }} />
+            <div className="inline-flex items-center justify-center mb-6 md:mb-8 rounded-full w-20 h-20 md:w-24 md:h-24 bg-[#F2E8E6]">
+              <Heart className="h-8 w-8 md:h-10 md:w-10 lg:h-12 lg:w-12 text-[#C9A7A0]" />
             </div>
-            <h2 className="font-heading mb-6" style={{ fontSize: '48px', lineHeight: '1.2', color: '#C9A7A0', fontWeight: 400 }}>
+            <h2 className="font-heading mb-4 md:mb-6 text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight text-[#C9A7A0] font-light">
               Let's Plan Your Celebration
             </h2>
-            <p className="leading-relaxed mb-10" style={{ fontSize: '16px', lineHeight: '1.8', color: '#6F6F6F' }}>
+            <p className="leading-relaxed mb-8 md:mb-10 text-sm sm:text-base text-[#6F6F6F]">
               Schedule a complimentary consultation to discuss your vision for each ceremony. We'll guide you 
               through the traditions, help you plan the timeline, and ensure every moment is perfect.
             </p>
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 uppercase tracking-widest transition-all duration-500"
-              style={{
-                padding: '18px 48px',
-                fontSize: '12px',
-                letterSpacing: '2px',
-                backgroundColor: '#F2E8E6',
-                color: '#6F6F6F',
-                border: '1px solid transparent',
-                textDecoration: 'none',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = '#C9A7A0';
-                e.currentTarget.style.color = '#FFFFFF';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = '#F2E8E6';
-                e.currentTarget.style.color = '#6F6F6F';
-              }}
+              className="inline-flex items-center gap-2 uppercase tracking-[2px] transition-all duration-500 px-6 sm:px-8 md:px-12 py-4 sm:py-5 text-[11px] sm:text-xs bg-[#F2E8E6] text-[#6F6F6F] border border-transparent hover:bg-[#C9A7A0] hover:text-white"
             >
-              <Calendar className="h-5 w-5" />
+              <Calendar className="h-4 w-4 sm:h-5 sm:w-5" />
               Schedule Consultation
             </Link>
           </motion.div>

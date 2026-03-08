@@ -128,22 +128,22 @@ export default function PortfolioPage() {
       });
 
   return (
-    <div className="bg-white" style={{ paddingTop: '117px' }}>
+    <div className="bg-white pt-[117px] font-serif">
       {/* Hero Section */}
-      <section style={{ padding: '100px 0 60px' }}>
-        <div className="mx-auto text-center" style={{ maxWidth: '900px', padding: '0 60px' }}>
+      <section className="py-16 md:py-20 lg:py-24 px-4 md:px-8">
+        <div className="mx-auto max-w-[900px] px-4 sm:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <p className="mb-4 uppercase tracking-widest" style={{ fontSize: '11px', letterSpacing: '3px', color: '#9A9A9A' }}>
+            <p className="mb-4 uppercase tracking-[3px] text-[11px] text-[#9A9A9A] font-sans">
               Our Work
             </p>
-            <h1 className="font-heading mb-8" style={{ fontSize: '64px', lineHeight: '1.15', color: '#C9A7A0', fontWeight: 400 }}>
+            <h1 className="font-serif mb-6 md:mb-8 text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight text-[#C9A7A0] font-light">
               Celebrations We've Crafted
             </h1>
-            <p className="leading-relaxed" style={{ fontSize: '18px', lineHeight: '1.8', color: '#6F6F6F' }}>
+            <p className="text-base sm:text-lg leading-relaxed text-[#6F6F6F] max-w-3xl mx-auto font-light">
               Each wedding tells a unique love story. Explore our portfolio of extraordinary celebrations 
               across the world's most enchanting destinations.
             </p>
@@ -152,28 +152,23 @@ export default function PortfolioPage() {
       </section>
 
       {/* Filter Categories */}
-      <section style={{ padding: '40px 0 60px' }}>
-        <div className="mx-auto" style={{ maxWidth: '1200px', padding: '0 60px' }}>
+      <section className="py-8 md:py-10 lg:py-12 px-4 md:px-8">
+        <div className="mx-auto max-w-7xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="flex flex-wrap justify-center gap-4"
+            className="flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-4"
           >
             {categories.map((category) => (
               <button
                 key={category.id}
                 onClick={() => setSelectedCategory(category.id)}
-                className="uppercase tracking-wider transition-all duration-300"
+                className="uppercase tracking-wider transition-all duration-300 px-4 sm:px-5 md:px-7 py-2.5 sm:py-3 text-[10px] sm:text-[11px] font-sans"
                 style={{
-                  padding: '12px 28px',
-                  fontSize: '11px',
-                  letterSpacing: '2px',
-                  fontWeight: 400,
                   backgroundColor: selectedCategory === category.id ? '#C9A7A0' : '#F2E8E6',
                   color: selectedCategory === category.id ? '#FFFFFF' : '#6F6F6F',
-                  border: 'none',
-                  borderRadius: '2px',
+                  letterSpacing: '2px',
                 }}
                 onMouseEnter={(e) => {
                   if (selectedCategory !== category.id) {
@@ -194,9 +189,9 @@ export default function PortfolioPage() {
       </section>
 
       {/* Wedding Grid */}
-      <section style={{ padding: '0 0 120px' }}>
-        <div className="mx-auto" style={{ maxWidth: '1400px', padding: '0 60px' }}>
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+      <section className="py-8 md:py-12 lg:py-16 px-4 md:px-8">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid gap-6 sm:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
             {filteredWeddings.map((wedding, index) => (
               <motion.div
                 key={wedding.id}
@@ -207,28 +202,27 @@ export default function PortfolioPage() {
               >
                 {/* Image Container */}
                 <div 
-                  className="relative mb-6 overflow-hidden rounded-sm"
-                  style={{ height: '450px' }}
+                  className="relative mb-4 sm:mb-5 md:mb-6 overflow-hidden rounded-sm"
+                  style={{ height: '300px sm:h-[350px] md:h-[400px] lg:h-[450px]' }}
                 >
                   <img
                     src={wedding.image}
                     alt={`${wedding.couple} wedding`}
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    style={{ filter: 'brightness(0.98) saturate(0.85)' }}
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 brightness-[0.98] saturate-[0.85]"
                   />
                   
                   {/* Overlay on Hover */}
                   <div 
-                    className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                    className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-500 group-hover:opacity-100 px-4"
                     style={{ background: 'linear-gradient(to bottom, rgba(201, 167, 160, 0.85), rgba(201, 167, 160, 0.95))' }}
                   >
-                    <div className="text-center text-white px-8">
-                      <p className="mb-3 leading-relaxed" style={{ fontSize: '14px', lineHeight: '1.6' }}>
+                    <div className="text-center text-white">
+                      <p className="mb-3 leading-relaxed text-sm sm:text-base font-light">
                         {wedding.description}
                       </p>
-                      <div className="flex items-center justify-center gap-2 uppercase tracking-wider" style={{ fontSize: '11px', letterSpacing: '2px' }}>
+                      <div className="flex items-center justify-center gap-2 uppercase tracking-wider text-[10px] sm:text-[11px] font-sans">
                         View Details
-                        <ArrowRight className="h-4 w-4" />
+                        <ArrowRight className="h-3 w-3 sm:h-4 sm:w-4" />
                       </div>
                     </div>
                   </div>
@@ -236,22 +230,22 @@ export default function PortfolioPage() {
 
                 {/* Wedding Info */}
                 <div>
-                  <h3 className="font-heading mb-3" style={{ fontSize: '28px', color: '#6F6F6F', fontWeight: 500 }}>
+                  <h3 className="font-serif mb-2 sm:mb-3 text-xl sm:text-2xl md:text-3xl text-[#6F6F6F] font-light">
                     {wedding.couple}
                   </h3>
                   
-                  <div className="space-y-2">
-                    <div className="flex items-center gap-2" style={{ color: '#9A9A9A', fontSize: '13px' }}>
-                      <MapPin className="h-4 w-4" style={{ color: '#C9A7A0' }} />
+                  <div className="space-y-1.5 sm:space-y-2">
+                    <div className="flex items-center gap-2 text-[#9A9A9A] text-xs sm:text-sm font-light">
+                      <MapPin className="h-3 w-3 sm:h-4 sm:w-4 text-[#C9A7A0]" />
                       {wedding.location}
                     </div>
-                    <div className="flex items-center gap-4" style={{ color: '#9A9A9A', fontSize: '13px' }}>
+                    <div className="flex flex-wrap items-center gap-3 sm:gap-4 text-[#9A9A9A] text-xs sm:text-sm font-light">
                       <div className="flex items-center gap-2">
-                        <Calendar className="h-4 w-4" style={{ color: '#C9A7A0' }} />
+                        <Calendar className="h-3 w-3 sm:h-4 sm:w-4 text-[#C9A7A0]" />
                         {wedding.date}
                       </div>
                       <div className="flex items-center gap-2">
-                        <Users className="h-4 w-4" style={{ color: '#C9A7A0' }} />
+                        <Users className="h-3 w-3 sm:h-4 sm:w-4 text-[#C9A7A0]" />
                         {wedding.guests} Guests
                       </div>
                     </div>
@@ -266,9 +260,9 @@ export default function PortfolioPage() {
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="text-center py-20"
+              className="text-center py-16 md:py-20"
             >
-              <p style={{ fontSize: '16px', color: '#9A9A9A' }}>
+              <p className="text-sm sm:text-base text-[#9A9A9A] font-light">
                 No weddings found in this category. Please try another filter.
               </p>
             </motion.div>
@@ -277,20 +271,20 @@ export default function PortfolioPage() {
       </section>
 
       {/* Testimonial Section */}
-      <section style={{ padding: '80px 0', backgroundColor: '#F2E8E6' }}>
-        <div className="mx-auto text-center" style={{ maxWidth: '900px', padding: '0 60px' }}>
+      <section className="py-16 md:py-20 lg:py-24 bg-[#F2E8E6] px-4 md:px-8">
+        <div className="mx-auto max-w-4xl px-4 sm:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <p className="font-heading mb-6 italic" style={{ fontSize: '24px', lineHeight: '1.6', color: '#6F6F6F' }}>
+            <p className="font-serif mb-4 md:mb-6 italic text-lg sm:text-xl md:text-2xl leading-relaxed text-[#6F6F6F] font-light">
               "HeavenlyWeds transformed our dream into reality. Every detail was perfect, 
               from the stunning venue to the seamless coordination. Our guests are still talking 
               about how magical it was."
             </p>
-            <p className="uppercase tracking-wider" style={{ fontSize: '12px', letterSpacing: '2px', color: '#C9A7A0' }}>
+            <p className="uppercase tracking-wider text-[11px] sm:text-xs text-[#C9A7A0] font-sans">
               — Sophia & James, Lake Como
             </p>
           </motion.div>
@@ -298,43 +292,26 @@ export default function PortfolioPage() {
       </section>
 
       {/* CTA Section */}
-      <section style={{ padding: '100px 0' }}>
-        <div className="mx-auto text-center" style={{ maxWidth: '800px', padding: '0 60px' }}>
+      <section className="py-16 md:py-20 lg:py-24 px-4 md:px-8">
+        <div className="mx-auto max-w-3xl px-4 sm:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="font-heading mb-6" style={{ fontSize: '48px', lineHeight: '1.2', color: '#C9A7A0', fontWeight: 400 }}>
+            <h2 className="font-serif mb-4 md:mb-6 text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight text-[#C9A7A0] font-light">
               Ready to Create Your Story?
             </h2>
-            <p className="leading-relaxed mb-10" style={{ fontSize: '16px', lineHeight: '1.8', color: '#6F6F6F' }}>
+            <p className="leading-relaxed mb-8 md:mb-10 text-sm sm:text-base text-[#6F6F6F] font-light max-w-2xl mx-auto">
               Let's begin planning your extraordinary celebration. Schedule a complimentary consultation 
               to discuss your vision and explore how we can bring it to life.
             </p>
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 uppercase tracking-widest transition-all duration-500"
-              style={{
-                padding: '18px 48px',
-                fontSize: '12px',
-                letterSpacing: '2px',
-                backgroundColor: '#F2E8E6',
-                color: '#6F6F6F',
-                border: '1px solid transparent',
-                textDecoration: 'none',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = '#C9A7A0';
-                e.currentTarget.style.color = '#FFFFFF';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = '#F2E8E6';
-                e.currentTarget.style.color = '#6F6F6F';
-              }}
+              className="inline-flex items-center gap-2 uppercase tracking-[2px] transition-all duration-500 px-6 sm:px-8 md:px-12 py-4 sm:py-5 text-[11px] sm:text-xs bg-[#F2E8E6] text-[#6F6F6F] border border-transparent hover:bg-[#C9A7A0] hover:text-white font-sans"
             >
-              <Calendar className="h-5 w-5" />
+              <Calendar className="h-4 w-4 sm:h-5 sm:w-5" />
               Schedule Consultation
             </Link>
           </motion.div>
