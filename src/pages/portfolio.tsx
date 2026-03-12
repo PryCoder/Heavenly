@@ -33,7 +33,7 @@ export default function PortfolioPage() {
       location: 'Lake Como, Italy',
       date: 'June 2024',
       guests: 120,
-      image: '/airo-assets/images/pages/portfolio/wedding-1',
+      image: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=1000',
       category: 'italy',
       description: 'A romantic lakeside celebration with breathtaking mountain views',
     },
@@ -43,7 +43,7 @@ export default function PortfolioPage() {
       location: 'Udaipur, India',
       date: 'March 2024',
       guests: 350,
-      image: '/airo-assets/images/pages/portfolio/wedding-2',
+      image: 'https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=1000',
       category: 'india',
       description: 'A majestic palace wedding celebrating rich cultural traditions',
     },
@@ -53,7 +53,7 @@ export default function PortfolioPage() {
       location: 'Provence, France',
       date: 'September 2023',
       guests: 80,
-      image: '/airo-assets/images/pages/portfolio/wedding-3',
+      image: 'https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1000',
       category: 'france',
       description: 'An intimate vineyard celebration under the French countryside sky',
     },
@@ -63,7 +63,7 @@ export default function PortfolioPage() {
       location: 'Tuscany, Italy',
       date: 'May 2024',
       guests: 150,
-      image: '/airo-assets/images/pages/portfolio/wedding-4',
+      image: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1000',
       category: 'italy',
       description: 'A timeless Tuscan villa wedding surrounded by rolling hills',
     },
@@ -73,7 +73,7 @@ export default function PortfolioPage() {
       location: 'Jaipur, India',
       date: 'February 2024',
       guests: 400,
-      image: '/airo-assets/images/pages/portfolio/wedding-5',
+      image: 'https://images.unsplash.com/photo-1604017011826-d3b4c23f8914?w=1000',
       category: 'india',
       description: 'A grand celebration in the Pink City with vibrant colors and traditions',
     },
@@ -83,7 +83,7 @@ export default function PortfolioPage() {
       location: 'French Riviera, France',
       date: 'July 2023',
       guests: 100,
-      image: '/airo-assets/images/pages/portfolio/wedding-6',
+      image: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=1000',
       category: 'france',
       description: 'A sophisticated coastal wedding with Mediterranean elegance',
     },
@@ -93,7 +93,7 @@ export default function PortfolioPage() {
       location: 'Amalfi Coast, Italy',
       date: 'August 2024',
       guests: 60,
-      image: '/airo-assets/images/pages/portfolio/wedding-7',
+      image: 'https://images.unsplash.com/photo-1523438885200-e635ba2c371e?w=1000',
       category: 'italy',
       description: 'An intimate cliffside ceremony overlooking the azure sea',
     },
@@ -103,7 +103,7 @@ export default function PortfolioPage() {
       location: 'Goa, India',
       date: 'December 2023',
       guests: 200,
-      image: '/airo-assets/images/pages/portfolio/wedding-8',
+      image: 'https://images.unsplash.com/photo-1604017011826-d3b4c23f8914?w=1000',
       category: 'india',
       description: 'A beachfront celebration blending modern style with Indian heritage',
     },
@@ -113,7 +113,7 @@ export default function PortfolioPage() {
       location: 'Château de Versailles, France',
       date: 'October 2023',
       guests: 180,
-      image: '/airo-assets/images/pages/portfolio/wedding-9',
+      image: 'https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=1000',
       category: 'france',
       description: 'A regal château wedding with opulent French grandeur',
     },
@@ -200,15 +200,13 @@ export default function PortfolioPage() {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="group"
               >
-                {/* Image Container */}
-                <div 
-                  className="relative mb-4 sm:mb-5 md:mb-6 overflow-hidden rounded-sm"
-                  style={{ height: '300px sm:h-[350px] md:h-[400px] lg:h-[450px]' }}
-                >
+                {/* Image Container - All images exactly the same size and responsive */}
+                <div className="relative mb-4 sm:mb-5 md:mb-6 overflow-hidden rounded-sm w-full aspect-[4/5]">
                   <img
                     src={wedding.image}
-                    alt={`${wedding.couple} wedding`}
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 brightness-[0.98] saturate-[0.85]"
+                    alt={`${wedding.couple} wedding at ${wedding.location}`}
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 brightness-[0.98] saturate-[0.85]"
+                    loading="lazy"
                   />
                   
                   {/* Overlay on Hover */}
@@ -236,17 +234,17 @@ export default function PortfolioPage() {
                   
                   <div className="space-y-1.5 sm:space-y-2">
                     <div className="flex items-center gap-2 text-[#9A9A9A] text-xs sm:text-sm font-light">
-                      <MapPin className="h-3 w-3 sm:h-4 sm:w-4 text-[#C9A7A0]" />
-                      {wedding.location}
+                      <MapPin className="h-3 w-3 sm:h-4 sm:w-4 text-[#C9A7A0] flex-shrink-0" />
+                      <span className="truncate">{wedding.location}</span>
                     </div>
                     <div className="flex flex-wrap items-center gap-3 sm:gap-4 text-[#9A9A9A] text-xs sm:text-sm font-light">
                       <div className="flex items-center gap-2">
-                        <Calendar className="h-3 w-3 sm:h-4 sm:w-4 text-[#C9A7A0]" />
-                        {wedding.date}
+                        <Calendar className="h-3 w-3 sm:h-4 sm:w-4 text-[#C9A7A0] flex-shrink-0" />
+                        <span>{wedding.date}</span>
                       </div>
                       <div className="flex items-center gap-2">
-                        <Users className="h-3 w-3 sm:h-4 sm:w-4 text-[#C9A7A0]" />
-                        {wedding.guests} Guests
+                        <Users className="h-3 w-3 sm:h-4 sm:w-4 text-[#C9A7A0] flex-shrink-0" />
+                        <span>{wedding.guests} Guests</span>
                       </div>
                     </div>
                   </div>

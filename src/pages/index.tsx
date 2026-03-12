@@ -7,10 +7,10 @@ export default function HomePage() {
   // Hero image slider state
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const heroImages = [
-    '/airo-assets/images/pages/home/hero',
-    '/airo-assets/images/pages/home/gallery-1',
-    '/airo-assets/images/pages/home/gallery-2',
-    '/airo-assets/images/pages/home/service-venue'
+    'https://media.gettyimages.com/id/1252515754/photo/luxury-five-stars-hotels-entrance-all.jpg?b=1&s=2048x2048&w=0&k=20&c=kVWOonVPswYXZnwtUwWet8O1Gdoq_T-6f5tk4QwneGI=',
+    'https://bp37mc8dd9.preview.c36.airoapp.ai/airo-assets/images/pages/home/hero',
+    'https://bp37mc8dd9.preview.c36.airoapp.ai/airo-assets/images/pages/home/gallery-2',
+    'https://bp37mc8dd9.preview.c36.airoapp.ai/airo-assets/images/pages/home/gallery-1'
   ];
 
   useEffect(() => {
@@ -116,8 +116,8 @@ export default function HomePage() {
 
         {/* PART 2: Bottom Image Slider */}
         <div className="relative overflow-hidden" style={{ 
-          height: 'clamp(300px, 50vh, 66vh)', 
-          minHeight: 'clamp(300px, 40vh, 520px)' 
+          height: 'clamp(300px, 70vh, 66vh)', 
+          minHeight: 'clamp(300px, 50vh, 520px)' 
         }}>
           {/* Background Image Slider */}
           <div className="absolute inset-0">
@@ -236,7 +236,7 @@ export default function HomePage() {
             >
               <div className="mb-6 overflow-hidden rounded-lg">
                 <img 
-                  src="/airo-assets/images/pages/home/service-planning" 
+                  src="https://bp37mc8dd9.preview.c36.airoapp.ai/airo-assets/images/pages/home/service-planning" 
                   alt="Complete wedding planning" 
                   className="w-full object-cover transition-transform duration-700 group-hover:scale-105"
                   style={{ height: 'clamp(250px, 40vw, 400px)' }} 
@@ -270,7 +270,7 @@ export default function HomePage() {
             >
               <div className="mb-6 overflow-hidden rounded-lg">
                 <img 
-                  src="/airo-assets/images/pages/home/service-venue" 
+                  src="https://bp37mc8dd9.preview.c36.airoapp.ai/airo-assets/images/pages/home/service-venue" 
                   alt="Destination venue curation" 
                   className="w-full object-cover transition-transform duration-700 group-hover:scale-105"
                   style={{ height: 'clamp(250px, 40vw, 400px)' }} 
@@ -339,7 +339,7 @@ export default function HomePage() {
                 className="group overflow-hidden rounded-lg"
               >
                 <img 
-                  src={`/airo-assets/images/pages/home/gallery-${index}`} 
+                  src={`https://bp37mc8dd9.preview.c36.airoapp.ai/airo-assets/images/pages/home/gallery-${index}`} 
                   alt={`Wedding ${index}`} 
                   className="w-full object-cover transition-all duration-700 group-hover:scale-105"
                   style={{ 
@@ -405,7 +405,7 @@ export default function HomePage() {
               </p>
               <div className="flex items-center gap-4">
                 <img 
-                  src="/airo-assets/images/pages/home/testimonial-1" 
+                  src="https://bp37mc8dd9.preview.c36.airoapp.ai/airo-assets/images/pages/home/testimonial-1" 
                   alt="Sarah & Michael" 
                   className="rounded-full object-cover"
                   style={{ width: 'clamp(48px, 8vw, 64px)', height: 'clamp(48px, 8vw, 64px)' }} 
@@ -442,7 +442,7 @@ export default function HomePage() {
               </p>
               <div className="flex items-center gap-4">
                 <img 
-                  src="/airo-assets/images/pages/home/testimonial-2" 
+                  src="https://bp37mc8dd9.preview.c36.airoapp.ai/airo-assets/images/pages/home/testimonial-1" 
                   alt="Priya & Raj" 
                   className="rounded-full object-cover"
                   style={{ width: 'clamp(48px, 8vw, 64px)', height: 'clamp(48px, 8vw, 64px)' }} 

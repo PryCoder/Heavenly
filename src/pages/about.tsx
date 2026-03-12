@@ -164,7 +164,7 @@ export default function AboutPage() {
               style={{ height: '500px' }}
             >
               <img
-                src="/airo-assets/images/pages/about/philosophy"
+                src="https://bp37mc8dd9.preview.c36.airoapp.ai/airo-assets/images/pages/about/philosophy"
                 alt="Luxury wedding setup"
                 className="h-full w-full object-cover rounded-sm"
                 style={{ filter: 'brightness(0.98) saturate(0.85)' }}
@@ -255,7 +255,7 @@ export default function AboutPage() {
               >
                 <div className="mb-6 overflow-hidden rounded-sm" style={{ height: '400px' }}>
                   <img
-                    src={`/airo-assets/images/pages/about/team-${index + 1}`}
+                    src={`https://bp37mc8dd9.preview.c36.airoapp.ai/airo-assets/images/pages/about/team-${index + 1}`}
                     alt={member.name}
                     className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
                     style={{ filter: 'brightness(0.98) saturate(0.85)' }}

@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { Calendar, Mail, Phone, MapPin, CheckCircle, XCircle, X } from 'lucide-react';
+import { Calendar, Mail, Phone, MapPin, CheckCircle, XCircle, X, MessageCircle } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
 // ── Toast Component ────────────────────────────────────────────────────────
@@ -48,8 +48,24 @@ export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [toast, setToast] = useState<{ type: ToastType; message: string } | null>(null);
 
+  // New states for the WhatsApp Modal
+  const [showWhatsAppModal, setShowWhatsAppModal] = useState(false);
+  const [submittedData, setSubmittedData] = useState<typeof EMPTY_FORM | null>(null);
+  const [countdown, setCountdown] = useState(15);
+
   const showToast = (type: ToastType, message: string) => setToast({ type, message });
   const closeToast = () => setToast(null);
+
+  // Handle countdown timer
+  useEffect(() => {
+    let timer: NodeJS.Timeout;
+    if (showWhatsAppModal && countdown > 0) {
+      timer = setTimeout(() => setCountdown(c => c - 1), 1000);
+    } else if (countdown === 0) {
+      setShowWhatsAppModal(false);
+    }
+    return () => clearTimeout(timer);
+  }, [showWhatsAppModal, countdown]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -71,7 +87,13 @@ export default function ContactPage() {
       }
 
       showToast('success', "Thank you! We've received your inquiry and will be in touch within 24 hours.");
+      
+      // Save data for WhatsApp formatting, trigger modal, clear form
+      setSubmittedData(formData);
+      setCountdown(15);
+      setShowWhatsAppModal(true);
       setFormData(EMPTY_FORM);
+      
     } catch (error: unknown) {
       const message = error instanceof Error ? error.message : 'Something went wrong. Please try again or contact us directly.';
       showToast('error', message);
@@ -82,6 +104,16 @@ export default function ContactPage() {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  // Generate the formatted WhatsApp link
+  const getWhatsAppLink = () => {
+    if (!submittedData) return '#';
+    
+    const message = `✨ *New Inquiry from Website* ✨\n\n*👤 Name:* ${submittedData.name}\n*📧 Email:* ${submittedData.email}\n*📱 Phone:* ${submittedData.phone || 'N/A'}\n*🎉 Event:* ${submittedData.eventType}\n*📅 Date:* ${submittedData.date || 'N/A'}\n*📍 Location:* ${submittedData.location || 'N/A'}\n*👥 Guests:* ${submittedData.guests || 'N/A'}\n*💰 Budget:* ${submittedData.budget}\n\n*💬 Message:*\n${submittedData.message}`;
+
+    // 91 prepended assuming India country code for 9324148255
+    return `https://wa.me/919324148255?text=${encodeURIComponent(message)}`;
   };
 
   return (
@@ -399,6 +431,60 @@ export default function ContactPage() {
             message={toast.message}
             onClose={closeToast}
           />
+        )}
+      </AnimatePresence>
+
+      {/* WhatsApp Quick Response Modal */}
+      <AnimatePresence>
+        {showWhatsAppModal && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[60] flex items-center justify-center bg-black/40 px-4 backdrop-blur-sm"
+          >
+            <motion.div
+              initial={{ scale: 0.9, y: 20 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.9, y: 20 }}
+              className="w-full max-w-md bg-white p-8 text-center shadow-2xl relative"
+            >
+              <button 
+                onClick={() => setShowWhatsAppModal(false)}
+                className="absolute top-4 right-4 text-[#9A9A9A] hover:text-[#6F6F6F] transition-colors"
+                aria-label="Close"
+              >
+                <X size={20} />
+              </button>
+              
+              <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-[#E5F7ED] mb-6">
+                <MessageCircle className="h-8 w-8 text-[#25D366]" />
+              </div>
+              
+              <h3 className="font-serif mb-3 text-2xl text-[#C9A7A0]">
+                Want a faster response?
+              </h3>
+              
+              <p className="text-sm text-[#6F6F6F] leading-relaxed font-light mb-8">
+                Your inquiry has been successfully sent to our email. For an immediate reply, you can directly forward this inquiry to our WhatsApp!
+              </p>
+              
+              <a
+                href={getWhatsAppLink()}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setShowWhatsAppModal(false)}
+                className="inline-flex w-full items-center justify-center gap-2 bg-[#25D366] text-white py-4 px-6 text-sm uppercase tracking-widest transition-all hover:bg-[#20BE5A]"
+              >
+                <MessageCircle className="h-5 w-5" />
+                Send via WhatsApp
+              </a>
+              
+              <p className="mt-4 text-xs text-[#9A9A9A] font-light">
+                Autoclosing in <span className="font-medium text-[#6F6F6F]">{countdown}</span> seconds
+              </p>
+            </motion.div>
+          </motion.div>
         )}
       </AnimatePresence>
     </div>

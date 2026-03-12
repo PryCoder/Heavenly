@@ -196,17 +196,18 @@ export default function Header() {
           >
             {/* HEAVENLY - Responsive font */}
             <span 
-              className="font-heading uppercase"
-              style={{
-                fontSize: 'clamp(24px, 5vw, 32px)',
-                lineHeight: 'clamp(24px, 5vw, 32px)',
-                letterSpacing: '1.5px',
-                fontWeight: 400,
-                color: '#6F6F6F',
-              }}
-            >
-              HEAVENLY
-            </span>
+  className="uppercase"
+  style={{
+    fontFamily: "'Cinzel', serif",
+    fontSize: 'clamp(24px, 5vw, 32px)',
+    lineHeight: 'clamp(24px, 5vw, 32px)',
+    letterSpacing: '1.5px',
+    fontWeight: 400,
+    color: '#6F6F6F',
+  }}
+>
+  HEAVENLY
+</span>
             {/* WEDS - Responsive script font */}
             <span
   style={{

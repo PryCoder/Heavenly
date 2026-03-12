@@ -33,7 +33,7 @@ export default function LocationsPage() {
       ],
       bestTime: 'May - October',
       venues: ['Lake Como', 'Tuscany', 'Amalfi Coast', 'Florence', 'Venice', 'Rome'],
-      image: '/airo-assets/images/pages/locations/italy',
+      image: 'https://bp37mc8dd9.preview.c36.airoapp.ai/airo-assets/images/pages/locations/italy',
       href: '/locations/italy',
     },
     {
@@ -52,7 +52,7 @@ export default function LocationsPage() {
       ],
       bestTime: 'June - September',
       venues: ['French Riviera', 'Provence', 'Château de Versailles', 'Loire Valley', 'Paris', 'Bordeaux'],
-      image: '/airo-assets/images/pages/locations/france',
+      image: 'https://bp37mc8dd9.preview.c36.airoapp.ai/airo-assets/images/pages/locations/france',
       href: '/locations/france',
     },
     {
@@ -71,7 +71,7 @@ export default function LocationsPage() {
       ],
       bestTime: 'October - March',
       venues: ['Udaipur', 'Jaipur', 'Goa', 'Kerala', 'Agra', 'Jodhpur'],
-      image: '/airo-assets/images/pages/locations/india',
+      image: 'https://bp37mc8dd9.preview.c36.airoapp.ai/airo-assets/images/pages/locations/india',
       href: '/locations/india',
     },
   ];
