@@ -74,7 +74,7 @@ export default function ContactPage() {
 
     // Safely get the API URL whether using Vite (import.meta.env) or CRA (process.env)
     // @ts-ignore (ignoring TS warning for process.env in Vite setups)
-    const API_URL = import.meta.env.VITE_API_URL || 'https://hevenlybac.vercel.app';
+    const API_URL = import.meta.env.VITE_API_URL || 'https://hevenlybac.onrender.com';
 console.log(API_URL);
     try {
       const res = await fetch(`${API_URL}/api/contact`, {
