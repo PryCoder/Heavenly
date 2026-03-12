@@ -77,7 +77,7 @@ export default function ContactPage() {
     const API_URL = (typeof import.meta !== 'undefined' && import.meta.env?.VITE_API_URL) 
       || (typeof process !== 'undefined' && process.env?.REACT_APP_API_URL) 
       || 'http://localhost:5100';
-
+console.log(API_URL);
     try {
       const res = await fetch(`${API_URL}/api/contact`, {
         method: 'POST',
