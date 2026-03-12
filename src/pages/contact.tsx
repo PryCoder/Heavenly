@@ -72,8 +72,14 @@ export default function ContactPage() {
     setIsSubmitting(true);
     closeToast();
 
+    // Safely get the API URL whether using Vite (import.meta.env) or CRA (process.env)
+    // @ts-ignore (ignoring TS warning for process.env in Vite setups)
+    const API_URL = (typeof import.meta !== 'undefined' && import.meta.env?.VITE_API_URL) 
+      || (typeof process !== 'undefined' && process.env?.REACT_APP_API_URL) 
+      || 'http://localhost:5100';
+
     try {
-      const res = await fetch('http://localhost:5100/api/contact', {
+      const res = await fetch(`${API_URL}/api/contact`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
