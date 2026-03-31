@@ -259,7 +259,7 @@ export default function AboutPage() {
               >
                 <div className="mb-6 overflow-hidden rounded-sm" style={{ height: '400px' }}>
                   <img
-                    src={`https://bp37mc8dd9.preview.c36.airoapp.ai/airo-assets/images/pages/about/team-${index + 1}`}
+                    src={`/image-${index + 1}.png`}
                     alt={member.name}
                     className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
                     style={{ filter: 'brightness(0.98) saturate(0.85)' }}

@@ -259,11 +259,11 @@ console.log(API_URL);
                       className="w-full transition-all duration-300 text-sm sm:text-base bg-white border border-[#ECECEC] focus:border-[#C9A7A0] outline-none px-4 py-3 sm:px-5 sm:py-4 text-[#6F6F6F] font-light"
                     >
                       <option value="">Select budget range</option>
-                      <option value="50k-100k">$50,000 - $100,000</option>
-                      <option value="100k-250k">$100,000 - $250,000</option>
-                      <option value="250k-500k">$250,000 - $500,000</option>
-                      <option value="500k-1m">$500,000 - $1,000,000</option>
-                      <option value="1m+">$1,000,000+</option>
+                      <option value="50k-100k"> ₹25,000 -  ₹50,000</option>
+                      <option value="100k-250k"> ₹50,000 -  ₹250,000</option>
+                      <option value="250k-500k"> ₹250,000 - ₹500,000</option>
+                      <option value="500k-1m"> ₹500,000 -  ₹1,000,000</option>
+                      <option value="1m+"> ₹1,000,000+</option>
                     </select>
                   </div>
                 </div>
