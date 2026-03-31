@@ -178,51 +178,7 @@ export default function AboutPage() {
       </section>
 
       {/* Our Values */}
-      <section style={{ padding: '80px 0 120px', backgroundColor: '#FAFAFA' }}>
-        <div className="mx-auto" style={{ maxWidth: '1200px', padding: '0 60px' }}>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
-          >
-            <p className="mb-4 uppercase tracking-widest" style={{ fontSize: '11px', letterSpacing: '3px', color: '#9A9A9A' }}>
-              What Drives Us
-            </p>
-            <h2 className="font-heading" style={{ fontSize: '42px', lineHeight: '1.2', color: '#C9A7A0', fontWeight: 400 }}>
-              Our Core Values
-            </h2>
-          </motion.div>
-
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-            {values.map((value, index) => (
-              <motion.div
-                key={value.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="text-center p-8 bg-white rounded-sm"
-                style={{ border: '1px solid #ECECEC' }}
-              >
-                <div
-                  className="inline-flex items-center justify-center mb-6 rounded-full"
-                  style={{ width: '80px', height: '80px', backgroundColor: '#F2E8E6' }}
-                >
-                  <value.icon className="h-8 w-8" style={{ color: '#C9A7A0' }} />
-                </div>
-                <h3 className="font-heading mb-3" style={{ fontSize: '22px', color: '#6F6F6F', fontWeight: 500 }}>
-                  {value.title}
-                </h3>
-                <p style={{ fontSize: '14px', lineHeight: '1.7', color: '#9A9A9A' }}>
-                  {value.description}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+     
 
       {/* Meet the Team */}
       <section style={{ padding: '120px 0' }}>
@@ -281,52 +237,7 @@ export default function AboutPage() {
       </section>
 
       {/* Global Reach */}
-      <section style={{ padding: '80px 0 120px', backgroundColor: '#F2E8E6' }}>
-        <div className="mx-auto text-center" style={{ maxWidth: '900px', padding: '0 60px' }}>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <div className="inline-flex items-center justify-center mb-8 rounded-full" style={{ width: '100px', height: '100px', backgroundColor: '#FFFFFF' }}>
-              <Globe className="h-12 w-12" style={{ color: '#C9A7A0' }} />
-            </div>
-            <h2 className="font-heading mb-6" style={{ fontSize: '42px', lineHeight: '1.2', color: '#C9A7A0', fontWeight: 400 }}>
-              Capturing Love Worldwide
-            </h2>
-            <p className="leading-relaxed mb-8" style={{ fontSize: '16px', lineHeight: '1.8', color: '#6F6F6F' }}>
-              Based in Mumbai & London, we capture love stories across the globe. From pre-wedding shoots in scenic locations to full-day wedding coverage,
-              our team brings creativity, precision, and cinematic storytelling to every frame. Whether it's an intimate ceremony or a grand celebration,
-              we ensure every smile, glance, and heartfelt moment is preserved perfectly.
-            </p>
-            <Link
-              to="/locations"
-              className="inline-flex items-center gap-2 uppercase tracking-widest transition-all duration-500"
-              style={{
-                padding: '16px 40px',
-                fontSize: '11px',
-                letterSpacing: '2px',
-                backgroundColor: '#FFFFFF',
-                color: '#6F6F6F',
-                border: '1px solid transparent',
-                textDecoration: 'none',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = '#C9A7A0';
-                e.currentTarget.style.color = '#FFFFFF';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = '#FFFFFF';
-                e.currentTarget.style.color = '#6F6F6F';
-              }}
-            >
-              <Globe className="h-4 w-4" />
-              Explore Destinations
-            </Link>
-          </motion.div>
-        </div>
-      </section>
+     
 
       {/* CTA Section */}
       <section style={{ padding: '100px 0' }}>

@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Check, ArrowRight, Calendar, Sparkles, Heart, Camera, Plane, Brush } from 'lucide-react';
+import { Check, ArrowRight, Calendar, Sparkles, Heart, Camera, Plane, Brush, PenTool, Film, Scissors, Gift, Sparkle, BookOpen, Utensils, User } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 interface Service {
@@ -12,6 +12,14 @@ interface Service {
   href: string;
   featured?: boolean;
   icon?: React.ElementType;
+}
+
+interface AdditionalService {
+  id: string;
+  title: string;
+  icon: React.ElementType;
+  description: string;
+  href: string;
 }
 
 export default function ServicesPage() {
@@ -89,6 +97,18 @@ export default function ServicesPage() {
       href: '/services/destination',
       icon: Plane,
     },
+  ];
+
+  const additionalServices: AdditionalService[] = [
+    { id: 'pre-wedding', title: 'Pre-wedding shoot', icon: Camera, description: 'Capture the excitement and romance before your big day with a stunning pre-wedding photoshoot.', href: '/services/pre-wedding' },
+    { id: 'maternity', title: 'Maternity Photoshoot', icon: Heart, description: 'Celebrate the beautiful journey of parenthood with a professional maternity photoshoot.', href: '/services/maternity' },
+    { id: 'destination', title: 'Destination Wedding', icon: Plane, description: 'Exchange vows in breathtaking locations around the world with our destination expertise.', href: '/services/destination' },
+    { id: 'editing', title: 'Editing Services', icon: Brush, description: 'Professional photo and video editing to enhance every precious moment.', href: '/services/editing' },
+    { id: 'invitation', title: 'Wedding Invitation', icon: PenTool, description: 'Beautifully crafted invitations that set the tone for your celebration.', href: '/services/invitations' },
+    { id: 'makeup', title: 'Make Up Artist', icon: User, description: 'Expert makeup artists to make you look and feel your best on your special day.', href: '/services/makeup' },
+    { id: 'e-invites', title: 'Wedding E-Invites', icon: Gift, description: 'Elegant digital invitations for the modern, eco-conscious couple.', href: '/services/e-invites' },
+    { id: 'album', title: 'Wedding Album', icon: BookOpen, description: 'Beautifully designed albums to preserve your memories for generations.', href: '/services/album' },
+    { id: 'catering', title: 'Catering', icon: Utensils, description: 'Exquisite culinary experiences tailored to your taste and style.', href: '/services/catering' },
   ];
 
   const processSteps = [
@@ -259,9 +279,82 @@ export default function ServicesPage() {
         </div>
       </section>
 
-     
+      {/* Enhanced Options / Additional Services Section */}
+      <section style={{ padding: '80px 0 120px', backgroundColor: '#F2E8E6' }}>
+        <div className="mx-auto" style={{ maxWidth: '1200px', padding: '0 60px' }}>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <p className="mb-4 uppercase tracking-widest" style={{ fontSize: '11px', letterSpacing: '3px', color: '#9A9A9A' }}>
+              Enhanced Options
+            </p>
+            <h2 className="font-heading mb-4" style={{ fontSize: '42px', lineHeight: '1.2', color: '#C9A7A0', fontWeight: 400 }}>
+              Additional Services
+            </h2>
+            <p className="mx-auto leading-relaxed" style={{ maxWidth: '600px', fontSize: '16px', lineHeight: '1.8', color: '#6F6F6F' }}>
+              Enhance your planning experience with our specialized services
+            </p>
+          </motion.div>
+
+          <div className="grid gap-4 sm:gap-5 md:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+            {additionalServices.map((service, index) => (
+              <motion.div
+                key={service.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.05 }}
+                className="group"
+              >
+                <Link
+                  to={service.href}
+                  className="block p-5 sm:p-6 bg-white rounded-sm transition-all duration-300 hover:shadow-lg"
+                  style={{ 
+                    border: '1px solid #ECECEC',
+                    textDecoration: 'none'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'translateY(-4px)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'translateY(0)';
+                  }}
+                >
+                  <div className="flex items-start gap-4">
+                    <div 
+                      className="flex-shrink-0 rounded-full p-3 transition-colors duration-300 group-hover:bg-[#F2E8E6]"
+                      style={{ backgroundColor: '#F2E8E6' }}
+                    >
+                      <service.icon className="h-5 w-5 sm:h-6 sm:w-6" style={{ color: '#C9A7A0' }} />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <h3 className="font-heading mb-2 text-base sm:text-lg md:text-xl" style={{ color: '#6F6F6F', fontWeight: 500 }}>
+                        {service.title}
+                      </h3>
+                      <p className="text-xs sm:text-sm leading-relaxed" style={{ color: '#9A9A9A' }}>
+                        {service.description}
+                      </p>
+                      <div className="mt-3 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <span className="text-xs uppercase tracking-wider" style={{ color: '#C9A7A0' }}>Learn More</span>
+                        <ArrowRight className="h-3 w-3" style={{ color: '#C9A7A0' }} />
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+    
+
       {/* Why Choose Us */}
-      <section style={{ padding: '100px 0' }}>
+      <section style={{ padding: '80px 0 100px', backgroundColor: '#FAFAFA' }}>
         <div className="mx-auto" style={{ maxWidth: '1000px', padding: '0 60px' }}>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -285,28 +378,28 @@ export default function ServicesPage() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="grid gap-6 md:grid-cols-2"
           >
-            <div className="flex items-start gap-4 p-6 rounded-sm" style={{ border: '1px solid #ECECEC' }}>
+            <div className="flex items-start gap-4 p-6 rounded-sm bg-white" style={{ border: '1px solid #ECECEC' }}>
               <Heart className="h-6 w-6 flex-shrink-0" style={{ color: '#C9A7A0' }} />
               <div>
                 <h3 className="font-medium mb-2" style={{ fontSize: '18px', color: '#6F6F6F' }}>Passionate Team</h3>
                 <p style={{ fontSize: '14px', color: '#9A9A9A' }}>Dedicated photographers and cinematographers capturing your most beautiful moments.</p>
               </div>
             </div>
-            <div className="flex items-start gap-4 p-6 rounded-sm" style={{ border: '1px solid #ECECEC' }}>
+            <div className="flex items-start gap-4 p-6 rounded-sm bg-white" style={{ border: '1px solid #ECECEC' }}>
               <Sparkles className="h-6 w-6 flex-shrink-0" style={{ color: '#C9A7A0' }} />
               <div>
                 <h3 className="font-medium mb-2" style={{ fontSize: '18px', color: '#6F6F6F' }}>Creative Excellence</h3>
                 <p style={{ fontSize: '14px', color: '#9A9A9A' }}>Blending artistry with innovation to deliver timeless elegance.</p>
               </div>
             </div>
-            <div className="flex items-start gap-4 p-6 rounded-sm" style={{ border: '1px solid #ECECEC' }}>
+            <div className="flex items-start gap-4 p-6 rounded-sm bg-white" style={{ border: '1px solid #ECECEC' }}>
               <Camera className="h-6 w-6 flex-shrink-0" style={{ color: '#C9A7A0' }} />
               <div>
                 <h3 className="font-medium mb-2" style={{ fontSize: '18px', color: '#6F6F6F' }}>Cinematic Storytelling</h3>
                 <p style={{ fontSize: '14px', color: '#9A9A9A' }}>Transforming real emotions into timeless photographs and cinematic films.</p>
               </div>
             </div>
-            <div className="flex items-start gap-4 p-6 rounded-sm" style={{ border: '1px solid #ECECEC' }}>
+            <div className="flex items-start gap-4 p-6 rounded-sm bg-white" style={{ border: '1px solid #ECECEC' }}>
               <Plane className="h-6 w-6 flex-shrink-0" style={{ color: '#C9A7A0' }} />
               <div>
                 <h3 className="font-medium mb-2" style={{ fontSize: '18px', color: '#6F6F6F' }}>Global Reach</h3>
@@ -318,7 +411,7 @@ export default function ServicesPage() {
       </section>
 
       {/* CTA Section */}
-      <section style={{ padding: '80px 0 100px', backgroundColor: '#FAFAFA' }}>
+      <section style={{ padding: '80px 0 100px' }}>
         <div className="mx-auto text-center" style={{ maxWidth: '800px', padding: '0 60px' }}>
           <motion.div
             initial={{ opacity: 0, y: 20 }}

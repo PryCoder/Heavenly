@@ -190,7 +190,7 @@ export default function Header() {
             to="/"
             className="flex items-center transition-opacity duration-300 hover:opacity-70"
             style={{
-              transform: "translate(-40px, -40px)", // left , top
+              transform: "translate(-35px, -35px)", // left , top
               alignSelf: "flex-start",
             }}
             aria-label="HeavenlyWeds Home"

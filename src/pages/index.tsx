@@ -413,13 +413,12 @@ export default function HomePage() {
                 lineHeight: '1.8', 
                 color: '#6F6F6F' 
               }}>
-                "Working with Heavenly Weds was an absolute dream. They transformed our 
-                vision into a reality that exceeded every expectation."
+                "Heavenly Weds are the best for wedding planning! From decor to photography, everything was handled perfectly. The team made our big day stress-free and truly magical. Highly recommended!"
               </p>
               <div className="flex items-center gap-4">
                 <img 
                   src="https://bp37mc8dd9.preview.c36.airoapp.ai/airo-assets/images/pages/home/testimonial-1" 
-                  alt="Sarah & Michael" 
+                  alt="Roy & Rachel" 
                   className="rounded-full object-cover"
                   style={{ width: 'clamp(48px, 8vw, 64px)', height: 'clamp(48px, 8vw, 64px)' }} 
                 />
@@ -429,7 +428,7 @@ export default function HomePage() {
                     color: '#6F6F6F', 
                     fontWeight: 600 
                   }}>
-                    Sarah & Michael
+                  Roy & Rachel
                   </p>
                   <p style={{ fontSize: 'clamp(12px, 2vw, 13px)', color: '#9A9A9A' }}>
                     Tuscany, Italy
@@ -450,13 +449,12 @@ export default function HomePage() {
                 lineHeight: '1.8', 
                 color: '#6F6F6F' 
               }}>
-                "From our first meeting to the last dance, the team was exceptional. 
-                They understood our style perfectly and created an elegant celebration."
+                "Heavenly Weds did a great pre-wedding photoshoot for us! They captured our moments beautifully and made the entire experience so comfortable and fun. Loved every bit of it — highly recommended!"
               </p>
               <div className="flex items-center gap-4">
                 <img 
                   src="https://bp37mc8dd9.preview.c36.airoapp.ai/airo-assets/images/pages/home/testimonial-1" 
-                  alt="Priya & Raj" 
+                  alt="Nishita & Raj" 
                   className="rounded-full object-cover"
                   style={{ width: 'clamp(48px, 8vw, 64px)', height: 'clamp(48px, 8vw, 64px)' }} 
                 />
@@ -466,7 +464,7 @@ export default function HomePage() {
                     color: '#6F6F6F', 
                     fontWeight: 600 
                   }}>
-                    Priya & Raj
+                   Nishita & Raj
                   </p>
                   <p style={{ fontSize: 'clamp(12px, 2vw, 13px)', color: '#9A9A9A' }}>
                     Udaipur, India
