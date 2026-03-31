@@ -40,7 +40,6 @@ const menuStructure: MenuItem[] = [
       { name: 'French Riviera', href: '/venues/french-riviera' },
     ],
   },
-  
   { name: 'BLOG', href: '/blog' },
 ];
 
@@ -51,6 +50,7 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
   const headerRef = useRef<HTMLElement>(null);
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
   const dropdownTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
 
@@ -83,12 +83,12 @@ export default function Header() {
     return () => document.removeEventListener('keydown', handleEscape);
   }, []);
 
-  // Handle click outside
+  // Handle click outside for mobile menu
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (isMenuOpen && 
-          headerRef.current && 
-          !headerRef.current.contains(e.target as Node) &&
+          mobileMenuRef.current && 
+          !mobileMenuRef.current.contains(e.target as Node) &&
           menuButtonRef.current &&
           !menuButtonRef.current.contains(e.target as Node)) {
         setIsMenuOpen(false);
@@ -103,11 +103,17 @@ export default function Header() {
   useEffect(() => {
     if (isMenuOpen) {
       document.body.style.overflow = 'hidden';
+      document.body.style.position = 'fixed';
+      document.body.style.width = '100%';
     } else {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.width = '';
     }
     return () => {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.width = '';
     };
   }, [isMenuOpen]);
 
@@ -142,28 +148,23 @@ export default function Header() {
     }, 200);
   };
 
-  // Toggle mobile dropdown
+  // Toggle mobile dropdown - Fixed to prevent event bubbling
   const toggleMobileDropdown = (e: React.MouseEvent, name: string) => {
     e.preventDefault();
     e.stopPropagation();
-    setMobileOpenDropdown(mobileOpenDropdown === name ? null : name);
+    // Toggle the dropdown
+    setMobileOpenDropdown(prev => prev === name ? null : name);
   };
 
   // Handle mobile menu link click
-  const handleMobileLinkClick = (hasChildren: boolean, itemName?: string) => {
+  const handleMobileLinkClick = (e: React.MouseEvent, hasChildren: boolean, href: string) => {
     if (!hasChildren) {
+      e.preventDefault();
+      // Navigate to the link
+      window.location.href = href;
       setIsMenuOpen(false);
+      setMobileOpenDropdown(null);
     }
-  };
-
-  // Responsive padding values
-  const getHeaderPadding = () => {
-    if (typeof window !== 'undefined') {
-      if (window.innerWidth < 640) return '16px';
-      if (window.innerWidth < 1024) return '32px';
-      return '82px';
-    }
-    return '82px'; // Default for SSR
   };
 
   return (
@@ -186,29 +187,33 @@ export default function Header() {
           
           {/* Logo - Responsive sizing */}
           <Link
-  to="/"
-  className="flex items-center transition-opacity duration-300 hover:opacity-70"
-  style={{
-    transform: "translate(-40px, -40px)", // left , top
-    alignSelf: "flex-start",
-  }}
-  aria-label="HeavenlyWeds Home"
->
-  <img
-    src="/heavenly logo- png-brown.png"
-    alt="HeavenlyWeds Logo"
-    style={{
-      height: "clamp(120px, 13vw, 300px)",
-      width: "auto",
-      objectFit: "contain",
-    }}
-  />
-</Link>
+            to="/"
+            className="flex items-center transition-opacity duration-300 hover:opacity-70"
+            style={{
+              transform: "translate(-40px, -40px)", // left , top
+              alignSelf: "flex-start",
+            }}
+            aria-label="HeavenlyWeds Home"
+            onClick={() => {
+              setIsMenuOpen(false);
+              setMobileOpenDropdown(null);
+            }}
+          >
+            <img
+              src="/heavenly logo- png-brown.png"
+              alt="HeavenlyWeds Logo"
+              style={{
+                height: "clamp(120px, 14vw, 300px)",
+                width: "auto",
+                objectFit: "contain",
+              }}
+            />
+          </Link>
+
           {/* Desktop Navigation - Hidden on mobile/tablet */}
           <div className="hidden lg:flex flex-col items-end gap-3">
             {/* Top Right CTA Section */}
             <div className="flex items-center gap-5 mt-4">
-             
               <Link
                 to="/contact"
                 className="uppercase transition-all duration-300 hover:bg-[#E8DCD8] hover:text-[#6F6F6F]"
@@ -312,7 +317,7 @@ export default function Header() {
           {/* Mobile Menu Button */}
           <button
             ref={menuButtonRef}
-            className="lg:hidden transition-colors duration-300 p-2 -mr-2"
+            className="lg:hidden transition-colors duration-300 p-2 -mr-2 relative z-[60]"
             onClick={() => {
               setIsMenuOpen(!isMenuOpen);
               setMobileOpenDropdown(null);
@@ -328,13 +333,15 @@ export default function Header() {
 
       {/* Mobile Menu - Slide-in from right */}
       <div 
-        className={`fixed top-[clamp(90px,15vw,117px)] right-0 bottom-0 w-full sm:w-[400px] bg-white shadow-2xl transform transition-transform duration-300 ease-in-out lg:hidden z-40 ${
+        ref={mobileMenuRef}
+        className={`fixed top-0 right-0 bottom-0 w-full sm:w-[400px] bg-white shadow-2xl transform transition-transform duration-300 ease-in-out lg:hidden z-[55] ${
           isMenuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
         style={{
           borderLeft: '1px solid #ECECEC',
           overflowY: 'auto',
-          WebkitOverflowScrolling: 'touch', // Smooth scrolling on iOS
+          WebkitOverflowScrolling: 'touch',
+          top: 'clamp(90px, 15vw, 117px)',
         }}
       >
         <div className="px-6 sm:px-8 py-8 space-y-2">
@@ -342,33 +349,51 @@ export default function Header() {
             <div key={item.name} className="border-b border-gray-100 last:border-0">
               {/* Menu Item */}
               <div className="flex items-center justify-between">
-                <Link
-                  to={item.href}
-                  className="block py-3 uppercase tracking-widest transition-colors flex-1"
-                  style={{
-                    fontSize: '14px',
-                    letterSpacing: '2px',
-                    color: isActive(item.href) ? '#C9A7A0' : '#6F6F6F',
-                    fontWeight: isActive(item.href) ? 500 : 400,
-                    textDecoration: 'none',
-                  }}
-                  onClick={(e) => {
-                    if (!item.children) {
+                {item.children ? (
+                  <button
+                    onClick={(e) => toggleMobileDropdown(e, item.name)}
+                    className="flex-1 text-left py-3 uppercase tracking-widest transition-colors"
+                    style={{
+                      fontSize: '14px',
+                      letterSpacing: '2px',
+                      color: isActive(item.href) ? '#C9A7A0' : '#6F6F6F',
+                      fontWeight: isActive(item.href) ? 500 : 400,
+                      background: 'none',
+                      border: 'none',
+                      cursor: 'pointer',
+                    }}
+                    aria-expanded={mobileOpenDropdown === item.name}
+                  >
+                    {item.name}
+                  </button>
+                ) : (
+                  <Link
+                    to={item.href}
+                    className="block py-3 uppercase tracking-widest transition-colors flex-1"
+                    style={{
+                      fontSize: '14px',
+                      letterSpacing: '2px',
+                      color: isActive(item.href) ? '#C9A7A0' : '#6F6F6F',
+                      fontWeight: isActive(item.href) ? 500 : 400,
+                      textDecoration: 'none',
+                    }}
+                    onClick={() => {
                       setIsMenuOpen(false);
-                    } else {
-                      e.preventDefault();
-                      toggleMobileDropdown(e, item.name);
-                    }
-                  }}
-                >
-                  {item.name}
-                </Link>
+                      setMobileOpenDropdown(null);
+                    }}
+                  >
+                    {item.name}
+                  </Link>
+                )}
                 {item.children && (
                   <button
                     onClick={(e) => toggleMobileDropdown(e, item.name)}
                     className="p-2 transition-transform duration-200 hover:text-[#C9A7A0]"
                     style={{
                       color: '#8A8A8A',
+                      background: 'none',
+                      border: 'none',
+                      cursor: 'pointer',
                     }}
                     aria-label={`Toggle ${item.name} submenu`}
                     aria-expanded={mobileOpenDropdown === item.name}
@@ -402,7 +427,10 @@ export default function Header() {
                           textDecoration: 'none',
                           paddingLeft: '16px',
                         }}
-                        onClick={() => setIsMenuOpen(false)}
+                        onClick={() => {
+                          setIsMenuOpen(false);
+                          setMobileOpenDropdown(null);
+                        }}
                       >
                         {child.name}
                       </Link>
@@ -415,21 +443,9 @@ export default function Header() {
 
           {/* Mobile CTA Buttons */}
           <div className="border-t pt-6 mt-6 space-y-4" style={{ borderColor: '#ECECEC' }}>
+            
             <Link
               to="/contact"
-              className="block text-center py-3 uppercase tracking-wider transition-colors hover:text-[#C9A7A0]"
-              style={{
-                fontSize: '13px',
-                letterSpacing: '2px',
-                color: '#9A9A9A',
-                textDecoration: 'none',
-              }}
-              onClick={() => setIsMenuOpen(false)}
-            >
-              CONTACT US
-            </Link>
-            <Link
-              to="/lets-plan"
               className="block text-center uppercase transition-all duration-300 hover:bg-[#E8DCD8] hover:text-[#6F6F6F]"
               style={{
                 borderRadius: '30px',
@@ -440,9 +456,12 @@ export default function Header() {
                 color: '#6F6F6F',
                 textDecoration: 'none',
               }}
-              onClick={() => setIsMenuOpen(false)}
+              onClick={() => {
+                setIsMenuOpen(false);
+                setMobileOpenDropdown(null);
+              }}
             >
-              LET'S PLAN
+               CONTACT US
             </Link>
           </div>
         </div>
@@ -451,7 +470,7 @@ export default function Header() {
       {/* Mobile Menu Overlay */}
       {isMenuOpen && (
         <div 
-          className="fixed inset-0 bg-black/40 lg:hidden z-30 transition-opacity duration-300"
+          className="fixed inset-0 bg-black/40 lg:hidden transition-opacity duration-300 z-[50]"
           style={{ 
             top: 'clamp(90px, 15vw, 117px)',
             backdropFilter: 'blur(2px)'
