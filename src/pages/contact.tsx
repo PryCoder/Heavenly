@@ -367,8 +367,8 @@ console.log(API_URL);
                       Email Us
                     </h3>
                     <p className="text-sm sm:text-base text-[#9A9A9A] leading-relaxed font-light break-all">
-                      hello@heavenlyweds.com<br />
-                      inquiries@heavenlyweds.com
+                    heavenlywedss@gmail.com
+                     
                     </p>
                   </div>
                 </div>
@@ -382,26 +382,12 @@ console.log(API_URL);
                       Call Us
                     </h3>
                     <p className="text-sm sm:text-base text-[#9A9A9A] leading-relaxed font-light">
-                      +1 (555) 123-4567<br />
-                      Mon-Fri: 9am - 6pm EST
+                    +91 86577 54937 /  +91 95948 88516
                     </p>
                   </div>
                 </div>
 
-                <div className="flex gap-4">
-                  <div className="flex h-10 w-10 sm:h-12 sm:w-12 flex-shrink-0 items-center justify-center rounded-full bg-[#F2E8E6]">
-                    <MapPin className="h-4 w-4 sm:h-5 sm:w-5 text-[#C9A7A0]" />
-                  </div>
-                  <div>
-                    <h3 className="font-serif mb-1 sm:mb-2 text-base sm:text-lg md:text-xl text-[#6F6F6F] font-medium">
-                      Visit Us
-                    </h3>
-                    <p className="text-sm sm:text-base text-[#9A9A9A] leading-relaxed font-light">
-                      123 Luxury Lane<br />
-                      New York, NY 10001
-                    </p>
-                  </div>
-                </div>
+               
               </div>
 
               <div className="mt-8 md:mt-10 lg:mt-12 rounded-lg p-6 sm:p-8 bg-[#F2E8E6]">

@@ -189,7 +189,7 @@ export default function Header() {
   to="/"
   className="flex items-center transition-opacity duration-300 hover:opacity-70"
   style={{
-    transform: "translate(-30px, -30px)", // left , top
+    transform: "translate(-40px, -40px)", // left , top
     alignSelf: "flex-start",
   }}
   aria-label="HeavenlyWeds Home"
@@ -198,7 +198,7 @@ export default function Header() {
     src="/heavenly logo- png-brown.png"
     alt="HeavenlyWeds Logo"
     style={{
-      height: "clamp(120px, 12vw, 200px)",
+      height: "clamp(120px, 13vw, 300px)",
       width: "auto",
       objectFit: "contain",
     }}

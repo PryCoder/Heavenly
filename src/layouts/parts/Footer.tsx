@@ -46,7 +46,7 @@ export default function Footer() {
           <div>
             <h4 className="mb-4 uppercase tracking-widest" style={{ fontSize: '11px', letterSpacing: '2px', fontWeight: 500, color: '#6F6F6F' }}>Get in Touch</h4>
             <ul className="space-y-4" style={{ fontSize: '14px', color: '#9A9A9A' }}>
-              <li className="flex items-start gap-3"><Mail className="mt-0.5 h-4 w-4 flex-shrink-0" /><a href="mailto:hello@heavenlyweds.com" className="transition-colors duration-300 hover:text-[#C9A7A0]">hello@heavenlyweds.com</a></li>
+              <li className="flex items-start gap-3"><Mail className="mt-0.5 h-4 w-4 flex-shrink-0" /><a href="mailto:hello@heavenlyweds.com" className="transition-colors duration-300 hover:text-[#C9A7A0]">heavenlywedss@gmail.com</a></li>
               <li className="flex items-start gap-3"><Phone className="mt-0.5 h-4 w-4 flex-shrink-0" /><a href="tel:+911234567890" className="transition-colors duration-300 hover:text-[#C9A7A0]">+91 123 456 7890</a></li>
               <li className="flex items-start gap-3"><MapPin className="mt-0.5 h-4 w-4 flex-shrink-0" /><span>Mumbai, India</span></li>
             </ul>
