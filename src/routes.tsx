@@ -7,7 +7,7 @@ import PortfolioPage from './pages/portfolio';
 import ServicesPage from './pages/services';
 import LocationsPage from './pages/locations';
 import CeremoniesPage from './pages/ceremonies';
-import FullPlanningPage from './pages/services/full-planning';
+import FullPlanningPage from './pages/services/photography';
 import PartialPlanningPage from './pages/services/partial-planning';
 import ItalyPage from './pages/locations/italy';
 import FrancePage from './pages/locations/france';
@@ -18,6 +18,8 @@ import FrenchRivieraPage from './pages/venues/french-riviera';
 import GuidesPage from './pages/guides';
 import PlanPage from './pages/plan';
 import BlogPage from './pages/blog';
+import DestinationWeddingPage from './pages/services/Destination';
+import PhotoVideoPage from './pages/services/partial-planning';
 
 // Lazy load components for code splitting (except HomePage for instant loading)
 const NotFoundPage = lazy(() => import('./pages/_404'));
@@ -49,8 +51,12 @@ export const routes: RouteObject[] = [
 { path:"/lets-plan" ,element:<PlanPage />},
 { path:"/blog" ,element:<BlogPage />},
   {
-    path: '/services/partial-planning',
-    element: <PartialPlanningPage />,
+    path: '/services/photography',
+    element: <PhotoVideoPage/>,
+  },
+  {
+    path: '/services/destination',
+    element: <DestinationWeddingPage />,
   },
   {
     path: '/services',

@@ -1,21 +1,22 @@
 import { motion } from 'framer-motion';
-import { Calendar, CheckCircle, Camera, Edit, Film } from 'lucide-react';
+import { Calendar, CheckCircle, Plane, MapPin, Globe } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-export default function PhotoVideoPage() {
+export default function DestinationWeddingPage() {
   const inclusions = [
-    'Initial consultation and vision planning',
-    'Creative direction and concept development',
-    'Pre-wedding shoot planning and execution',
-    'Wedding day photography & videography coverage',
-    'High-end cinematic filming techniques',
-    'Professional photo editing and retouching',
-    'Cinematic video editing and highlight films',
-    'Timeline coordination for seamless coverage',
-    'Assistance with styling and shot planning',
-    'Dedicated team for smooth execution',
-    'Makeup Artist (Optional)',
-    'Props (Optional)',
+    'Destination consultation and location scouting',
+    'Venue selection and booking assistance',
+    'Travel and accommodation coordination',
+    'Vendor sourcing at destination',
+    'Budget planning and management',
+    'Wedding design and styling concept',
+    'Guest management and itinerary planning',
+    'Logistics and timeline coordination',
+    'On-site coordination with full team',
+    'Photography & videography coverage',
+    'Local permits and requirements handling',
+    'Post-wedding wrap-up services',
+    'Makeup Artist',
   ];
 
   return (
@@ -25,14 +26,14 @@ export default function PhotoVideoPage() {
         <div className="mx-auto max-w-4xl text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <p className="mb-4 uppercase tracking-[3px] text-[11px] text-[#9A9A9A] font-sans">
-              Cinematic Storytelling
+              Worldwide Celebrations
             </p>
             <h1 className="font-serif mb-6 text-4xl sm:text-5xl md:text-6xl text-[#C9A7A0] font-light">
-              Photography & Videography
+              Destination Wedding Services
             </h1>
             <p className="text-base sm:text-lg leading-relaxed text-[#6F6F6F] max-w-2xl mx-auto font-light">
-              Our comprehensive service covers every detail, ensuring a seamless and unforgettable celebration. 
-              From pre-wedding shoots to wedding day coverage and creative editing, we capture every moment perfectly.
+              We curate unforgettable destination weddings, ensuring every detail is flawlessly executed no matter where your celebration takes you.
+              Based in Mumbai & London, capturing love stories worldwide.
             </p>
           </motion.div>
         </div>
@@ -46,8 +47,8 @@ export default function PhotoVideoPage() {
           <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
             <div className="mb-8 overflow-hidden rounded-sm aspect-[4/3] w-full">
               <img 
-                src="https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&q=80" 
-                alt="Wedding Photography" 
+                src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1200&q=80" 
+                alt="Destination Wedding" 
                 className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
               />
             </div>
@@ -84,8 +85,8 @@ export default function PhotoVideoPage() {
         </div>
       </section>
 
-      {/* Our Approach */}
-      <section className="py-16 md:py-24 px-4 md:px-8 bg-[#FAFAFA]">
+      {/* Popular Destinations */}
+      <section className="py-16 md:py-24 px-4 md:px-8 bg-[#F2E8E6]">
         <div className="mx-auto max-w-6xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -94,30 +95,22 @@ export default function PhotoVideoPage() {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
+            <Globe className="h-12 w-12 mx-auto mb-4" style={{ color: '#C9A7A0' }} />
             <h2 className="font-serif text-3xl md:text-4xl mb-4 text-[#C9A7A0] font-light">
-              Our Creative Philosophy
+              Popular Destinations
             </h2>
             <p className="text-[#6F6F6F] font-light leading-relaxed max-w-2xl mx-auto">
-              We believe every love story is unique, and our mission is to tell your story in the most elegant and memorable way.
+              From romantic European villas to exotic beachfronts, we bring your dream destination to life.
             </p>
           </motion.div>
 
-          <div className="grid gap-8 md:grid-cols-3">
-            <div className="text-center p-6">
-              <Camera className="h-12 w-12 mx-auto mb-4" style={{ color: '#C9A7A0' }} />
-              <h3 className="font-serif text-xl mb-2 text-[#6F6F6F]">Expert Photography</h3>
-              <p className="text-sm text-[#9A9A9A]">Capturing every smile, every glance, and every heartfelt moment with precision and artistry.</p>
-            </div>
-            <div className="text-center p-6">
-              <Film className="h-12 w-12 mx-auto mb-4" style={{ color: '#C9A7A0' }} />
-              <h3 className="font-serif text-xl mb-2 text-[#6F6F6F]">Cinematic Films</h3>
-              <p className="text-sm text-[#9A9A9A]">Transforming your special day into a timeless cinematic story you'll cherish forever.</p>
-            </div>
-            <div className="text-center p-6">
-              <Edit className="h-12 w-12 mx-auto mb-4" style={{ color: '#C9A7A0' }} />
-              <h3 className="font-serif text-xl mb-2 text-[#6F6F6F]">Creative Editing</h3>
-              <p className="text-sm text-[#9A9A9A]">Professional editing that brings out the beauty and emotion in every frame.</p>
-            </div>
+          <div className="grid gap-6 md:grid-cols-3">
+            {['Italy', 'France', 'India', 'Greece', 'Thailand', 'Maldives'].map((dest, idx) => (
+              <div key={idx} className="flex items-center gap-3 p-4 bg-white rounded-sm" style={{ border: '1px solid #ECECEC' }}>
+                <MapPin className="h-5 w-5 text-[#C9A7A0]" />
+                <span className="text-[#6F6F6F] font-light">{dest}</span>
+              </div>
+            ))}
           </div>
         </div>
       </section>

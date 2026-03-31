@@ -12,7 +12,20 @@ export default function HomePage() {
     'https://bp37mc8dd9.preview.c36.airoapp.ai/airo-assets/images/pages/home/gallery-2',
     'https://bp37mc8dd9.preview.c36.airoapp.ai/airo-assets/images/pages/home/gallery-1'
   ];
+  const API_URL = import.meta.env.VITE_API_URL
+  useEffect(() => {
+    const checkHealth = async () => {
+      try {
+        const res = await fetch(`${API_URL}/api/health`);
+        const data = await res.json();
+        console.log("Health API:", data);
+      } catch (error) {
+        console.error("Health API error:", error);
+      }
+    };
 
+    checkHealth();
+  }, []);
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);

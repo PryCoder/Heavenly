@@ -1,19 +1,23 @@
 import { motion } from 'framer-motion';
-import { Calendar, CheckCircle } from 'lucide-react';
+import { Calendar, CheckCircle, Sparkles } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export default function FullPlanningPage() {
   const inclusions = [
-    'Unlimited planning consultations',
+    'Three planning consultations',
+    'Ticket reservations to accommodations',
+    'Arrangements for pickup & drop facilities',
     'Complete vendor sourcing and management',
     'Budget creation and tracking',
     'Venue selection and contract negotiation',
-    'Design concept and styling',
+    'Design concept to floral decor and styling',
     'Timeline and logistics coordination',
     'Guest management and RSVP tracking',
     'Rehearsal coordination',
-    'Full day-of coordination with team',
-    'Post-wedding wrap-up services'
+    'Full day-of coordination with our expert team',
+    'Professional photography and videography coverage',
+    'Creative editing for timeless photos and cinematic films',
+    'Post-wedding wrap-up services',
   ];
 
   return (
@@ -29,7 +33,7 @@ export default function FullPlanningPage() {
               Full Wedding Planning
             </h1>
             <p className="text-base sm:text-lg leading-relaxed text-[#6F6F6F] max-w-2xl mx-auto font-light">
-              From the moment you say "yes" to your final dance, we handle every detail of your celebration. Our comprehensive planning service ensures a stress-free journey to your perfect day.
+              Our comprehensive service covers every detail, ensuring a seamless and unforgettable celebration.
             </p>
           </motion.div>
         </div>
@@ -51,7 +55,8 @@ export default function FullPlanningPage() {
             <div className="bg-[#F2E8E6] p-8 md:p-10 rounded-sm">
               <h3 className="font-serif text-2xl mb-3 text-[#C9A7A0]">Ideal For</h3>
               <p className="text-[#6F6F6F] font-light leading-relaxed">
-                Couples seeking a completely hands-off planning experience. You provide the vision, and we execute it flawlessly while you enjoy the journey of your engagement.
+                Couples who want to be deeply involved in selecting elements of their day but need a professional sounding board, 
+                vendor curation, and logistical oversight.
               </p>
             </div>
           </motion.div>
@@ -76,6 +81,27 @@ export default function FullPlanningPage() {
                 Inquire Now
               </Link>
             </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Additional Info */}
+      <section className="py-16 md:py-24 px-4 md:px-8 bg-[#F2E8E6]">
+        <div className="mx-auto max-w-4xl text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <Sparkles className="h-12 w-12 mx-auto mb-6" style={{ color: '#C9A7A0' }} />
+            <h2 className="font-serif text-3xl md:text-4xl mb-4 text-[#C9A7A0] font-light">
+              Let Us Make Your Wedding Heavenly
+            </h2>
+            <p className="text-[#6F6F6F] font-light leading-relaxed">
+              With creativity, precision, and attention to detail, we transform real emotions and unforgettable memories 
+              into timeless photographs and cinematic films.
+            </p>
           </motion.div>
         </div>
       </section>

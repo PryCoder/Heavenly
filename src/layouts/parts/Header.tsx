@@ -17,8 +17,8 @@ const menuStructure: MenuItem[] = [
     href: '/services',
     children: [
       { name: 'Full Wedding Planning', href: '/services/full-planning' },
-      { name: 'Partial Planning', href: '/services/partial-planning' },
-      { name: 'Day-Of Coordination', href: '/services/day-of' },
+      { name: 'Photography & Videography', href: '/services/photography' },
+      { name: 'Destination', href: '/services/destination' },
     ],
   },
   {
@@ -40,7 +40,7 @@ const menuStructure: MenuItem[] = [
       { name: 'French Riviera', href: '/venues/french-riviera' },
     ],
   },
-  { name: 'GUIDES', href: '/guides' },
+  
   { name: 'BLOG', href: '/blog' },
 ];
 
@@ -185,60 +185,32 @@ export default function Header() {
         <div className="mx-auto flex h-full max-w-[1902px] items-center justify-between px-4 sm:px-8 lg:px-[82px]">
           
           {/* Logo - Responsive sizing */}
-          <Link 
-            to="/" 
-            className="flex flex-col transition-opacity duration-300 hover:opacity-70" 
-            style={{ 
-              marginTop: 'clamp(10px, 3vw, 27px)', 
-              alignSelf: 'flex-start' 
-            }}
-            aria-label="HeavenlyWeds Home"
-          >
-            {/* HEAVENLY - Responsive font */}
-            <span 
-  className="uppercase"
+          <Link
+  to="/"
+  className="flex items-center transition-opacity duration-300 hover:opacity-70"
   style={{
-    fontFamily: "'Cinzel', serif",
-    fontSize: 'clamp(24px, 5vw, 32px)',
-    lineHeight: 'clamp(24px, 5vw, 32px)',
-    letterSpacing: '1.5px',
-    fontWeight: 400,
-    color: '#6F6F6F',
+    transform: "translate(-30px, -30px)", // left , top
+    alignSelf: "flex-start",
   }}
+  aria-label="HeavenlyWeds Home"
 >
-  HEAVENLY
-</span>
-            {/* WEDS - Responsive script font */}
-            <span
-  style={{
-    fontFamily: "'Allura', cursive",
-    fontSize: 'clamp(34px, 7vw, 46px)',
-    lineHeight: 'clamp(34px, 7vw, 46px)',
-    color: 'pink'
-  }}
->
-  Weds
-</span>
-          </Link>
-
+  <img
+    src="/heavenly logo- png-brown.png"
+    alt="HeavenlyWeds Logo"
+    style={{
+      height: "clamp(120px, 12vw, 200px)",
+      width: "auto",
+      objectFit: "contain",
+    }}
+  />
+</Link>
           {/* Desktop Navigation - Hidden on mobile/tablet */}
           <div className="hidden lg:flex flex-col items-end gap-3">
             {/* Top Right CTA Section */}
             <div className="flex items-center gap-5 mt-4">
+             
               <Link
                 to="/contact"
-                className="uppercase tracking-wider transition-colors duration-300 hover:text-[#C9A7A0]"
-                style={{
-                  fontSize: '11px',
-                  letterSpacing: '1.5px',
-                  fontWeight: 400,
-                  color: '#9A9A9A',
-                }}
-              >
-                CONTACT US
-              </Link>
-              <Link
-                to="/lets-plan"
                 className="uppercase transition-all duration-300 hover:bg-[#E8DCD8] hover:text-[#6F6F6F]"
                 style={{
                   height: '30px',
@@ -253,7 +225,7 @@ export default function Header() {
                   alignItems: 'center',
                 }}
               >
-                LET'S PLAN
+                CONTACT US
               </Link>
             </div>
 

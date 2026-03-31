@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Heart, Award, Users, Sparkles, Globe, Calendar } from 'lucide-react';
+import { Heart, Award, Users, Sparkles, Globe, Calendar, Camera, Edit, Film } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export default function AboutPage() {
@@ -28,26 +28,26 @@ export default function AboutPage() {
 
   const stats = [
     { number: '500+', label: 'Weddings Planned' },
-    { number: '15+', label: 'Years Experience' },
-    { number: '25+', label: 'Countries' },
+    { number: '12+', label: 'Years Experience' },
+    { number: '20+', label: 'Countries' },
     { number: '98%', label: 'Client Satisfaction' },
   ];
 
   const team = [
     {
-      name: 'Sophia Laurent',
-      role: 'Founder & Creative Director',
-      description: 'With over 15 years in luxury event planning, Sophia brings unparalleled expertise and artistic vision to every celebration.',
+      name: 'Harish Vipin Parekh',
+      role: 'Founder & CEO',
+      description: 'Founder & CEO of Heavenly Weds, a subsidiary of Parekh Productions. With over 12 years in the film industry, luxury event planning, and execution. With exceptional expertise for storytelling and giving creative direction to every celebration, crafting experiences that are elegant, seamless, and truly unforgettable.',
     },
     {
-      name: 'Isabella Chen',
+      name: 'Nipa Parekh',
       role: 'Lead Wedding Designer',
-      description: 'Isabella\'s eye for detail and passion for aesthetics creates breathtaking visual experiences that exceed expectations.',
+      description: 'A creative visionary, Nipa Parekh brings elegance and detail to every celebration. With a passion for design and decor, she elevates weddings into beautifully curated, unforgettable experiences.',
     },
     {
-      name: 'Aria Patel',
-      role: 'Destination Specialist',
-      description: 'Aria\'s global network and cultural expertise ensure seamless celebrations in the world\'s most enchanting locations.',
+      name: 'Sanjay Singh',
+      role: 'Director of Photography',
+      description: 'A highly skilled and talented DOP, Sanjay Singh brings vision and creativity to every frame. With a sharp eye for detail and a passion for storytelling, he captures moments with elegance, emotion, and cinematic brilliance.',
     },
   ];
 
@@ -62,18 +62,20 @@ export default function AboutPage() {
             transition={{ duration: 0.6 }}
           >
             <p className="mb-4 uppercase tracking-widest" style={{ fontSize: '11px', letterSpacing: '3px', color: '#9A9A9A' }}>
-              Our Story
+              About Us
             </p>
             <h1 className="font-heading mb-8" style={{ fontSize: '64px', lineHeight: '1.15', color: '#C9A7A0', fontWeight: 400 }}>
-              Where Dreams Meet Reality
+              Heavenly Weds
             </h1>
             <p className="leading-relaxed mb-6" style={{ fontSize: '18px', lineHeight: '1.8', color: '#6F6F6F' }}>
-              HeavenlyWeds was born from a simple belief: every love story deserves to be celebrated in extraordinary fashion. 
-              We craft bespoke weddings that transcend expectations, transforming your vision into an unforgettable reality.
+              At Heavenly Weds, we are a professional team of passionate wedding photographers and cinematographers dedicated to capturing the
+              most beautiful moments of your special day. With creativity, precision, and attention to detail, we transform real emotions and unforgettable
+              memories into timeless photographs and cinematic films.
             </p>
             <p className="leading-relaxed" style={{ fontSize: '16px', lineHeight: '1.8', color: '#9A9A9A' }}>
-              From intimate ceremonies in Tuscan vineyards to grand celebrations overlooking Lake Como, we orchestrate 
-              moments of pure magic in the world's most breathtaking destinations.
+              From pre-wedding shoots to wedding day coverage and creative editing, our team ensures every smile, every glance, and every heartfelt
+              moment is captured perfectly. We believe every love story is unique, and our mission is to tell your story in the most elegant and memorable way.
+              Based in Mumbai & London, capturing love stories worldwide.
             </p>
           </motion.div>
         </div>
@@ -118,16 +120,17 @@ export default function AboutPage() {
                 Our Philosophy
               </p>
               <h2 className="font-heading mb-6" style={{ fontSize: '42px', lineHeight: '1.2', color: '#C9A7A0', fontWeight: 400 }}>
-                Crafting Timeless Celebrations
+                Designing Timeless Celebrations
               </h2>
               <p className="leading-relaxed mb-6" style={{ fontSize: '16px', lineHeight: '1.8', color: '#6F6F6F' }}>
-                We believe that luxury lies in the details—the perfect lighting at sunset, the carefully curated floral arrangements, 
-                the seamless flow of each moment. Our approach combines meticulous planning with creative artistry, ensuring every 
-                element reflects your unique love story.
+                We believe true luxury is found in the finest details — the soft glow of sunset, beautifully curated florals, and the effortless rhythm of every
+                special moment. Each element is thoughtfully designed to reflect the essence of your unique love story.
               </p>
               <p className="leading-relaxed mb-8" style={{ fontSize: '16px', lineHeight: '1.8', color: '#9A9A9A' }}>
-                From the first consultation to your final dance, we're with you every step of the way, transforming stress into 
-                excitement and dreams into cherished memories.
+                Our approach combines precise planning with creative vision, crafting experiences that feel seamless, refined, and unforgettable.
+                From photography to videography and editing, we preserve every emotion, turning your moments into a cinematic story that lasts forever.
+                From your first consultation to your final dance, we stand by your side at every step — transforming stress into joy and dreams into
+                memories you'll treasure for a lifetime.
               </p>
               <Link
                 to="/services"
@@ -232,14 +235,15 @@ export default function AboutPage() {
             className="text-center mb-16"
           >
             <p className="mb-4 uppercase tracking-widest" style={{ fontSize: '11px', letterSpacing: '3px', color: '#9A9A9A' }}>
-              The Dream Team
+              Meet Our Experts
             </p>
             <h2 className="font-heading mb-6" style={{ fontSize: '42px', lineHeight: '1.2', color: '#C9A7A0', fontWeight: 400 }}>
-              Meet Our Experts
+              The Dream Team
             </h2>
             <p className="mx-auto leading-relaxed" style={{ maxWidth: '700px', fontSize: '16px', lineHeight: '1.8', color: '#6F6F6F' }}>
-              Our team of passionate professionals brings decades of combined experience in luxury event planning, 
-              design, and destination management.
+              Our team is passionate about every single frame we capture. We work hard to ensure that you cherish every moment of
+              your special day through our expert wedding photography. With creativity, dedication, and attention to detail, we focus on preserving the emotions, beauty, and unforgettable
+              memories of your wedding. Let us make your wedding Heavenly!
             </p>
           </motion.div>
 
@@ -289,12 +293,12 @@ export default function AboutPage() {
               <Globe className="h-12 w-12" style={{ color: '#C9A7A0' }} />
             </div>
             <h2 className="font-heading mb-6" style={{ fontSize: '42px', lineHeight: '1.2', color: '#C9A7A0', fontWeight: 400 }}>
-              Worldwide Celebrations
+              Capturing Love Worldwide
             </h2>
             <p className="leading-relaxed mb-8" style={{ fontSize: '16px', lineHeight: '1.8', color: '#6F6F6F' }}>
-              From the romantic shores of Lake Como to the majestic palaces of Rajasthan, we bring our expertise to 
-              the world's most stunning destinations. Our global network of trusted vendors and venues ensures seamless 
-              execution, no matter where your dream celebration takes place.
+              Based in Mumbai & London, we capture love stories across the globe. From pre-wedding shoots in scenic locations to full-day wedding coverage,
+              our team brings creativity, precision, and cinematic storytelling to every frame. Whether it's an intimate ceremony or a grand celebration,
+              we ensure every smile, glance, and heartfelt moment is preserved perfectly.
             </p>
             <Link
               to="/locations"
@@ -334,11 +338,11 @@ export default function AboutPage() {
             transition={{ duration: 0.6 }}
           >
             <h2 className="font-heading mb-6" style={{ fontSize: '48px', lineHeight: '1.2', color: '#C9A7A0', fontWeight: 400 }}>
-              Let's Create Your Perfect Day
+              Let Us Make Your Wedding Heavenly!
             </h2>
             <p className="leading-relaxed mb-10" style={{ fontSize: '16px', lineHeight: '1.8', color: '#6F6F6F' }}>
-              Ready to begin planning the celebration of your dreams? Schedule a complimentary consultation 
-              and let's start bringing your vision to life.
+              Ready to begin planning the celebration of your dreams? Book your complimentary consultation
+              and let's bring your vision to life with elegance, beauty, and perfection.
             </p>
             <Link
               to="/contact"
