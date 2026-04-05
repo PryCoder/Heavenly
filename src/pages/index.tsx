@@ -2,13 +2,14 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Calendar, MapPin, Sparkles } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-
+import weddingImage1 from '/shivammansi/fwdwedding/wd-2 (1).jpg';
+import weddingImage2 from '/shivammansi/fwdwedding/wd-2 (2).jpg';
 export default function HomePage() {
   // Hero image slider state
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const heroImages = [
-    'https://media.gettyimages.com/id/1252515754/photo/luxury-five-stars-hotels-entrance-all.jpg?b=1&s=2048x2048&w=0&k=20&c=kVWOonVPswYXZnwtUwWet8O1Gdoq_T-6f5tk4QwneGI=',
-    'https://bp37mc8dd9.preview.c36.airoapp.ai/airo-assets/images/pages/home/hero',
+    weddingImage1,
+    weddingImage2,
     'https://bp37mc8dd9.preview.c36.airoapp.ai/airo-assets/images/pages/home/gallery-2',
     'https://bp37mc8dd9.preview.c36.airoapp.ai/airo-assets/images/pages/home/gallery-1'
   ];

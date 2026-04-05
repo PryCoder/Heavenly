@@ -1,7 +1,41 @@
 import { motion } from 'framer-motion';
-import { ArrowRight, MapPin, Users, Calendar, Star } from 'lucide-react';
+import { ArrowRight, MapPin, Users, Calendar, Star, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+
+// Import images
+import maternityi1 from '/nimishadipak/fwdmaternityphotoshoot/mat-h-1 (1).jpg';
+import maternityi2 from '/nimishadipak/fwdmaternityphotoshoot/mat-h-1 (2).jpg';
+import maternityi3 from '/nimishadipak/fwdmaternityphotoshoot/mat-h-1 (3).jpg';
+import maternityi4 from '/nimishadipak/fwdmaternityphotoshoot/mat-h-1 (4).jpg';
+import preweddingi1 from '/prewedding/fwdpreweddingshoot/pre-wedding - hw-1 (1).jpg';
+import preweddingi2 from '/prewedding/fwdpreweddingshoot/pre-wedding - hw-1 (2).jpg';
+import preweddingi3 from '/prewedding/fwdpreweddingshoot/pre-wedding - hw-1 (3).jpg';
+import preweddingi4 from '/prewedding/fwdpreweddingshoot/pre-wedding - hw-1 (4).jpg';
+import preweddingi5 from '/prewedding/fwdpreweddingshoot/pre-wedding - hw-1 (5).jpg';
+import preweddingi6 from '/prewedding/fwdpreweddingshoot/pre-wedding - hw-1 (6).jpg';
+import weddingImage1 from '/shivammansi/fwdwedding/wd-2 (1).jpg';
+import weddingImage2 from '/shivammansi/fwdwedding/wed-1 (7).jpg';
+import weddingImage3 from '/shivammansi/fwdwedding/wed-1 (4).jpg';
+import weddingImage4 from '/shivammansi/fwdwedding/wd-2 (2).jpg';
+import weddingImage5 from '/shivammansi/fwdwedding/wed-1 (7).jpg';
+import weddingImage6 from '/shivammansi/fwdwedding/wd-2 (2).jpg';
+import weddingImage7 from '/shivammansi/fwdwedding/wed-1 (3).jpg';
+import weddingImage8 from '/shivammansi/fwdwedding/wed-1 (4).jpg';
+import christianWed1 from '/christianwed/fwdchristianwedding/chr-1.jpg';
+import christianWed2 from '/christianwed/fwdchristianwedding/chr-1 (2).jpg';
+import christianWed3 from '/christianwed/fwdchristianwedding/chr-1 (3).jpg';
+import christianWed4 from '/christianwed/fwdchristianwedding/chr-1.jpg';
+import bride1 from '/brideshoot/fwdbridephotoshoot/br-H-1 (3).jpg';
+import bride2 from '/brideshoot/fwdbridephotoshoot/br-H-1 (4).jpg';
+import bride3 from '/brideshoot/fwdbridephotoshoot/br-H-1 (5).jpg';
+import bride4 from '/brideshoot/fwdbridephotoshoot/br-H-1 (1).jpg';
+import wedding1 from '/bhaktisagar/fwdheavenlywedsphotos/bk-h-1 (1).jpg';
+import wedding2 from '/bhaktisagar/fwdheavenlywedsphotos/bk-h-1 (4).jpg';
+import wedding3 from '/bhaktisagar/fwdheavenlywedsphotos/bk-h-1 (2).jpg';
+import wedding4 from '/bhaktisagar/fwdheavenlywedsphotos/bk-h-1 (3).jpg';
+import wedding5 from '/bhaktisagar/fwdheavenlywedsphotos/bk-h-1 (5).jpg';
+import wedding6 from '/bhaktisagar/fwdheavenlywedsphotos/bk-h-1 (6).jpg';
 
 interface Wedding {
   id: string;
@@ -12,6 +46,8 @@ interface Wedding {
   image: string;
   category: string;
   description: string;
+  gallery: string[];
+  story: string;
 }
 
 interface Testimonial {
@@ -23,6 +59,8 @@ interface Testimonial {
 
 export default function PortfolioPage() {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [selectedWedding, setSelectedWedding] = useState<Wedding | null>(null);
+  const [lightboxImage, setLightboxImage] = useState<string | null>(null);
 
   const categories = [
     { id: 'all', label: 'All Weddings' },
@@ -35,108 +73,90 @@ export default function PortfolioPage() {
 
   const weddings: Wedding[] = [
     {
-      id: '1',
-      couple: 'Riya & Karan',
+      id: 'shivam-mansi',
+      couple: 'Shivam & Mansi',
       location: 'Mumbai, India',
       date: 'February 2025',
       guests: 180,
-      image: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=1000',
+      image: weddingImage1,
       category: 'wedding',
       description: 'A beautifully captured wedding celebration with every moment perfectly preserved.',
+      gallery: [weddingImage1, weddingImage2, weddingImage3, weddingImage4, weddingImage5, weddingImage6, weddingImage7, weddingImage8],
+      story: 'Shivam and Mansi\'s wedding was a beautiful blend of tradition and modernity. Set in the heart of Mumbai, their celebration spanned three days filled with laughter, tears of joy, and unforgettable moments. From the vibrant mehendi ceremony to the emotional varmala, every moment was captured with precision and artistry.'
     },
     {
-      id: '2',
-      couple: 'Geeta & Yash',
-      location: 'London, UK',
-      date: 'January 2025',
-      guests: 12,
-      image: 'https://images.unsplash.com/photo-1545917992-dea2d782ef46?w=1000',
-      category: 'maternity',
-      description: 'A beautiful maternity shoot capturing the joy and anticipation of new beginnings.',
-    },
-    {
-      id: '3',
+      id: 'roy-rachel',
       couple: 'Roy & Rachel',
       location: 'Goa, India',
       date: 'December 2024',
       guests: 220,
-      image: 'https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1000',
+      image: christianWed1,
       category: 'wedding',
       description: 'A magical beachfront wedding with stunning decor and seamless execution.',
+      gallery: [christianWed1, christianWed2, christianWed3, christianWed4],
+      story: 'Roy and Rachel exchanged vows on a pristine Goa beach at sunset. The Christian wedding ceremony was intimate yet grand, with the sound of waves providing a natural symphony. The reception under the stars featured a live band, delicious seafood, and dancing that continued until dawn.'
     },
     {
-      id: '4',
-      couple: 'Nishita & Raj',
-      location: 'Udaipur, India',
+      id: 'Sandesh & Sayli',
+      couple: 'Sandesh & Sayli',
+      location: 'Mumbai, India',
       date: 'November 2024',
-      guests: 8,
-      image: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1000',
+      guests: 0,
+      image: preweddingi1,
       category: 'pre-wedding',
       description: 'A romantic pre-wedding photoshoot capturing beautiful moments in the City of Lakes.',
+      gallery: [preweddingi1, preweddingi2, preweddingi3, preweddingi4, preweddingi5, preweddingi6],
+      story: 'Nishita and Raj chose the majestic city of Udaipur for their pre-wedding shoot. The couple explored the City Palace, took a romantic boat ride on Lake Pichola, and captured stunning sunset moments at Sajjangarh Fort. Every frame tells a story of their love and the magical aura of Udaipur.'
     },
     {
-      id: '5',
-      couple: 'Priya & Arjun',
-      location: 'Jaipur, India',
-      date: 'October 2024',
+      id: 'bhaktisagar-pooja',
+      couple: 'Bhaktisagar & Pooja',
+      location: 'Mumbai, India',
+      date: ' February 2023',
       guests: 350,
-      image: 'https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=1000',
+      image: wedding1,
       category: 'wedding',
       description: 'A grand palace wedding celebrating rich cultural traditions with cinematic brilliance.',
+      gallery: [wedding1, wedding2, wedding3, wedding4, wedding5, wedding6],
+      story: 'Bhaktisagar and Pooja\'s royal wedding at a heritage palace in Jaipur was a spectacle of colors, traditions, and grandeur. The baraat arrived on decorated elephants, the bride made a stunning entry in a vintage car, and the palace was transformed into a fairy-tale setting with thousands of lights and flowers.'
     },
     {
-      id: '6',
-      couple: 'Anjali & Vikram',
-      location: 'Lake Como, Italy',
-      date: 'September 2024',
-      guests: 95,
-      image: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=1000',
-      category: 'destination',
-      description: 'A breathtaking destination wedding with romantic lakeside views and elegant details.',
+      id: 'nimisha-dipak',
+      couple: 'Nimisha & Dipak',
+      location: 'Mumbai, India',
+      date: 'August  2024',
+      guests: 0,
+      image: maternityi1,
+      category: 'maternity',
+      description: 'Capturing the beautiful journey of parenthood with elegance and grace.',
+      gallery: [maternityi1, maternityi2, maternityi3, maternityi4],
+      story: 'Nimisha and Dipak celebrated their journey into parenthood with a heartfelt maternity photoshoot. The session captured the glow of motherhood, the anticipation of new beginnings, and the couple\'s excitement. From elegant studio portraits to candid outdoor moments, every image radiates love and warmth.'
     },
     {
-      id: '7',
-      couple: 'Sneha & Rohan',
-      location: 'Kerala, India',
-      date: 'August 2024',
-      guests: 75,
-      image: 'https://images.unsplash.com/photo-1523438885200-e635ba2c371e?w=1000',
+      id: 'sneha-bride',
+      couple: 'Sneha',
+      location: 'Udaipur, India',
+      date: 'March 2024',
+      guests: 0,
+      image: bride1,
       category: 'intimate',
-      description: 'An intimate backwaters celebration with natural beauty and heartfelt moments.',
-    },
-    {
-      id: '8',
-      couple: 'Meera & Aditya',
-      location: 'Paris, France',
-      date: 'July 2024',
-      guests: 50,
-      image: 'https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=1000',
-      category: 'pre-wedding',
-      description: 'A romantic pre-wedding shoot capturing love amidst the charm of Paris.',
-    },
-    {
-      id: '9',
-      couple: 'Neha & Kunal',
-      location: 'Rajasthan, India',
-      date: 'June 2024',
-      guests: 280,
-      image: 'https://images.unsplash.com/photo-1604017011826-d3b4c23f8914?w=1000',
-      category: 'wedding',
-      description: 'A vibrant desert celebration with rich colors, traditions, and cinematic storytelling.',
+      description: 'Stunning bride portraits capturing timeless beauty.',
+      gallery: [bride1, bride2, bride3, bride4],
+      story: 'Sneha\'s solo bride photoshoot was a celebration of self-love and elegance. Set against the backdrop of Udaipur\'s beautiful architecture, the portraits capture her grace, confidence, and the joy of being a bride. Each image is a work of art, highlighting the beauty of the modern bride.'
     },
   ];
 
   const testimonials: Testimonial[] = [
     {
       id: '1',
-      name: 'Riya & Karan',
+      name: 'Shivam & Mansi',
       content: 'Heavenly Weds are truly the best for photography and videography services! They covered our event so beautifully and captured every moment perfectly. Their team was professional, creative, and made us feel so comfortable throughout.',
       type: 'Photography & Videography',
     },
     {
       id: '2',
-      name: 'Geeta & Yash',
-      content: 'Heavenly Weds are the best for maternity shoots! They made our special journey even more memorable with their beautiful photography and attention to every detail. The team was so warm, patient, and made us feel completely comfortable throughout the shoot. Every moment was captured so naturally and perfectly — something we\'ll cherish forever. Highly recommended for anyone looking to capture their precious moments!',
+      name: 'Nimisha & Dipak',
+      content: 'Heavenly Weds are the best for maternity shoots! They made our special journey even more memorable with their beautiful photography and attention to every detail. The team was so warm, patient, and made us feel completely comfortable throughout the shoot.',
       type: 'Maternity Shoot',
     },
     {
@@ -203,16 +223,6 @@ export default function PortfolioPage() {
                   color: selectedCategory === category.id ? '#FFFFFF' : '#6F6F6F',
                   letterSpacing: '2px',
                 }}
-                onMouseEnter={(e) => {
-                  if (selectedCategory !== category.id) {
-                    e.currentTarget.style.backgroundColor = '#E8DCD8';
-                  }
-                }}
-                onMouseLeave={(e) => {
-                  if (selectedCategory !== category.id) {
-                    e.currentTarget.style.backgroundColor = '#F2E8E6';
-                  }
-                }}
               >
                 {category.label}
               </button>
@@ -231,9 +241,10 @@ export default function PortfolioPage() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="group"
+                className="group cursor-pointer"
+                onClick={() => setSelectedWedding(wedding)}
               >
-                {/* Image Container - All images exactly the same size and responsive */}
+                {/* Image Container */}
                 <div className="relative mb-4 sm:mb-5 md:mb-6 overflow-hidden rounded-sm w-full aspect-[4/5]">
                   <img
                     src={wedding.image}
@@ -252,7 +263,7 @@ export default function PortfolioPage() {
                         {wedding.description}
                       </p>
                       <div className="flex items-center justify-center gap-2 uppercase tracking-wider text-[10px] sm:text-[11px] font-sans">
-                        View Details
+                        View Gallery
                         <ArrowRight className="h-3 w-3 sm:h-4 sm:w-4" />
                       </div>
                     </div>
@@ -275,10 +286,12 @@ export default function PortfolioPage() {
                         <Calendar className="h-3 w-3 sm:h-4 sm:w-4 text-[#C9A7A0] flex-shrink-0" />
                         <span>{wedding.date}</span>
                       </div>
-                      <div className="flex items-center gap-2">
-                        <Users className="h-3 w-3 sm:h-4 sm:w-4 text-[#C9A7A0] flex-shrink-0" />
-                        <span>{wedding.guests} Guests</span>
-                      </div>
+                      {wedding.guests > 0 && (
+                        <div className="flex items-center gap-2">
+                          <Users className="h-3 w-3 sm:h-4 sm:w-4 text-[#C9A7A0] flex-shrink-0" />
+                          <span>{wedding.guests} Guests</span>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -300,6 +313,120 @@ export default function PortfolioPage() {
           )}
         </div>
       </section>
+
+      {/* Wedding Detail Modal */}
+      {selectedWedding && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 z-50 overflow-y-auto bg-black/90 p-4"
+          onClick={() => setSelectedWedding(null)}
+        >
+          <div className="min-h-screen flex items-center justify-center">
+            <div 
+              className="relative max-w-6xl w-full bg-white rounded-lg overflow-hidden"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Close Button */}
+              <button
+                onClick={() => setSelectedWedding(null)}
+                className="absolute right-4 top-4 z-10 rounded-full bg-black/50 p-2 text-white hover:bg-black/70 transition-all"
+              >
+                <X className="h-5 w-5" />
+              </button>
+
+              {/* Header */}
+              <div className="p-6 md:p-8 border-b border-[#ECECEC]">
+                <h2 className="font-serif text-3xl md:text-4xl text-[#C9A7A0] font-light mb-2">
+                  {selectedWedding.couple}
+                </h2>
+                <div className="flex flex-wrap gap-4 text-[#6F6F6F]">
+                  <div className="flex items-center gap-2">
+                    <MapPin className="h-4 w-4 text-[#C9A7A0]" />
+                    <span>{selectedWedding.location}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Calendar className="h-4 w-4 text-[#C9A7A0]" />
+                    <span>{selectedWedding.date}</span>
+                  </div>
+                  {selectedWedding.guests > 0 && (
+                    <div className="flex items-center gap-2">
+                      <Users className="h-4 w-4 text-[#C9A7A0]" />
+                      <span>{selectedWedding.guests} Guests</span>
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              {/* Story */}
+              <div className="p-6 md:p-8 border-b border-[#ECECEC] bg-[#FAFAFA]">
+                <h3 className="font-serif text-xl text-[#C9A7A0] font-light mb-3">Their Story</h3>
+                <p className="text-[#6F6F6F] leading-relaxed">{selectedWedding.story}</p>
+              </div>
+
+              {/* Gallery */}
+              <div className="p-6 md:p-8">
+                <h3 className="font-serif text-xl text-[#C9A7A0] font-light mb-6">Photo Gallery</h3>
+                <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+                  {selectedWedding.gallery.map((img, idx) => (
+                    <div
+                      key={idx}
+                      className="relative aspect-[4/5] overflow-hidden rounded-lg cursor-pointer group"
+                      onClick={() => setLightboxImage(img)}
+                    >
+                      <img
+                        src={img}
+                        alt={`${selectedWedding.couple} - ${idx + 1}`}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300" />
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* CTA */}
+              <div className="p-6 md:p-8 bg-[#F2E8E6] text-center">
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center gap-2 uppercase tracking-[2px] transition-all duration-500 px-8 py-4 text-[11px] bg-[#C9A7A0] text-white hover:bg-[#B8948D] font-sans"
+                >
+                  Plan Your Wedding Like {selectedWedding.couple.split(' & ')[0]} & {selectedWedding.couple.split(' & ')[1]}
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      )}
+
+      {/* Lightbox Modal */}
+      {lightboxImage && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 p-4"
+          onClick={() => setLightboxImage(null)}
+        >
+          <button
+            onClick={() => setLightboxImage(null)}
+            className="absolute right-4 top-4 rounded-full bg-white/20 p-2 text-white hover:bg-white/30 transition-all"
+          >
+            <X className="h-6 w-6" />
+          </button>
+          <motion.img
+            initial={{ scale: 0.9, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.9, opacity: 0 }}
+            src={lightboxImage}
+            alt="Full size"
+            className="max-h-[90vh] max-w-[90vw] object-contain"
+            onClick={(e) => e.stopPropagation()}
+          />
+        </motion.div>
+      )}
 
       {/* Testimonials Section */}
       <section className="py-16 md:py-20 lg:py-24 bg-[#F2E8E6] px-4 md:px-8">

@@ -20,6 +20,7 @@ import PlanPage from './pages/plan';
 import BlogPage from './pages/blog';
 import DestinationWeddingPage from './pages/services/Destination';
 import PhotoVideoPage from './pages/services/partial-planning';
+import AdditionalServicesPage from './pages/additonalservices';
 
 // Lazy load components for code splitting (except HomePage for instant loading)
 const NotFoundPage = lazy(() => import('./pages/_404'));
@@ -61,6 +62,10 @@ export const routes: RouteObject[] = [
   {
     path: '/services',
     element: <ServicesPage />,
+  },
+  {
+    path: '/services/additionalservices',
+    element: <AdditionalServicesPage />,
   },
   {
     path: '/locations',
