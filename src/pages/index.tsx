@@ -4,14 +4,22 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import weddingImage1 from '/shivammansi/fwdwedding/wd-2 (1).jpg';
 import weddingImage2 from '/shivammansi/fwdwedding/wd-2 (2).jpg';
+import weddingImage7 from '/shivammansi/fwdwedding/wed-1 (3).jpg';
+import weddingImage8 from '/shivammansi/fwdwedding/wed-1 (4).jpg';
+import christianWed1 from '/christianwed/fwdchristianwedding/chr-1.jpg';
+import christianWed2 from '/christianwed/fwdchristianwedding/chr-1 (2).jpg';
+import preweddingi5 from '/prewedding/fwdpreweddingshoot/pre-wedding - hw-1 (5).jpg';
+import preweddingi6 from '/prewedding/fwdpreweddingshoot/pre-wedding - hw-1 (6).jpg';
+
+import weddingImage5 from '/shivammansi/fwdwedding/wed-1 (7).jpg';
 export default function HomePage() {
   // Hero image slider state
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const heroImages = [
     weddingImage1,
     weddingImage2,
-    'https://bp37mc8dd9.preview.c36.airoapp.ai/airo-assets/images/pages/home/gallery-2',
-    'https://bp37mc8dd9.preview.c36.airoapp.ai/airo-assets/images/pages/home/gallery-1'
+    weddingImage7,
+    christianWed2
   ];
   const API_URL = import.meta.env.VITE_API_URL
   useEffect(() => {
@@ -343,7 +351,7 @@ export default function HomePage() {
             </h2>
           </motion.div>
           <div className="grid gap-4 sm:gap-6 md:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-            {[1, 2, 3, 4, 5, 6].map((index) => (
+            {[weddingImage1, weddingImage2, weddingImage7, weddingImage8, christianWed1, christianWed2].map((imgSrc, index) => (
               <motion.div 
                 key={index} 
                 initial={{ opacity: 0, y: 30 }} 
@@ -353,8 +361,8 @@ export default function HomePage() {
                 className="group overflow-hidden rounded-lg"
               >
                 <img 
-                  src={`https://bp37mc8dd9.preview.c36.airoapp.ai/airo-assets/images/pages/home/gallery-${index}`} 
-                  alt={`Wedding ${index}`} 
+                  src={imgSrc} 
+                  alt={`Wedding ${index + 1}`} 
                   className="w-full object-cover transition-all duration-700 group-hover:scale-105"
                   style={{ 
                     height: 'clamp(250px, 40vw, 380px)', 
@@ -418,7 +426,7 @@ export default function HomePage() {
               </p>
               <div className="flex items-center gap-4">
                 <img 
-                  src="https://bp37mc8dd9.preview.c36.airoapp.ai/airo-assets/images/pages/home/testimonial-1" 
+                  src= {christianWed2} 
                   alt="Roy & Rachel" 
                   className="rounded-full object-cover"
                   style={{ width: 'clamp(48px, 8vw, 64px)', height: 'clamp(48px, 8vw, 64px)' }} 
@@ -432,7 +440,7 @@ export default function HomePage() {
                   Roy & Rachel
                   </p>
                   <p style={{ fontSize: 'clamp(12px, 2vw, 13px)', color: '#9A9A9A' }}>
-                    Tuscany, Italy
+                    Goa, India
                   </p>
                 </div>
               </div>
