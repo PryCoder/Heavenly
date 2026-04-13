@@ -10,6 +10,7 @@ interface MenuItem {
 }
 
 const menuStructure: MenuItem[] = [
+  { name: 'HOME', href: '/' },
   { name: 'ABOUT US', href: '/about' },
   { name: 'PORTFOLIO', href: '/portfolio' },
   {
@@ -26,9 +27,10 @@ const menuStructure: MenuItem[] = [
     name: 'LOCATIONS',
     href: '/locations',
     children: [
-      { name: 'Italy', href: '/locations/italy' },
-      { name: 'France', href: '/locations/france' },
-      { name: 'India', href: '/locations/india' },
+      { name: 'London', href: '/locations#london' },
+      { name: 'Goa', href: '/locations#goa' },
+      { name: 'Rajasthan', href: '/locations#rajasthan' },
+      { name: 'Mumbai', href: '/locations#mumbai' },
     ],
   },
   { name: 'CEREMONIES', href: '/ceremonies' },
@@ -52,7 +54,7 @@ export default function Header() {
   const location = useLocation();
   const headerRef = useRef<HTMLElement>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
-  const dropdownTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const dropdownTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
 
   // Handle scroll for shadow effect
@@ -155,17 +157,6 @@ export default function Header() {
     e.stopPropagation();
     // Toggle the dropdown
     setMobileOpenDropdown(prev => prev === name ? null : name);
-  };
-
-  // Handle mobile menu link click
-  const handleMobileLinkClick = (e: React.MouseEvent, hasChildren: boolean, href: string) => {
-    if (!hasChildren) {
-      e.preventDefault();
-      // Navigate to the link
-      window.location.href = href;
-      setIsMenuOpen(false);
-      setMobileOpenDropdown(null);
-    }
   };
 
   return (

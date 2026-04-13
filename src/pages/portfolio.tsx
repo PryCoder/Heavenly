@@ -18,10 +18,10 @@ import weddingImage1 from '/shivammansi/fwdwedding/wd-2 (1).jpg';
 import weddingImage2 from '/shivammansi/fwdwedding/wed-1 (7).jpg';
 import weddingImage3 from '/shivammansi/fwdwedding/wed-1 (4).jpg';
 import weddingImage4 from '/shivammansi/fwdwedding/wd-2 (2).jpg';
-import weddingImage5 from '/shivammansi/fwdwedding/wed-1 (7).jpg';
 import weddingImage6 from '/shivammansi/fwdwedding/wd-2 (2).jpg';
 import weddingImage7 from '/shivammansi/fwdwedding/wed-1 (3).jpg';
 import weddingImage8 from '/shivammansi/fwdwedding/wed-1 (4).jpg';
+import weddingImage9 from '/shivammansi/fwdwedding/wed-1 (1).jpg';
 import christianWed1 from '/christianwed/fwdchristianwedding/chr-1.jpg';
 import christianWed2 from '/christianwed/fwdchristianwedding/chr-1 (2).jpg';
 import christianWed3 from '/christianwed/fwdchristianwedding/chr-1 (3).jpg';
@@ -36,6 +36,9 @@ import wedding3 from '/bhaktisagar/fwdheavenlywedsphotos/bk-h-1 (2).jpg';
 import wedding4 from '/bhaktisagar/fwdheavenlywedsphotos/bk-h-1 (3).jpg';
 import wedding5 from '/bhaktisagar/fwdheavenlywedsphotos/bk-h-1 (5).jpg';
 import wedding6 from '/bhaktisagar/fwdheavenlywedsphotos/bk-h-1 (6).jpg';
+import rohinisahil1 from '/rohinisahil/fwdmaternityshoot/mat-h-1 (5).jpg';
+import rohinisahil2 from '/rohinisahil/fwdmaternityshoot/mat-h-1 (6).jpg';
+import rohinisahil3 from '/rohinisahil/fwdmaternityshoot/mat-h-1 (7).jpg';
 
 interface Wedding {
   id: string;
@@ -62,27 +65,41 @@ export default function PortfolioPage() {
   const [selectedWedding, setSelectedWedding] = useState<Wedding | null>(null);
   const [lightboxImage, setLightboxImage] = useState<string | null>(null);
 
+  const weddingFilms = [
+    { id: 'film-1', title: 'Wedding Film 1', src: '/wedding film -1 (1) (1).mp4' },
+    { id: 'film-2', title: 'Wedding Film 2', src: '/wedding film - 3 (1).mp4' },
+    { id: 'film-3', title: 'Wedding Film 3', src: '/weddiing 4. (1).mp4' },
+    { id: 'film-4', title: 'Wedding Film 4', src: '/wedding - 5 (1).mp4' },
+    { id: 'film-5', title: 'Wedding Film 5', src: '/wedding 6 (1).mp4' },
+    { id: 'film-6', title: 'Wedding Film 6', src: '/wedding - 7_compressed.mp4' },
+  ];
+
   const categories = [
-    { id: 'all', label: 'All Weddings' },
-    { id: 'pre-wedding', label: 'Pre-Wedding' },
-    { id: 'wedding', label: 'Wedding Day' },
+    { id: 'all', label: 'All' },
+    { id: 'wedding', label: 'Wedding' },
+    { id: 'pre-wedding', label: 'Pre - wedding' },
     { id: 'maternity', label: 'Maternity' },
     { id: 'destination', label: 'Destination' },
-    { id: 'intimate', label: 'Intimate' },
+    { id: 'engagement', label: 'Engagement' },
+    { id: 'haldi', label: 'Haldi' },
+    { id: 'reception', label: 'Reception' },
+    { id: 'mehendi', label: 'Mehendi' },
+    { id: 'post-wedding', label: 'Post Wedding' },
+    { id: 'bride', label: 'Bride' },
   ];
 
   const weddings: Wedding[] = [
     {
       id: 'shivam-mansi',
       couple: 'Shivam & Mansi',
-      location: 'Mumbai, India',
+      location: 'Udaipur, Rajasthan',
       date: 'February 2025',
       guests: 180,
       image: weddingImage1,
       category: 'wedding',
       description: 'A beautifully captured wedding celebration with every moment perfectly preserved.',
-      gallery: [weddingImage1, weddingImage2, weddingImage3, weddingImage4, weddingImage5, weddingImage6, weddingImage7, weddingImage8],
-      story: 'Shivam and Mansi\'s wedding was a beautiful blend of tradition and modernity. Set in the heart of Mumbai, their celebration spanned three days filled with laughter, tears of joy, and unforgettable moments. From the vibrant mehendi ceremony to the emotional varmala, every moment was captured with precision and artistry.'
+      gallery: [weddingImage1, weddingImage2, weddingImage9, weddingImage3, weddingImage4, weddingImage7, weddingImage8, weddingImage6],
+      story: 'Shivam and Mansi\'s wedding was a beautiful blend of tradition and modernity. Set in Udaipur, their celebration spanned three days filled with laughter, tears of joy, and unforgettable moments. From the vibrant mehendi ceremony to the emotional varmala, every moment was captured with precision and artistry.'
     },
     {
       id: 'roy-rachel',
@@ -133,13 +150,25 @@ export default function PortfolioPage() {
       story: 'Nimisha and Dipak celebrated their journey into parenthood with a heartfelt maternity photoshoot. The session captured the glow of motherhood, the anticipation of new beginnings, and the couple\'s excitement. From elegant studio portraits to candid outdoor moments, every image radiates love and warmth.'
     },
     {
+      id: 'rohini-sahil',
+      couple: 'Rohini & Sahil',
+      location: 'Mumbai, India',
+      date: '2024',
+      guests: 0,
+      image: rohinisahil1,
+      category: 'maternity',
+      description: 'A heartfelt maternity shoot celebrating love, warmth, and new beginnings.',
+      gallery: [rohinisahil1, rohinisahil2, rohinisahil3],
+      story: 'Rohini and Sahil\'s maternity shoot captured the quiet joy and excitement of welcoming a new chapter. With natural, candid moments and elegant portraits, every frame reflects their love and anticipation for what\'s to come.'
+    },
+    {
       id: 'sneha-bride',
       couple: 'Sneha',
       location: 'Udaipur, India',
       date: 'March 2024',
       guests: 0,
       image: bride1,
-      category: 'intimate',
+      category: 'bride',
       description: 'Stunning bride portraits capturing timeless beauty.',
       gallery: [bride1, bride2, bride3, bride4],
       story: 'Sneha\'s solo bride photoshoot was a celebration of self-love and elegance. Set against the backdrop of Udaipur\'s beautiful architecture, the portraits capture her grace, confidence, and the joy of being a bride. Each image is a work of art, highlighting the beauty of the modern bride.'
@@ -173,12 +202,9 @@ export default function PortfolioPage() {
     },
   ];
 
-  const filteredWeddings = selectedCategory === 'all' 
-    ? weddings 
-    : weddings.filter(wedding => {
-        if (selectedCategory === 'intimate') return wedding.guests <= 100;
-        return wedding.category === selectedCategory;
-      });
+  const filteredWeddings = selectedCategory === 'all'
+    ? weddings
+    : weddings.filter((wedding) => wedding.category === selectedCategory);
 
   return (
     <div className="bg-white pt-[117px] font-serif">
@@ -201,6 +227,52 @@ export default function PortfolioPage() {
               across the world's most enchanting destinations.
             </p>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Wedding Films */}
+      <section className="py-12 md:py-16 lg:py-20 px-4 md:px-8 bg-[#FAFAFA]">
+        <div className="mx-auto max-w-7xl">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-center mb-10 md:mb-12"
+          >
+            <p className="mb-4 uppercase tracking-[3px] text-[11px] text-[#9A9A9A] font-sans">
+              Wedding Film
+            </p>
+            <h2 className="font-serif mb-4 text-3xl sm:text-4xl md:text-5xl leading-tight text-[#C9A7A0] font-light">
+              Wedding Films
+            </h2>
+          </motion.div>
+
+          <div className="grid gap-6 sm:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+            {weddingFilms.map((film, index) => (
+              <motion.div
+                key={film.id}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.15 + index * 0.05 }}
+                className="bg-white rounded-sm overflow-hidden"
+              >
+                <div className="w-full aspect-video bg-black">
+                  <video
+                    className="w-full h-full"
+                    controls
+                    playsInline
+                    preload="metadata"
+                    src={encodeURI(film.src)}
+                  />
+                </div>
+                <div className="p-4">
+                  <p className="text-sm font-sans uppercase tracking-[2px] text-[#6F6F6F]">
+                    {film.title}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 

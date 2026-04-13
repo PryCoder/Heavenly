@@ -286,6 +286,7 @@ export default function AdditionalServicesPage() {
       {additionalServices.map((service, index) => (
         <motion.section
           key={service.id}
+          id={service.id}
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
@@ -365,7 +366,7 @@ export default function AdditionalServicesPage() {
 
               <div className="text-center">
                 <Link
-                  to={service.href}
+                  to="/contact"
                   className="inline-flex items-center gap-2 uppercase tracking-widest transition-all duration-500"
                   style={{
                     padding: '16px 40px',

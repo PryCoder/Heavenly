@@ -3,6 +3,7 @@ import { Component, lazy, ReactElement, ReactNode, Suspense, type ErrorInfo } fr
 import Footer from './Footer';
 import Header from './Header';
 import Website from '@/layouts/parts/Website';
+import ScrollToTop from '@/components/ScrollToTop';
 
 // Lazy load CookieBanner - if blocked by ad blockers, the app continues without it
 const CookieBanner = lazy(() =>
@@ -80,6 +81,7 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <Website>
+      <ScrollToTop />
       <Header />
       {children}
       <Footer />

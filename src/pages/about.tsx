@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Heart, Award, Users, Sparkles, Globe, Calendar, Camera, Edit, Film } from 'lucide-react';
+import { Heart, Award, Users, Sparkles, Calendar } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export default function AboutPage() {
@@ -178,7 +178,48 @@ export default function AboutPage() {
       </section>
 
       {/* Our Values */}
-     
+      <section style={{ padding: '120px 0', backgroundColor: '#FAFAFA' }}>
+        <div className="mx-auto" style={{ maxWidth: '1200px', padding: '0 60px' }}>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <p className="mb-4 uppercase tracking-widest" style={{ fontSize: '11px', letterSpacing: '3px', color: '#9A9A9A' }}>
+              Our Core Values
+            </p>
+            <h2 className="font-heading mb-6" style={{ fontSize: '42px', lineHeight: '1.2', color: '#C9A7A0', fontWeight: 400 }}>
+              What Drives Us
+            </h2>
+          </motion.div>
+
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+            {values.map((value, index) => (
+              <motion.div
+                key={value.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="bg-white rounded-sm"
+                style={{ padding: '32px 24px' }}
+              >
+                <div className="mb-5 inline-flex items-center justify-center" style={{ width: '56px', height: '56px', backgroundColor: '#F2E8E6' }}>
+                  <value.icon className="h-6 w-6" style={{ color: '#C9A7A0' }} />
+                </div>
+                <h3 className="font-heading mb-3" style={{ fontSize: '20px', color: '#6F6F6F', fontWeight: 500 }}>
+                  {value.title}
+                </h3>
+                <p style={{ fontSize: '14px', lineHeight: '1.8', color: '#9A9A9A' }}>
+                  {value.description}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Meet the Team */}
       <section style={{ padding: '120px 0' }}>
@@ -194,7 +235,7 @@ export default function AboutPage() {
               Meet Our Experts
             </p>
             <h2 className="font-heading mb-6" style={{ fontSize: '42px', lineHeight: '1.2', color: '#C9A7A0', fontWeight: 400 }}>
-              The Dream Team
+              Heavenly Weds Team
             </h2>
             <p className="mx-auto leading-relaxed" style={{ maxWidth: '700px', fontSize: '16px', lineHeight: '1.8', color: '#6F6F6F' }}>
               Our team is passionate about every single frame we capture. We work hard to ensure that you cherish every moment of

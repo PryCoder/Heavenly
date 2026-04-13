@@ -8,19 +8,18 @@ import weddingImage7 from '/shivammansi/fwdwedding/wed-1 (3).jpg';
 import weddingImage8 from '/shivammansi/fwdwedding/wed-1 (4).jpg';
 import christianWed1 from '/christianwed/fwdchristianwedding/chr-1.jpg';
 import christianWed2 from '/christianwed/fwdchristianwedding/chr-1 (2).jpg';
-import preweddingi5 from '/prewedding/fwdpreweddingshoot/pre-wedding - hw-1 (5).jpg';
-import preweddingi6 from '/prewedding/fwdpreweddingshoot/pre-wedding - hw-1 (6).jpg';
 
-import weddingImage5 from '/shivammansi/fwdwedding/wed-1 (7).jpg';
 export default function HomePage() {
   // Hero image slider state
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [heroVideoFailed, setHeroVideoFailed] = useState(false);
   const heroImages = [
     weddingImage1,
     weddingImage2,
     weddingImage7,
     christianWed2
   ];
+  const heroVideoSrc = '/home page .mp4';
   const API_URL = import.meta.env.VITE_API_URL
   useEffect(() => {
     const checkHealth = async () => {
@@ -36,11 +35,12 @@ export default function HomePage() {
     checkHealth();
   }, []);
   useEffect(() => {
+    if (!heroVideoFailed) return;
     const interval = setInterval(() => {
       setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
     }, 7000);
     return () => clearInterval(interval);
-  }, []);
+  }, [heroVideoFailed, heroImages.length]);
 
   return (
     <div className="min-h-screen" style={{ paddingTop: 'clamp(80px, 15vw, 117px)' }}>
@@ -138,23 +138,38 @@ export default function HomePage() {
 
         {/* PART 2: Bottom Image Slider */}
         <div className="relative overflow-hidden" style={{ 
-          height: 'clamp(300px, 70vh, 66vh)', 
-          minHeight: 'clamp(300px, 50vh, 520px)' 
+          height: 'clamp(300px, 78vh, 900px)', 
+          minHeight: 'clamp(300px, 60vh, 650px)' 
         }}>
-          {/* Background Image Slider */}
+          {/* Background Video (falls back to image slider if video missing) */}
           <div className="absolute inset-0">
-            <AnimatePresence initial={false}>
-              <motion.img
-                key={currentImageIndex}
-                src={heroImages[currentImageIndex]}
-                alt="Luxury destination wedding"
+            {!heroVideoFailed ? (
+              <video
                 className="absolute inset-0 h-full w-full object-cover"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 1.4, ease: 'easeInOut' }}
-                style={{ filter: 'brightness(0.98) saturate(0.85)' }} />
-            </AnimatePresence>
+                src={heroVideoSrc}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                poster={heroImages[0]}
+                onError={() => setHeroVideoFailed(true)}
+                style={{ filter: 'brightness(0.98) saturate(0.85)' }}
+              />
+            ) : (
+              <AnimatePresence initial={false}>
+                <motion.img
+                  key={currentImageIndex}
+                  src={heroImages[currentImageIndex]}
+                  alt="Luxury destination wedding"
+                  className="absolute inset-0 h-full w-full object-cover"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 1.4, ease: 'easeInOut' }}
+                  style={{ filter: 'brightness(0.98) saturate(0.85)' }} />
+              </AnimatePresence>
+            )}
           </div>
 
           {/* Bottom Caption Strip with Slider Dots */}
@@ -173,23 +188,25 @@ export default function HomePage() {
                 Creating Timeless Moments
               </p>
               
-              {/* Slider Dots */}
-              <div className="flex items-center" style={{ gap: 'clamp(8px, 2vw, 12px)' }}>
-                {heroImages.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setCurrentImageIndex(index)}
-                    className="rounded-full transition-all duration-300"
-                    style={{
-                      width: index === currentImageIndex ? 'clamp(6px, 1.5vw, 8px)' : 'clamp(5px, 1.2vw, 7px)',
-                      height: index === currentImageIndex ? 'clamp(6px, 1.5vw, 8px)' : 'clamp(5px, 1.2vw, 7px)',
-                      backgroundColor: index === currentImageIndex ? '#8A8A8A' : '#D8D8D8',
-                      border: 'none',
-                      cursor: 'pointer'
-                    }}
-                    aria-label={`Go to slide ${index + 1}`} />
-                ))}
-              </div>
+              {/* Slider Dots (only shown if video fails to load) */}
+              {heroVideoFailed && (
+                <div className="flex items-center" style={{ gap: 'clamp(8px, 2vw, 12px)' }}>
+                  {heroImages.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentImageIndex(index)}
+                      className="rounded-full transition-all duration-300"
+                      style={{
+                        width: index === currentImageIndex ? 'clamp(6px, 1.5vw, 8px)' : 'clamp(5px, 1.2vw, 7px)',
+                        height: index === currentImageIndex ? 'clamp(6px, 1.5vw, 8px)' : 'clamp(5px, 1.2vw, 7px)',
+                        backgroundColor: index === currentImageIndex ? '#8A8A8A' : '#D8D8D8',
+                        border: 'none',
+                        cursor: 'pointer'
+                      }}
+                      aria-label={`Go to slide ${index + 1}`} />
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         </div>

@@ -1,14 +1,18 @@
 import { motion } from 'framer-motion';
-import { Sparkles, Heart, Calendar, Music } from 'lucide-react';
+import { Sparkles, Heart, Calendar } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 interface Ceremony {
   id: string;
   name: string;
   subtitle: string;
+  imageSrc: string;
+  imageAlt: string;
   description: string;
   significance: string;
   traditions: string[];
+  uniquenessPoints?: string[];
+  servicePoints?: string[];
   duration: string;
   colorTheme: string;
 }
@@ -18,16 +22,26 @@ export default function CeremoniesPage() {
     {
       id: 'mehendi',
       name: 'Mehendi',
-      subtitle: 'The Art of Henna',
-      description: 'A vibrant celebration where intricate henna designs are applied to the bride\'s hands and feet. This joyous occasion brings together the bride\'s female friends and family for an afternoon of music, dance, and bonding.',
-      significance: 'The depth of the henna color is believed to represent the depth of love between the couple. It\'s a time for the bride to relax and be pampered before the wedding festivities.',
-      traditions: [
-        'Professional henna artists create intricate designs',
-        'Traditional folk songs and dance performances',
-        'Colorful décor with marigolds and drapes',
-        'Light refreshments and sweets',
-        'Photo opportunities with vibrant backdrops',
-        'Groom\'s name hidden in the henna design',
+      subtitle: 'The Art Of Photography',
+      imageSrc: '/prewedding/fwdpreweddingshoot/pre-wedding - hw-1 (5).jpg',
+      imageAlt: 'Mehendi ceremony celebration',
+      description:
+        'Mehendi Ceremony Magic — Captured Forever\n\nCelebrate the vibrant colors, joyful laughter, and beautiful traditions of your Mehendi ceremony with us.\n\nAt our wedding photography and videography services, we don’t just click pictures — we capture emotions, moments, and memories that last a lifetime.\n\nLet us turn your Mehendi into timeless and heavenly memories.',
+      significance: '',
+      traditions: [],
+      uniquenessPoints: [
+        'Creative and candid photography styles',
+        'Cinematic videography that tells your story',
+        'Highlight videos with professional editing',
+        'A well-trained and passionate team',
+        'Attention to every small detail',
+      ],
+      servicePoints: [
+        'Mehendi artist arrangements',
+        'Professional photography',
+        'Cinematographers',
+        'Highlight video editing',
+        'Complete event coverage',
       ],
       duration: '3-4 hours',
       colorTheme: 'Green, Yellow, Orange',
@@ -36,15 +50,24 @@ export default function CeremoniesPage() {
       id: 'sangeet',
       name: 'Sangeet',
       subtitle: 'Night of Music & Dance',
-      description: 'A spectacular evening of music, dance, and entertainment where both families come together to celebrate. Choreographed performances, live music, and joyful dancing create an unforgettable night of celebration.',
-      significance: 'The Sangeet brings both families together in a spirit of joy and unity. It\'s an opportunity for families to bond, showcase their talents, and create lasting memories through music and dance.',
-      traditions: [
-        'Choreographed dance performances by family and friends',
-        'Live music or DJ entertainment',
-        'Professional dancers and performers',
-        'Elaborate stage and lighting setup',
-        'Cocktails and dinner service',
-        'Games and interactive entertainment',
+      imageSrc: '/shivammansi/fwdwedding/wed-1 (4).jpg',
+      imageAlt: 'Sangeet night celebration',
+      description:
+        'Night of Music and Dance — Sangeet Ceremony\n\nA night where music, dance, and celebration come alive. Let every magical moment be captured with perfection.\n\nWe specialize in wedding photography and videography that goes beyond just visuals — we capture emotions, energy, and unforgettable memories.\n\nFrom electrifying dance performances to joyful candid moments, we capture it all beautifully to create heavenly memories for you.',
+      significance: '',
+      traditions: [],
+      uniquenessPoints: [
+        'Creative and candid photography',
+        'Cinematic storytelling through videos',
+        'Capturing real emotions and lively performances',
+        'High-quality highlight video editing',
+        'A well-trained and professional team',
+      ],
+      servicePoints: [
+        'Professional photography',
+        'Cinematographers',
+        'Highlight video editing services',
+        'Complete Sangeet ceremony coverage',
       ],
       duration: '4-6 hours',
       colorTheme: 'Bold, Vibrant Colors',
@@ -53,15 +76,24 @@ export default function CeremoniesPage() {
       id: 'haldi',
       name: 'Haldi',
       subtitle: 'The Turmeric Blessing',
-      description: 'An intimate morning ceremony where a paste of turmeric, sandalwood, and rose water is applied to the bride and groom by their loved ones. This purifying ritual is filled with laughter, blessings, and joyful moments.',
-      significance: 'Turmeric is believed to purify and bless the couple before their wedding. The yellow paste symbolizes prosperity and is thought to ward off evil spirits while giving the skin a natural glow.',
-      traditions: [
-        'Application of turmeric paste by family members',
-        'Traditional songs and blessings',
-        'Bright yellow and orange décor',
-        'Flower decorations and marigold garlands',
-        'Light breakfast and refreshments',
-        'Playful moments and photo opportunities',
+      imageSrc: '/prewedding/fwdpreweddingshoot/pre-wedding - hw-1 (2).jpg',
+      imageAlt: 'Haldi ceremony moments',
+      description:
+        'Haldi Ceremony — A Splash of Love and Joy\n\nA beautiful celebration filled with laughter, traditions, and vibrant yellow moments.\n\nAs wedding photographers and videographers, our main focus is to ensure that every shot is captured beautifully with perfection and care.\n\nAt Heavenly Weds, we believe in turning every moment into something magical.\n\nFrom playful rituals to joyful candid smiles — Heavenly Weds captures every frame like a heavenly dream.',
+      significance: '',
+      traditions: [],
+      uniquenessPoints: [
+        'Capturing every shot with precision and creativity',
+        'Candid and natural photography',
+        'Cinematic videography',
+        'Professional, high-quality editing',
+        'A well-trained and dedicated team',
+      ],
+      servicePoints: [
+        'Professional photography services',
+        'Cinematographers',
+        'Expert photo and video editing',
+        'Complete Haldi ceremony coverage',
       ],
       duration: '2-3 hours',
       colorTheme: 'Yellow, Orange, White',
@@ -70,15 +102,24 @@ export default function CeremoniesPage() {
       id: 'wedding',
       name: 'Wedding Ceremony',
       subtitle: 'The Sacred Union',
-      description: 'The main wedding ceremony is a sacred and elaborate ritual conducted by a priest. From the grand entrance to the seven sacred vows, every moment is steeped in tradition and spiritual significance.',
-      significance: 'The wedding ceremony represents the sacred union of two souls and two families. Each ritual has deep spiritual meaning, from the exchange of garlands to the seven circles around the sacred fire.',
-      traditions: [
-        'Grand baraat (groom\'s procession) with music and dancing',
-        'Varmala (exchange of garlands)',
-        'Kanyadaan (giving away of the bride)',
-        'Saptapadi (seven sacred vows around the fire)',
-        'Sindoor and mangalsutra ceremony',
-        'Blessings from elders and guests',
+      imageSrc: '/shivammansi/fwdwedding/wd-2 (1).jpg',
+      imageAlt: 'Wedding ceremony couple moment',
+      description:
+        'Wedding Ceremony — Crafted by Heavenly Weds\n\nYour wedding is a once-in-a-lifetime story of love, emotions, and beautiful beginnings.\n\nOur main motive as wedding photographers and videographers is to ensure every single moment is captured beautifully and feels nothing less than heavenly.\n\nFrom emotional vows to joyful celebrations — our professional team captures every frame like a heavenly story.',
+      significance: '',
+      traditions: [],
+      uniquenessPoints: [
+        'Capturing every shot with perfection and elegance',
+        'Creative and candid photography',
+        'Cinematic videography that tells your love story',
+        'Professional, high-quality editing',
+        'A skilled and passionate team',
+      ],
+      servicePoints: [
+        'Professional photography services',
+        'Cinematographers',
+        'Expert photo and video editing',
+        'Complete wedding ceremony coverage',
       ],
       duration: '3-5 hours',
       colorTheme: 'Red, Gold, Maroon',
@@ -87,41 +128,27 @@ export default function CeremoniesPage() {
       id: 'reception',
       name: 'Reception',
       subtitle: 'Grand Celebration',
-      description: 'A glamorous evening celebration where the newlyweds are introduced as a married couple. This elegant affair features fine dining, entertainment, speeches, and dancing as families and friends celebrate the union.',
-      significance: 'The reception is a formal celebration where the couple is welcomed into their new life together. It\'s an opportunity to thank guests and celebrate with those who couldn\'t attend the traditional ceremonies.',
-      traditions: [
-        'Grand entrance of the newlyweds',
-        'Cake cutting ceremony',
-        'First dance as a married couple',
-        'Speeches and toasts',
-        'Multi-course dinner service',
-        'DJ and dance floor entertainment',
+      imageSrc: '/christianwed/fwdchristianwedding/chr-1 (2).jpg',
+      imageAlt: 'Wedding reception celebration',
+      description:
+        'Grand Celebration – Wedding Reception 💍✨\nby Heavenly Weds\n\nAn evening of elegance, love, and grand celebrations ✨\nWhere every smile shines brighter and every moment feels magical 💫\n\nAt Heavenly Weds, we capture your reception with stunning photography & cinematic videography — turning every frame into a timeless memory 📸🎥\n\nFrom grand entries to unforgettable moments —\nWe capture every frame like a heavenly dream ✨',
+      significance: '',
+      traditions: [],
+      uniquenessPoints: [
+        'Elegant & candid photography',
+        'Cinematic videography coverage',
+        'Capturing emotions, glamour & celebrations',
+        'Professional, high-quality editing',
+        'A skilled & experienced team',
+      ],
+      servicePoints: [
+        'Professional photography services',
+        'Cinematographers',
+        'Expert photo & video editing',
+        'Complete reception coverage',
       ],
       duration: '4-5 hours',
       colorTheme: 'Elegant, Sophisticated Palette',
-    },
-  ];
-
-  const planningFeatures = [
-    {
-      icon: Sparkles,
-      title: 'Cultural Expertise',
-      description: 'Deep understanding of traditions and customs across different regions and communities',
-    },
-    {
-      icon: Heart,
-      title: 'Personalized Approach',
-      description: 'We honor your family traditions while incorporating your unique style and preferences',
-    },
-    {
-      icon: Music,
-      title: 'Entertainment Curation',
-      description: 'Access to the finest musicians, dancers, and performers for authentic celebrations',
-    },
-    {
-      icon: Calendar,
-      title: 'Seamless Coordination',
-      description: 'Expert management of multiple events across several days with flawless execution',
     },
   ];
 
@@ -139,7 +166,7 @@ export default function CeremoniesPage() {
               Traditional Celebrations
             </p>
             <h1 className="font-heading mb-6 md:mb-8 text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight text-[#C9A7A0] font-light">
-              Sacred Ceremonies & Rituals
+              Ceremonies & Rituals
             </h1>
             <p className="text-base sm:text-lg leading-relaxed text-[#6F6F6F] max-w-3xl mx-auto">
               Indian weddings are a beautiful tapestry of ceremonies, each with its own significance and traditions. 
@@ -173,7 +200,20 @@ export default function CeremoniesPage() {
                     <h2 className="font-heading mb-3 md:mb-4 text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight text-[#C9A7A0] font-light">
                       {ceremony.name}
                     </h2>
-                    <p className="mx-auto leading-relaxed text-sm sm:text-base text-[#6F6F6F] max-w-3xl">
+
+                    <div className="mx-auto mb-5 md:mb-6 max-w-4xl overflow-hidden rounded-sm">
+                      <img
+                        src={ceremony.imageSrc}
+                        alt={ceremony.imageAlt}
+                        className="h-[220px] w-full object-cover sm:h-[280px] md:h-[340px]"
+                        loading="lazy"
+                      />
+                    </div>
+
+                    <p
+                      className="mx-auto leading-relaxed text-sm sm:text-base text-[#6F6F6F] max-w-3xl"
+                      style={{ whiteSpace: 'pre-line' }}
+                    >
                       {ceremony.description}
                     </p>
                   </div>
@@ -182,29 +222,72 @@ export default function CeremoniesPage() {
                   <div className="grid gap-6 md:gap-8 grid-cols-1 lg:grid-cols-2 mb-6 md:mb-8">
                     {/* Significance */}
                     <div>
-                      <h3 className="mb-3 md:mb-4 uppercase tracking-[2px] text-[11px] sm:text-xs text-[#9A9A9A]">
-                        Significance
-                      </h3>
-                      <p className="leading-relaxed text-sm sm:text-base text-[#6F6F6F]">
-                        {ceremony.significance}
-                      </p>
+                      {ceremony.uniquenessPoints && ceremony.uniquenessPoints.length > 0 ? (
+                        <>
+                          <h3 className="mb-3 md:mb-4 uppercase tracking-[2px] text-[11px] sm:text-xs text-[#9A9A9A]">
+                            What makes us unique?
+                          </h3>
+                          <ul className="space-y-2">
+                            {ceremony.uniquenessPoints.map((point, idx) => (
+                              <li key={idx} className="flex items-start gap-2">
+                                <Sparkles className="h-4 w-4 flex-shrink-0 mt-1 text-[#C9A7A0]" />
+                                <span className="text-xs sm:text-sm text-[#6F6F6F] leading-relaxed">
+                                  {point}
+                                </span>
+                              </li>
+                            ))}
+                          </ul>
+                        </>
+                      ) : (
+                        <>
+                          <h3 className="mb-3 md:mb-4 uppercase tracking-[2px] text-[11px] sm:text-xs text-[#9A9A9A]">
+                            Significance
+                          </h3>
+                          <p
+                            className="leading-relaxed text-sm sm:text-base text-[#6F6F6F]"
+                            style={{ whiteSpace: 'pre-line' }}
+                          >
+                            {ceremony.significance}
+                          </p>
+                        </>
+                      )}
                     </div>
 
                     {/* Traditions */}
                     <div>
-                      <h3 className="mb-3 md:mb-4 uppercase tracking-[2px] text-[11px] sm:text-xs text-[#9A9A9A]">
-                        Key Traditions
-                      </h3>
-                      <ul className="space-y-2">
-                        {ceremony.traditions.map((tradition, idx) => (
-                          <li key={idx} className="flex items-start gap-2">
-                            <Sparkles className="h-4 w-4 flex-shrink-0 mt-1 text-[#C9A7A0]" />
-                            <span className="text-xs sm:text-sm text-[#6F6F6F] leading-relaxed">
-                              {tradition}
-                            </span>
-                          </li>
-                        ))}
-                      </ul>
+                      {ceremony.servicePoints && ceremony.servicePoints.length > 0 ? (
+                        <>
+                          <h3 className="mb-3 md:mb-4 uppercase tracking-[2px] text-[11px] sm:text-xs text-[#9A9A9A]">
+                            Our Services Include
+                          </h3>
+                          <ul className="space-y-2">
+                            {ceremony.servicePoints.map((service, idx) => (
+                              <li key={idx} className="flex items-start gap-2">
+                                <Sparkles className="h-4 w-4 flex-shrink-0 mt-1 text-[#C9A7A0]" />
+                                <span className="text-xs sm:text-sm text-[#6F6F6F] leading-relaxed">
+                                  {service}
+                                </span>
+                              </li>
+                            ))}
+                          </ul>
+                        </>
+                      ) : (
+                        <>
+                          <h3 className="mb-3 md:mb-4 uppercase tracking-[2px] text-[11px] sm:text-xs text-[#9A9A9A]">
+                            Key Traditions
+                          </h3>
+                          <ul className="space-y-2">
+                            {ceremony.traditions.map((tradition, idx) => (
+                              <li key={idx} className="flex items-start gap-2">
+                                <Sparkles className="h-4 w-4 flex-shrink-0 mt-1 text-[#C9A7A0]" />
+                                <span className="text-xs sm:text-sm text-[#6F6F6F] leading-relaxed">
+                                  {tradition}
+                                </span>
+                              </li>
+                            ))}
+                          </ul>
+                        </>
+                      )}
                     </div>
                   </div>
 
@@ -240,54 +323,7 @@ export default function CeremoniesPage() {
         </div>
       </section>
 
-      {/* Planning Features */}
-      <section className="py-16 md:py-20 lg:py-24 bg-[#F2E8E6] px-4 md:px-8">
-        <div className="mx-auto max-w-7xl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-10 md:mb-12 lg:mb-16"
-          >
-            <p className="mb-4 uppercase tracking-[3px] text-[11px] text-[#9A9A9A]">
-              Our Expertise
-            </p>
-            <h2 className="font-heading mb-4 md:mb-6 text-3xl sm:text-4xl md:text-5xl leading-tight text-[#C9A7A0] font-light">
-              Planning Multi-Day Celebrations
-            </h2>
-            <p className="mx-auto leading-relaxed text-sm sm:text-base text-[#6F6F6F] max-w-3xl">
-              Coordinating multiple ceremonies requires expertise, cultural knowledge, and meticulous attention to detail. 
-              We ensure each event flows seamlessly into the next.
-            </p>
-          </motion.div>
-
-          <div className="grid gap-6 sm:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
-            {planningFeatures.map((feature, index) => (
-              <motion.div
-                key={feature.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="text-center p-6 sm:p-8 rounded-sm bg-white"
-              >
-                <div
-                  className="inline-flex items-center justify-center mb-4 md:mb-6 rounded-full w-16 h-16 sm:w-20 sm:h-20 bg-[#F2E8E6]"
-                >
-                  <feature.icon className="h-6 w-6 sm:h-8 sm:w-8 text-[#C9A7A0]" />
-                </div>
-                <h3 className="font-heading mb-2 md:mb-3 text-lg sm:text-xl text-[#6F6F6F] font-medium">
-                  {feature.title}
-                </h3>
-                <p className="text-xs sm:text-sm leading-relaxed text-[#9A9A9A]">
-                  {feature.description}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+   
 
       {/* Custom Ceremonies */}
       <section className="py-16 md:py-20 lg:py-24 px-4 md:px-8">

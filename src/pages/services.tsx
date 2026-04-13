@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Check, ArrowRight, Calendar, Sparkles, Heart, Camera, Plane, Brush, PenTool, Film, Scissors, Gift, Sparkle, BookOpen, Utensils, User } from 'lucide-react';
+import { Check, ArrowRight, Calendar, Sparkles, Heart, Camera, Plane, Brush, PenTool, Gift, BookOpen, Utensils, User } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 interface Service {
@@ -109,29 +109,6 @@ export default function ServicesPage() {
     { id: 'e-invites', title: 'Wedding E-Invites', icon: Gift, description: 'Elegant digital invitations for the modern, eco-conscious couple.', href: '/services/e-invites' },
     { id: 'album', title: 'Wedding Album', icon: BookOpen, description: 'Beautifully designed albums to preserve your memories for generations.', href: '/services/album' },
     { id: 'catering', title: 'Catering', icon: Utensils, description: 'Exquisite culinary experiences tailored to your taste and style.', href: '/services/catering' },
-  ];
-
-  const processSteps = [
-    {
-      number: '01',
-      title: 'Initial Consultation',
-      description: 'We begin with a complimentary consultation to understand your vision, style, and priorities for your celebration.',
-    },
-    {
-      number: '02',
-      title: 'Proposal & Agreement',
-      description: 'Receive a detailed proposal outlining our services, timeline, and investment. Once agreed, we begin your journey.',
-    },
-    {
-      number: '03',
-      title: 'Planning & Design',
-      description: 'We dive into the details—venue selection, vendor curation, design development, and meticulous planning.',
-    },
-    {
-      number: '04',
-      title: 'Coordination & Execution',
-      description: 'As your wedding approaches, we finalize every detail and ensure flawless execution on your special day.',
-    },
   ];
 
   return (
@@ -311,7 +288,7 @@ export default function ServicesPage() {
                 className="group"
               >
                 <Link
-                  to={service.href}
+                  to={`/services/additionalservices#${service.id}`}
                   className="block p-5 sm:p-6 bg-white rounded-sm transition-all duration-300 hover:shadow-lg"
                   style={{ 
                     border: '1px solid #ECECEC',
