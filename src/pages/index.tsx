@@ -19,7 +19,7 @@ export default function HomePage() {
     weddingImage7,
     christianWed2
   ];
-  const heroVideoSrc = 'https://player.cloudinary.com/embed/?cloud_name=do4h3t3mk&public_id=home_page_1_zq0jbq';
+  const heroVideoSrc = 'https://res.cloudinary.com/do4h3t3mk/video/upload/w_1280,q_auto,f_auto/home_page_1_zq0jbq.mp4';
   const API_URL = import.meta.env.VITE_API_URL
   useEffect(() => {
     const checkHealth = async () => {
@@ -146,7 +146,7 @@ export default function HomePage() {
             {!heroVideoFailed ? (
               <video
                 className="absolute inset-0 h-full w-full object-cover"
-                src={'/home page2.mp4'}
+                src={encodeURI(heroVideoSrc)}
                 autoPlay
                 muted
                 loop
