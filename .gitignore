@@ -1,3 +1,8 @@
 node_modules/
 .env
 logs/
+# Ignore all mp4 files
+*.mp4
+
+# Allow this specific file inside public
+!public/home page.mp4
