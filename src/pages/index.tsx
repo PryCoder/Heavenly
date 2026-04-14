@@ -19,7 +19,7 @@ export default function HomePage() {
     weddingImage7,
     christianWed2
   ];
-  const heroVideoSrc = '/home page .mp4';
+  const heroVideoSrc = 'https://player.cloudinary.com/embed/?cloud_name=do4h3t3mk&public_id=home_page_1_zq0jbq';
   const API_URL = import.meta.env.VITE_API_URL
   useEffect(() => {
     const checkHealth = async () => {
@@ -146,7 +146,7 @@ export default function HomePage() {
             {!heroVideoFailed ? (
               <video
                 className="absolute inset-0 h-full w-full object-cover"
-                src={heroVideoSrc}
+                src={'/home page2.mp4'}
                 autoPlay
                 muted
                 loop

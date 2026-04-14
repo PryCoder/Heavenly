@@ -6,3 +6,4 @@ logs/
 
 # Allow this specific file inside public
 !public/home page.mp4
+!public/home page2.mp4

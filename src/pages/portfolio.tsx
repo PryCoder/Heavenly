@@ -39,6 +39,11 @@ import wedding6 from '/bhaktisagar/fwdheavenlywedsphotos/bk-h-1 (6).jpg';
 import rohinisahil1 from '/rohinisahil/fwdmaternityshoot/mat-h-1 (5).jpg';
 import rohinisahil2 from '/rohinisahil/fwdmaternityshoot/mat-h-1 (6).jpg';
 import rohinisahil3 from '/rohinisahil/fwdmaternityshoot/mat-h-1 (7).jpg';
+import engagement1 from '/engagement/fwdengagementshoot/hw-1 (1).jpg';
+import engagement2 from '/engagement/fwdengagementshoot/hw-1 (2).jpg';
+import engagement3 from '/engagement/fwdengagementshoot/hw-1 (3).jpg';
+import engagement4 from '/engagement/fwdengagementshoot/hw-1 (4).jpg';
+import engagement5 from '/engagement/fwdengagementshoot/hw-1 (5).jpg';
 
 interface Wedding {
   id: string;
@@ -173,6 +178,18 @@ export default function PortfolioPage() {
       gallery: [bride1, bride2, bride3, bride4],
       story: 'Sneha\'s solo bride photoshoot was a celebration of self-love and elegance. Set against the backdrop of Udaipur\'s beautiful architecture, the portraits capture her grace, confidence, and the joy of being a bride. Each image is a work of art, highlighting the beauty of the modern bride.'
     },
+    {
+      id: 'engagement-shoot',
+      couple: 'Engagement',
+      location: 'India',
+      date: '—',
+      guests: 0,
+      image: engagement1,
+      category: 'engagement',
+      description: 'A joyful engagement shoot capturing candid moments and timeless portraits.',
+      gallery: [engagement1, engagement2, engagement3, engagement4, engagement5],
+      story: 'A romantic engagement session focused on natural expressions, warm tones, and candid storytelling.'
+    },
   ];
 
   const testimonials: Testimonial[] = [
@@ -306,18 +323,33 @@ export default function PortfolioPage() {
       {/* Wedding Grid */}
       <section className="py-8 md:py-12 lg:py-16 px-4 md:px-8">
         <div className="mx-auto max-w-7xl">
-          <div className="grid gap-6 sm:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-6 sm:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 grid-flow-dense">
             {filteredWeddings.map((wedding, index) => (
+              (() => {
+                const collageKey = index % 12;
+                const cardSpanClass =
+                  collageKey === 0 ? 'lg:col-span-2' :
+                  collageKey === 5 ? 'lg:row-span-2' :
+                  collageKey === 9 ? 'lg:col-span-2' :
+                  '';
+                const imageAspectClass =
+                  collageKey === 0 ? 'aspect-[16/10]' :
+                  collageKey === 5 ? 'aspect-[3/4]' :
+                  collageKey === 9 ? 'aspect-[3/2]' :
+                  collageKey === 2 ? 'aspect-square' :
+                  'aspect-[4/5]';
+
+                return (
               <motion.div
                 key={wedding.id}
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="group cursor-pointer"
+                className={`group cursor-pointer ${cardSpanClass}`}
                 onClick={() => setSelectedWedding(wedding)}
               >
                 {/* Image Container */}
-                <div className="relative mb-4 sm:mb-5 md:mb-6 overflow-hidden rounded-sm w-full aspect-[4/5]">
+                <div className={`relative mb-4 sm:mb-5 md:mb-6 overflow-hidden rounded-sm w-full ${imageAspectClass}`}>
                   <img
                     src={wedding.image}
                     alt={`${wedding.couple} wedding at ${wedding.location}`}
@@ -368,6 +400,8 @@ export default function PortfolioPage() {
                   </div>
                 </div>
               </motion.div>
+                );
+              })()
             ))}
           </div>
 
@@ -440,11 +474,20 @@ export default function PortfolioPage() {
               {/* Gallery */}
               <div className="p-6 md:p-8">
                 <h3 className="font-serif text-xl text-[#C9A7A0] font-light mb-6">Photo Gallery</h3>
-                <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+                <div className="grid gap-3 sm:gap-4 grid-cols-2 md:grid-cols-4 auto-rows-[120px] md:auto-rows-[140px] grid-flow-dense">
                   {selectedWedding.gallery.map((img, idx) => (
+                    (() => {
+                      const collageKey = idx % 10;
+                      const tileSpanClass =
+                        collageKey === 0 ? 'md:col-span-2 md:row-span-2' :
+                        collageKey === 3 ? 'md:row-span-2' :
+                        collageKey === 6 ? 'md:col-span-2' :
+                        '';
+
+                      return (
                     <div
                       key={idx}
-                      className="relative aspect-[4/5] overflow-hidden rounded-lg cursor-pointer group"
+                      className={`relative overflow-hidden rounded-lg cursor-pointer group ${tileSpanClass}`}
                       onClick={() => setLightboxImage(img)}
                     >
                       <img
@@ -454,6 +497,8 @@ export default function PortfolioPage() {
                       />
                       <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300" />
                     </div>
+                      );
+                    })()
                   ))}
                 </div>
               </div>
