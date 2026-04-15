@@ -14,6 +14,10 @@ import preweddingi3 from '/prewedding/fwdpreweddingshoot/pre-wedding - hw-1 (3).
 import preweddingi4 from '/prewedding/fwdpreweddingshoot/pre-wedding - hw-1 (4).jpg';
 import preweddingi5 from '/prewedding/fwdpreweddingshoot/pre-wedding - hw-1 (5).jpg';
 import preweddingi6 from '/prewedding/fwdpreweddingshoot/pre-wedding - hw-1 (6).jpg';
+import preweddingi7 from '/prewedding/fwdpreweddingshoot/pre-wedding - hw-1 (7).jpg';
+import preweddingAlt6 from '/prewedding/fwdpreweddingshoot/hw-1 (6).jpg';
+import preweddingAlt7 from '/prewedding/fwdpreweddingshoot/hw-1 (7).jpg';
+import preweddingAlt8 from '/prewedding/fwdpreweddingshoot/hw-1 (8).jpg';
 import weddingImage1 from '/shivammansi/fwdwedding/wd-2 (1).jpg';
 import weddingImage2 from '/shivammansi/fwdwedding/wed-1 (7).jpg';
 import weddingImage3 from '/shivammansi/fwdwedding/wed-1 (4).jpg';
@@ -30,12 +34,25 @@ import bride1 from '/brideshoot/fwdbridephotoshoot/br-H-1 (3).jpg';
 import bride2 from '/brideshoot/fwdbridephotoshoot/br-H-1 (4).jpg';
 import bride3 from '/brideshoot/fwdbridephotoshoot/br-H-1 (5).jpg';
 import bride4 from '/brideshoot/fwdbridephotoshoot/br-H-1 (1).jpg';
+import priyalBride1 from '/brideshoot/fwdbridephotoshootpriyal/hhww-1 (1).jpg';
+import priyalBride2 from '/brideshoot/fwdbridephotoshootpriyal/hhww-1 (2).jpg';
+import priyalBride3 from '/brideshoot/fwdbridephotoshootpriyal/hhww-1 (3).jpg';
+import priyalBride4 from '/brideshoot/fwdbridephotoshootpriyal/hhww-1 (4).jpg';
 import wedding1 from '/bhaktisagar/fwdheavenlywedsphotos/bk-h-1 (1).jpg';
 import wedding2 from '/bhaktisagar/fwdheavenlywedsphotos/bk-h-1 (4).jpg';
 import wedding3 from '/bhaktisagar/fwdheavenlywedsphotos/bk-h-1 (2).jpg';
 import wedding4 from '/bhaktisagar/fwdheavenlywedsphotos/bk-h-1 (3).jpg';
 import wedding5 from '/bhaktisagar/fwdheavenlywedsphotos/bk-h-1 (5).jpg';
 import wedding6 from '/bhaktisagar/fwdheavenlywedsphotos/bk-h-1 (6).jpg';
+import palakParth1 from '/palak&parth/5DM42132.jpg';
+import palakParth2 from '/palak&parth/5DM42139.jpg';
+import palakParth3 from '/palak&parth/5DM42159.jpg';
+import palakParth4 from '/palak&parth/5DM42161.jpg';
+import palakParth5 from '/palak&parth/5DM42617.jpg';
+import palakParth6 from '/palak&parth/5DM42642.jpg';
+import palakParth7 from '/palak&parth/5DM42646.jpg';
+import palakParth8 from '/palak&parth/5DM42652 - Copy.jpg';
+import palakParth9 from '/palak&parth/5DM42671.jpg';
 import rohinisahil1 from '/rohinisahil/fwdmaternityshoot/mat-h-1 (5).jpg';
 import rohinisahil2 from '/rohinisahil/fwdmaternityshoot/mat-h-1 (6).jpg';
 import rohinisahil3 from '/rohinisahil/fwdmaternityshoot/mat-h-1 (7).jpg';
@@ -44,6 +61,10 @@ import engagement2 from '/engagement/fwdengagementshoot/hw-1 (2).jpg';
 import engagement3 from '/engagement/fwdengagementshoot/hw-1 (3).jpg';
 import engagement4 from '/engagement/fwdengagementshoot/hw-1 (4).jpg';
 import engagement5 from '/engagement/fwdengagementshoot/hw-1 (5).jpg';
+import joyLucy1 from '/joy&lucy/fwdjoylucy/lon-hw (1).jpg';
+import joyLucy2 from '/joy&lucy/fwdjoylucy/lon-hw (2).jpg';
+import joyLucy3 from '/joy&lucy/fwdjoylucy/lon-hw (3).jpg';
+import joyLucy4 from '/joy&lucy/fwdjoylucy/lon-hw (4).jpg';
 
 interface Wedding {
   id: string;
@@ -127,7 +148,18 @@ export default function PortfolioPage() {
       image: preweddingi1,
       category: 'pre-wedding',
       description: 'A romantic pre-wedding photoshoot capturing beautiful moments in the City of Lakes.',
-      gallery: [preweddingi1, preweddingi2, preweddingi3, preweddingi4, preweddingi5, preweddingi6],
+      gallery: [
+        preweddingi1,
+        preweddingi2,
+        preweddingi3,
+        preweddingi4,
+        preweddingi5,
+        preweddingi6,
+        preweddingi7,
+        preweddingAlt6,
+        preweddingAlt7,
+        preweddingAlt8,
+      ],
       story: 'Nishita and Raj chose the majestic city of Udaipur for their pre-wedding shoot. The couple explored the City Palace, took a romantic boat ride on Lake Pichola, and captured stunning sunset moments at Sajjangarh Fort. Every frame tells a story of their love and the magical aura of Udaipur.'
     },
     {
@@ -141,6 +173,28 @@ export default function PortfolioPage() {
       description: 'A grand palace wedding celebrating rich cultural traditions with cinematic brilliance.',
       gallery: [wedding1, wedding2, wedding3, wedding4, wedding5, wedding6],
       story: 'Bhaktisagar and Pooja\'s royal wedding at a heritage palace in Jaipur was a spectacle of colors, traditions, and grandeur. The baraat arrived on decorated elephants, the bride made a stunning entry in a vintage car, and the palace was transformed into a fairy-tale setting with thousands of lights and flowers.'
+    },
+    {
+      id: 'palak-parth',
+      couple: 'Palak & Parth',
+      location: 'India',
+      date: '—',
+      guests: 0,
+      image: palakParth1,
+      category: 'wedding',
+      description: 'A joyful wedding celebration captured with candid moments and timeless portraits.',
+      gallery: [
+        palakParth1,
+        palakParth2,
+        palakParth3,
+        palakParth4,
+        palakParth5,
+        palakParth6,
+        palakParth7,
+        palakParth8,
+        palakParth9,
+      ],
+      story: 'Palak and Parth\'s wedding gallery highlights warm candid emotions, elegant portraits, and the beautiful details that made their day unforgettable.'
     },
     {
       id: 'nimisha-dipak',
@@ -167,6 +221,18 @@ export default function PortfolioPage() {
       story: 'Rohini and Sahil\'s maternity shoot captured the quiet joy and excitement of welcoming a new chapter. With natural, candid moments and elegant portraits, every frame reflects their love and anticipation for what\'s to come.'
     },
     {
+      id: 'joy-lucy',
+      couple: 'Joy & Lucy',
+      location: 'India',
+      date: '—',
+      guests: 0,
+      image: joyLucy1,
+      category: 'maternity',
+      description: 'A warm maternity session with natural, candid moments and elegant portraits.',
+      gallery: [joyLucy1, joyLucy2, joyLucy3, joyLucy4],
+      story: 'Joy and Lucy\'s maternity session celebrates the beauty of parenthood with soft, timeless portraits and joyful candid moments.'
+    },
+    {
       id: 'sneha-bride',
       couple: 'Sneha',
       location: 'Udaipur, India',
@@ -177,6 +243,18 @@ export default function PortfolioPage() {
       description: 'Stunning bride portraits capturing timeless beauty.',
       gallery: [bride1, bride2, bride3, bride4],
       story: 'Sneha\'s solo bride photoshoot was a celebration of self-love and elegance. Set against the backdrop of Udaipur\'s beautiful architecture, the portraits capture her grace, confidence, and the joy of being a bride. Each image is a work of art, highlighting the beauty of the modern bride.'
+    },
+    {
+      id: 'priyal-bride',
+      couple: 'Priyal',
+      location: 'India',
+      date: '—',
+      guests: 0,
+      image: priyalBride1,
+      category: 'bride',
+      description: 'Elegant bride portraits with a modern, timeless feel.',
+      gallery: [priyalBride1, priyalBride2, priyalBride3, priyalBride4],
+      story: 'Priyal\'s bride shoot focused on graceful portraits, refined details, and confident expressions — capturing timeless bridal elegance.'
     },
     {
       id: 'engagement-shoot',
