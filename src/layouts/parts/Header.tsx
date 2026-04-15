@@ -66,26 +66,6 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close mobile menu on route change
-  useEffect(() => {
-    setIsMenuOpen(false);
-    setMobileOpenDropdown(null);
-    setOpenDropdown(null);
-  }, [location.pathname]);
-
-  // Handle escape key
-  useEffect(() => {
-    const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        setIsMenuOpen(false);
-        setOpenDropdown(null);
-        setMobileOpenDropdown(null);
-      }
-    };
-    document.addEventListener('keydown', handleEscape);
-    return () => document.removeEventListener('keydown', handleEscape);
-  }, []);
-
   // Handle click outside for mobile menu
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
@@ -180,11 +160,7 @@ export default function Header() {
           {/* Logo - Responsive sizing */}
           <Link
             to="/"
-            className="flex items-center transition-opacity duration-300 hover:opacity-70"
-            style={{
-              transform: "translate(-35px, -35px)", // left , top
-              alignSelf: "flex-start",
-            }}
+            className="flex items-center h-full transition-opacity duration-300 hover:opacity-70"
             aria-label="HeavenlyWeds Home"
             onClick={() => {
               setIsMenuOpen(false);
@@ -194,11 +170,8 @@ export default function Header() {
             <img
               src="/heavenly logo- png-brown.png"
               alt="HeavenlyWeds Logo"
-              style={{
-                height: "clamp(120px, 14vw, 300px)",
-                width: "auto",
-                objectFit: "contain",
-              }}
+              className="h-full w-auto max-w-[170px] sm:max-w-[220px] md:max-w-[280px] lg:max-w-[360px] object-contain"
+              decoding="async"
             />
           </Link>
 
