@@ -685,7 +685,7 @@ export default function HomePage() {
 
       {/* Floating WhatsApp Button */}
       <motion.a
-        href="https://wa.me/919167090539?text=hi"
+        href="https://wa.me/919167090539?text=Hey, is this a studio shoot or from a wedding/pre-wedding?"
         target="_blank"
         rel="noopener noreferrer"
         initial={{ opacity: 0, scale: 0.5 }}
