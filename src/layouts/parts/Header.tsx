@@ -171,6 +171,8 @@ export default function Header() {
               src="/heavenly logo- png-brown.png"
               alt="HeavenlyWeds Logo"
               className="h-full w-auto max-w-[170px] sm:max-w-[220px] md:max-w-[280px] lg:max-w-[420px] xl:max-w-[480px] object-contain transition-transform duration-300 lg:scale-110"
+              loading="eager"
+              fetchPriority="high"
               decoding="async"
             />
           </Link>

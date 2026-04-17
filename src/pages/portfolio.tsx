@@ -455,7 +455,9 @@ export default function PortfolioPage() {
                     src={wedding.image}
                     alt={`${wedding.couple} wedding at ${wedding.location}`}
                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 brightness-[0.98] saturate-[0.85]"
-                    loading="lazy"
+                    loading={index < 6 ? 'eager' : 'lazy'}
+                    fetchPriority={index === 0 ? 'high' : 'auto'}
+                    decoding="async"
                   />
                   
                   {/* Overlay on Hover */}
@@ -595,6 +597,8 @@ export default function PortfolioPage() {
                         src={img}
                         alt={`${selectedWedding.couple} - ${idx + 1}`}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        loading="lazy"
+                        decoding="async"
                       />
                       <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300" />
                     </div>
@@ -641,6 +645,7 @@ export default function PortfolioPage() {
             src={lightboxImage}
             alt="Full size"
             className="max-h-[90vh] max-w-[90vw] object-contain"
+            decoding="async"
             onClick={(e) => e.stopPropagation()}
           />
         </motion.div>

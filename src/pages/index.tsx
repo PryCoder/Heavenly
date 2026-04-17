@@ -206,6 +206,9 @@ export default function HomePage() {
                   src={heroImages[currentImageIndex]}
                   alt="Luxury destination wedding"
                   className="absolute inset-0 h-full w-full object-cover"
+                  loading="eager"
+                  fetchPriority="high"
+                  decoding="async"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
@@ -388,6 +391,8 @@ export default function HomePage() {
                   src="https://bp37mc8dd9.preview.c36.airoapp.ai/airo-assets/images/pages/home/service-planning" 
                   alt="Complete wedding planning" 
                   className="w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  loading="lazy"
+                  decoding="async"
                   style={{ height: 'clamp(250px, 40vw, 400px)' }} 
                 />
               </div>
@@ -422,6 +427,8 @@ export default function HomePage() {
                   src="https://bp37mc8dd9.preview.c36.airoapp.ai/airo-assets/images/pages/home/service-venue" 
                   alt="Destination venue curation" 
                   className="w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  loading="lazy"
+                  decoding="async"
                   style={{ height: 'clamp(250px, 40vw, 400px)' }} 
                 />
               </div>
@@ -491,6 +498,8 @@ export default function HomePage() {
                   src={imgSrc} 
                   alt={`Wedding ${index + 1}`} 
                   className="w-full object-cover transition-all duration-700 group-hover:scale-105"
+                  loading="lazy"
+                  decoding="async"
                   style={{ 
                     height: 'clamp(250px, 40vw, 380px)', 
                     filter: 'brightness(0.95)' 
@@ -556,6 +565,8 @@ export default function HomePage() {
                   src= {christianWed2} 
                   alt="Roy & Rachel" 
                   className="rounded-full object-cover"
+                  loading="lazy"
+                  decoding="async"
                   style={{ width: 'clamp(48px, 8vw, 64px)', height: 'clamp(48px, 8vw, 64px)' }} 
                 />
                 <div>
@@ -592,6 +603,8 @@ export default function HomePage() {
                   src="https://bp37mc8dd9.preview.c36.airoapp.ai/airo-assets/images/pages/home/testimonial-1" 
                   alt="Nishita & Raj" 
                   className="rounded-full object-cover"
+                  loading="lazy"
+                  decoding="async"
                   style={{ width: 'clamp(48px, 8vw, 64px)', height: 'clamp(48px, 8vw, 64px)' }} 
                 />
                 <div>

@@ -1,28 +1,29 @@
 import { RouteObject } from 'react-router-dom';
 import { lazy } from 'react';
 import HomePage from './pages/index';
-import ContactPage from './pages/contact';
-import AboutPage from './pages/about';
-import PortfolioPage from './pages/portfolio';
-import ServicesPage from './pages/services';
-import LocationsPage from './pages/locations';
-import CeremoniesPage from './pages/ceremonies';
-import FullPlanningPage from './pages/services/photography';
-import PartialPlanningPage from './pages/services/partial-planning';
-import ItalyPage from './pages/locations/italy';
-import FrancePage from './pages/locations/france';
-import IndiaPage from './pages/locations/india';
-import LakeComoPage from './pages/venues/lame-como';
-import TuscanyPage from './pages/venues/tuscany';
-import FrenchRivieraPage from './pages/venues/french-riviera';
-import GuidesPage from './pages/guides';
-import PlanPage from './pages/plan';
-import BlogPage from './pages/blog';
-import DestinationWeddingPage from './pages/services/Destination';
-import PhotoVideoPage from './pages/services/partial-planning';
-import AdditionalServicesPage from './pages/additonalservices';
 
-// Lazy load components for code splitting (except HomePage for instant loading)
+// Lazy load pages for code splitting (keep HomePage eager for instant landing)
+const ContactPage = lazy(() => import('./pages/contact'));
+const AboutPage = lazy(() => import('./pages/about'));
+const PortfolioPage = lazy(() => import('./pages/portfolio'));
+const ServicesPage = lazy(() => import('./pages/services'));
+const LocationsPage = lazy(() => import('./pages/locations'));
+const CeremoniesPage = lazy(() => import('./pages/ceremonies'));
+const FullPlanningPage = lazy(() => import('./pages/services/photography'));
+const PartialPlanningPage = lazy(() => import('./pages/services/partial-planning'));
+const ItalyPage = lazy(() => import('./pages/locations/italy'));
+const FrancePage = lazy(() => import('./pages/locations/france'));
+const IndiaPage = lazy(() => import('./pages/locations/india'));
+const LakeComoPage = lazy(() => import('./pages/venues/lame-como'));
+const TuscanyPage = lazy(() => import('./pages/venues/tuscany'));
+const FrenchRivieraPage = lazy(() => import('./pages/venues/french-riviera'));
+const GuidesPage = lazy(() => import('./pages/guides'));
+const PlanPage = lazy(() => import('./pages/plan'));
+const BlogPage = lazy(() => import('./pages/blog'));
+const DestinationWeddingPage = lazy(() => import('./pages/services/Destination'));
+const PhotoVideoPage = lazy(() => import('./pages/services/partial-planning'));
+const AdditionalServicesPage = lazy(() => import('./pages/additonalservices'));
+
 const NotFoundPage = lazy(() => import('./pages/_404'));
 
 export const routes: RouteObject[] = [
