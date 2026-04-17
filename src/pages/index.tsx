@@ -685,7 +685,7 @@ export default function HomePage() {
 
       {/* Floating WhatsApp Button */}
       <motion.a
-        href="https://wa.me/919594888516?text=hi"
+        href="https://wa.me/919167090539?text=hi"
         target="_blank"
         rel="noopener noreferrer"
         initial={{ opacity: 0, scale: 0.5 }}

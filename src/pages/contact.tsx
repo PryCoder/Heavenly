@@ -382,7 +382,7 @@ console.log(API_URL);
                       Call Us
                     </h3>
                     <p className="text-sm sm:text-base text-[#9A9A9A] leading-relaxed font-light">
-                    +91 86577 54937 /  +91 95948 88516
+                    +91 86577 54937 /  +91 91670 90539
                     </p>
                   </div>
                 </div>

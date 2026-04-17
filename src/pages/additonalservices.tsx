@@ -250,10 +250,10 @@ export default function AdditionalServicesPage() {
   ];
 
   return (
-    <div className="bg-white" style={{ paddingTop: '117px' }}>
+    <div className="min-h-screen w-full bg-white" style={{ paddingTop: 'clamp(90px, 15vw, 117px)' }}>
       {/* Hero Section */}
-      <section style={{ padding: '100px 0 80px' }}>
-        <div className="mx-auto text-center" style={{ maxWidth: '900px', padding: '0 60px' }}>
+      <section className="py-12 md:py-16 lg:py-20">
+        <div className="mx-auto max-w-[900px] px-4 sm:px-6 lg:px-10 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -266,14 +266,14 @@ export default function AdditionalServicesPage() {
               Enhanced Options
             </p>
             <h1
-              className="font-heading mb-8"
-              style={{ fontSize: '64px', lineHeight: '1.15', color: '#C9A7A0', fontWeight: 400 }}
+              className="font-heading mb-6 sm:mb-8"
+              style={{ fontSize: 'clamp(34px, 7vw, 64px)', lineHeight: '1.15', color: '#C9A7A0', fontWeight: 400 }}
             >
               Additional Services
             </h1>
             <p
               className="leading-relaxed"
-              style={{ fontSize: '18px', lineHeight: '1.8', color: '#6F6F6F' }}
+              style={{ fontSize: 'clamp(14px, 3.5vw, 18px)', lineHeight: '1.8', color: '#6F6F6F' }}
             >
               Enhance your wedding experience with our specialized services. From pre-wedding shoots
               to catering, we offer everything you need to make your celebration truly unforgettable.
@@ -291,29 +291,27 @@ export default function AdditionalServicesPage() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
-          style={{
-            padding: index % 2 === 0 ? '80px 0' : '80px 0',
-            backgroundColor: index % 2 === 0 ? '#FFFFFF' : '#FAFAFA',
-          }}
+          className="py-12 md:py-16 lg:py-20"
+          style={{ backgroundColor: index % 2 === 0 ? '#FFFFFF' : '#FAFAFA' }}
         >
-          <div className="mx-auto" style={{ maxWidth: '1400px', padding: '0 60px' }}>
+          <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-10">
             {/* Service Header */}
             <div className="mb-12 text-center">
               <div
-                className="mx-auto mb-6 inline-flex h-20 w-20 items-center justify-center rounded-full"
+                className="mx-auto mb-6 inline-flex h-16 w-16 sm:h-20 sm:w-20 items-center justify-center rounded-full"
                 style={{ backgroundColor: '#F2E8E6' }}
               >
-                <service.icon className="h-10 w-10" style={{ color: '#C9A7A0' }} />
+                <service.icon className="h-8 w-8 sm:h-10 sm:w-10" style={{ color: '#C9A7A0' }} />
               </div>
               <h2
                 className="font-heading mb-4"
-                style={{ fontSize: '42px', lineHeight: '1.2', color: '#C9A7A0', fontWeight: 400 }}
+                style={{ fontSize: 'clamp(26px, 5.5vw, 42px)', lineHeight: '1.2', color: '#C9A7A0', fontWeight: 400 }}
               >
                 {service.title}
               </h2>
               <p
-                className="mx-auto leading-relaxed"
-                style={{ maxWidth: '700px', fontSize: '18px', lineHeight: '1.8', color: '#6F6F6F' }}
+                className="mx-auto max-w-2xl leading-relaxed"
+                style={{ fontSize: 'clamp(14px, 3.5vw, 18px)', lineHeight: '1.8', color: '#6F6F6F' }}
               >
                 {service.description}
               </p>
@@ -335,7 +333,9 @@ export default function AdditionalServicesPage() {
                     <img
                       src={image}
                       alt={`${service.title} ${imgIndex + 1}`}
-                      className="h-64 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      className="h-56 sm:h-64 md:h-72 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      loading="lazy"
+                      decoding="async"
                     />
                     <div className="absolute inset-0 bg-black/0 transition-all duration-300 group-hover:bg-black/20" />
                   </motion.div>
@@ -344,8 +344,8 @@ export default function AdditionalServicesPage() {
             </div>
 
             {/* Features and CTA */}
-            <div className="mx-auto" style={{ maxWidth: '900px' }}>
-              <div className="mb-8 rounded-lg p-8" style={{ backgroundColor: '#F2E8E6' }}>
+            <div className="mx-auto max-w-[900px]">
+              <div className="mb-8 rounded-lg p-5 sm:p-8" style={{ backgroundColor: '#F2E8E6' }}>
                 <p
                   className="mb-6 text-center uppercase tracking-wider"
                   style={{ fontSize: '12px', letterSpacing: '3px', color: '#9A9A9A' }}
@@ -367,7 +367,7 @@ export default function AdditionalServicesPage() {
               <div className="text-center">
                 <Link
                   to="/contact"
-                  className="inline-flex items-center gap-2 uppercase tracking-widest transition-all duration-500"
+                  className="inline-flex w-full sm:w-auto justify-center items-center gap-2 uppercase tracking-widest transition-all duration-500"
                   style={{
                     padding: '16px 40px',
                     fontSize: '11px',
@@ -415,14 +415,15 @@ export default function AdditionalServicesPage() {
             src={selectedImage}
             alt="Full size"
             className="max-h-[90vh] max-w-[90vw] object-contain"
+            decoding="async"
             onClick={(e) => e.stopPropagation()}
           />
         </motion.div>
       )}
 
       {/* CTA Section */}
-      <section style={{ padding: '80px 0 100px', backgroundColor: '#FFFFFF' }}>
-        <div className="mx-auto text-center" style={{ maxWidth: '800px', padding: '0 60px' }}>
+      <section className="py-12 md:py-16 lg:py-20" style={{ backgroundColor: '#FFFFFF' }}>
+        <div className="mx-auto max-w-[800px] px-4 sm:px-6 lg:px-10 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -431,26 +432,26 @@ export default function AdditionalServicesPage() {
           >
             <div
               className="mx-auto mb-8 flex items-center justify-center rounded-full"
-              style={{ width: '100px', height: '100px', backgroundColor: '#F2E8E6' }}
+              style={{ width: 'clamp(80px, 18vw, 100px)', height: 'clamp(80px, 18vw, 100px)', backgroundColor: '#F2E8E6' }}
             >
               <Calendar className="h-12 w-12" style={{ color: '#C9A7A0' }} />
             </div>
             <h2
               className="font-heading mb-6"
-              style={{ fontSize: '42px', lineHeight: '1.2', color: '#C9A7A0', fontWeight: 400 }}
+              style={{ fontSize: 'clamp(26px, 5.5vw, 42px)', lineHeight: '1.2', color: '#C9A7A0', fontWeight: 400 }}
             >
               Ready to Enhance Your Celebration?
             </h2>
             <p
               className="mx-auto mb-10 max-w-2xl leading-relaxed"
-              style={{ fontSize: '16px', lineHeight: '1.8', color: '#6F6F6F' }}
+              style={{ fontSize: 'clamp(14px, 3.5vw, 16px)', lineHeight: '1.8', color: '#6F6F6F' }}
             >
               Let us help you add those special touches that make your wedding uniquely yours.
               Contact us to customize a package that includes your favorite additional services.
             </p>
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 uppercase tracking-widest transition-all duration-500"
+              className="inline-flex w-full sm:w-auto justify-center items-center gap-2 uppercase tracking-widest transition-all duration-500"
               style={{
                 padding: '18px 48px',
                 fontSize: '12px',
