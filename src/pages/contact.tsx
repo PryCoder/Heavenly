@@ -117,7 +117,7 @@ console.log(API_URL);
     const message = `✨ *New Inquiry from Website* ✨\n\n*👤 Name:* ${submittedData.name}\n*📧 Email:* ${submittedData.email}\n*📱 Phone:* ${submittedData.phone || 'N/A'}\n*🎉 Event:* ${submittedData.eventType}\n*📅 Date:* ${submittedData.date || 'N/A'}\n*📍 Location:* ${submittedData.location || 'N/A'}\n*👥 Guests:* ${submittedData.guests || 'N/A'}\n*💰 Budget:* ${submittedData.budget}\n\n*💬 Message:*\n${submittedData.message}`;
 
     // 91 prepended assuming India country code for 9324148255
-    return `https://wa.me/919324148255?text=${encodeURIComponent(message)}`;
+    return `https://wa.me/919167090539?text=${encodeURIComponent(message)}`;
   };
 
   return (
