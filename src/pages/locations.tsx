@@ -33,7 +33,7 @@ export default function LocationsPage() {
       ],
       bestTime: 'All Year',
       venues: ['Mayfair', 'Kensington', 'Chelsea', 'Westminster', 'Richmond', 'City of London'],
-      image: 'https://bp37mc8dd9.preview.c36.airoapp.ai/airo-assets/images/pages/locations/italy',
+      image: '/joy&lucy/fwdjoylucy/lon-hw (4).jpg',
       href: '/locations#london',
     },
     {
@@ -52,7 +52,7 @@ export default function LocationsPage() {
       ],
       bestTime: 'November - March',
       venues: ['Candolim', 'Baga', 'Anjuna', 'South Goa', 'Panaji', 'Assagao'],
-      image: 'https://bp37mc8dd9.preview.c36.airoapp.ai/airo-assets/images/pages/locations/france',
+      image: '/christianwed/fwdchristianwedding/chr-1 (3).jpg',
       href: '/locations#goa',
     },
     {
@@ -71,7 +71,7 @@ export default function LocationsPage() {
       ],
       bestTime: 'October - March',
       venues: ['Udaipur', 'Jaipur', 'Jodhpur', 'Jaisalmer', 'Pushkar', 'Bikaner'],
-      image: 'https://bp37mc8dd9.preview.c36.airoapp.ai/airo-assets/images/pages/locations/india',
+      image: '/brideshoot/fwdbridephotoshoot/br-H-1 (3).jpg',
       href: '/locations#rajasthan',
     },
     {
@@ -90,7 +90,7 @@ export default function LocationsPage() {
       ],
       bestTime: 'October - March',
       venues: ['South Mumbai', 'Bandra', 'Juhu', 'Powai', 'Worli', 'Navi Mumbai'],
-      image: 'https://bp37mc8dd9.preview.c36.airoapp.ai/airo-assets/images/pages/locations/italy',
+      image: '/bhaktisagar/fwdheavenlywedsphotos/bk-h-1 (7).jpg',
       href: '/locations#mumbai',
     },
   ];

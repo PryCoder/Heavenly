@@ -21,6 +21,36 @@ export default function HomePage() {
   ];
   const heroVideoSrc = 'https://res.cloudinary.com/do4h3t3mk/video/upload/w_1280,q_auto,f_auto/home_page_1_zq0jbq.mp4';
   const API_URL = import.meta.env.VITE_API_URL
+
+  const weddingFilmLinks = [
+    'https://youtu.be/zQBn6EJSKNI?si=https://youtu.be/zQBn6EJSKNI?si=SqA94gQfsDQm4i3r',
+    'https://youtu.be/OiQJGiFqj7A?si=jEre234vUu36xg0k',
+    'https://youtu.be/5GKMismSKpI?si=8Ld6JQyKI1HEwZIh',
+    'https://youtu.be/Iuutqhrpd-A?si=mOoD_vMlCtz2irxw',
+    'https://youtu.be/RToNRUs_sU0?si=rr62WYiWifIQtVpQ',
+    'https://www.youtube.com/watch?v=FBpFD3vQkLU',
+    'https://youtu.be/SCLkNwGytvY?si=tn9ACClyqlBTx4lK',
+    'https://youtu.be/fHTX4r_vUBs?si=zWUA2OhhQR5UVwAS',
+  ];
+
+  const getYouTubeId = (link: string): string | null => {
+    const match = link.match(
+      /(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/))([A-Za-z0-9_-]{11})/
+    );
+    return match?.[1] ?? null;
+  };
+
+  const weddingFilms = weddingFilmLinks
+    .map((link, index) => {
+      const youTubeId = getYouTubeId(link);
+      if (!youTubeId) return null;
+      return {
+        id: `yt-${youTubeId}-${index}`,
+        title: `Wedding Film ${index + 1}`,
+        embedSrc: `https://www.youtube-nocookie.com/embed/${youTubeId}`,
+      };
+    })
+    .filter((film): film is { id: string; title: string; embedSrc: string } => film !== null);
   useEffect(() => {
     const checkHealth = async () => {
       try {
@@ -125,13 +155,26 @@ export default function HomePage() {
             </motion.div>
 
             {/* Decorative Blog Stamp - hidden on mobile/tablet */}
-            <div className="absolute right-8 top-1/2 hidden -translate-y-1/2 xl:block" style={{ opacity: 0.5, transform: 'translateY(-50%) rotate(-10deg)' }}>
-              <div className="flex h-28 w-28 items-center justify-center rounded-full" style={{ border: '1.5px solid #C9A7A0' }}>
-                <div className="text-center">
-                  <p className="mb-0" style={{ fontFamily: 'var(--font-script)', fontSize: '22px', color: '#C9A7A0', fontWeight: 400, lineHeight: '1' }}>Blog</p>
-                  <p className="uppercase" style={{ fontSize: '8px', letterSpacing: '1.5px', color: '#B5A09A', marginTop: '2px' }}>Explore</p>
+            <div className="absolute right-8 top-1/2 hidden -translate-y-1/2 xl:block">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.92, rotate: -12 }}
+                animate={{ opacity: 0.5, scale: 1, rotate: -10, y: [0, -6, 0] }}
+                transition={{
+                  opacity: { duration: 0.6, delay: 0.8 },
+                  scale: { duration: 0.6, delay: 0.8 },
+                  rotate: { duration: 0.6, delay: 0.8 },
+                  y: { duration: 4.2, repeat: Infinity, ease: 'easeInOut', delay: 1.4 },
+                }}
+                whileHover={{ opacity: 0.8, scale: 1.04 }}
+                className="cursor-default select-none"
+              >
+                <div className="flex h-28 w-28 items-center justify-center rounded-full" style={{ border: '1.5px solid #C9A7A0' }}>
+                  <div className="text-center">
+                    <p className="mb-0" style={{ fontFamily: 'var(--font-script)', fontSize: '22px', color: '#C9A7A0', fontWeight: 400, lineHeight: '1' }}>Blog</p>
+                    <p className="uppercase" style={{ fontSize: '8px', letterSpacing: '1.5px', color: '#B5A09A', marginTop: '2px' }}>Explore</p>
+                  </div>
                 </div>
-              </div>
+              </motion.div>
             </div>
           </div>
         </div>
@@ -253,6 +296,73 @@ export default function HomePage() {
               your unique love story.
             </p>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Wedding Films */}
+      <section style={{ padding: 'clamp(60px, 8vw, 90px) 0' }}>
+        <div className="mx-auto" style={{
+          maxWidth: '1320px',
+          padding: '0 clamp(16px, 5vw, 60px)',
+        }}>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="mb-12 md:mb-16 text-center"
+          >
+            <p className="mb-4 uppercase tracking-widest" style={{
+              fontSize: 'clamp(10px, 2vw, 11px)',
+              letterSpacing: 'clamp(2px, 1vw, 3px)',
+              color: '#9A9A9A',
+            }}>
+              Wedding Film
+            </p>
+            <h2 className="font-heading mb-6" style={{
+              fontSize: 'clamp(32px, 8vw, 44px)',
+              lineHeight: '1.3',
+              color: '#C9A7A0',
+              fontWeight: 400,
+            }}>
+              Wedding Films
+            </h2>
+          </motion.div>
+
+          <div className="grid gap-4 sm:gap-6 md:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+            {weddingFilms.map((film, index) => (
+              <motion.div
+                key={film.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.05 }}
+                className="overflow-hidden rounded-lg"
+                style={{ border: '1px solid #ECECEC', backgroundColor: '#FFFFFF' }}
+              >
+                <div className="w-full aspect-video bg-black">
+                  <iframe
+                    className="w-full h-full"
+                    src={film.embedSrc}
+                    title={film.title}
+                    loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    allowFullScreen
+                  />
+                </div>
+                <div className="p-4">
+                  <p className="uppercase" style={{
+                    fontSize: '11px',
+                    letterSpacing: '2px',
+                    color: '#7A7A7A',
+                  }}>
+                    {film.title}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 

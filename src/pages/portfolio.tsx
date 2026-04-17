@@ -91,14 +91,35 @@ export default function PortfolioPage() {
   const [selectedWedding, setSelectedWedding] = useState<Wedding | null>(null);
   const [lightboxImage, setLightboxImage] = useState<string | null>(null);
 
-  const weddingFilms = [
-    { id: 'film-1', title: 'Wedding Film 1', src: '/wedding film -1 (1) (1).mp4' },
-    { id: 'film-2', title: 'Wedding Film 2', src: '/wedding film - 3 (1).mp4' },
-    { id: 'film-3', title: 'Wedding Film 3', src: '/weddiing 4. (1).mp4' },
-    { id: 'film-4', title: 'Wedding Film 4', src: '/wedding - 5 (1).mp4' },
-    { id: 'film-5', title: 'Wedding Film 5', src: '/wedding 6 (1).mp4' },
-    { id: 'film-6', title: 'Wedding Film 6', src: '/wedding - 7_compressed.mp4' },
+  const weddingFilmLinks = [
+    'https://youtu.be/zQBn6EJSKNI?si=https://youtu.be/zQBn6EJSKNI?si=SqA94gQfsDQm4i3r',
+    'https://youtu.be/OiQJGiFqj7A?si=jEre234vUu36xg0k',
+    'https://youtu.be/5GKMismSKpI?si=8Ld6JQyKI1HEwZIh',
+    'https://youtu.be/Iuutqhrpd-A?si=mOoD_vMlCtz2irxw',
+    'https://youtu.be/RToNRUs_sU0?si=rr62WYiWifIQtVpQ',
+    'https://youtu.be/FBpFD3vQkLU?si=u2KWp024X0cWtwjG',
+    'https://youtu.be/SCLkNwGytvY?si=tn9ACClyqlBTx4lK',
+    'https://youtu.be/fHTX4r_vUBs?si=zWUA2OhhQR5UVwAS',
   ];
+
+  const getYouTubeId = (link: string): string | null => {
+    const match = link.match(
+      /(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/))([A-Za-z0-9_-]{11})/
+    );
+    return match?.[1] ?? null;
+  };
+
+  const weddingFilms = weddingFilmLinks
+    .map((link, index) => {
+      const youTubeId = getYouTubeId(link);
+      if (!youTubeId) return null;
+      return {
+        id: `yt-${youTubeId}-${index}`,
+        title: `Wedding Film ${index + 1}`,
+        embedSrc: `https://www.youtube-nocookie.com/embed/${youTubeId}`,
+      };
+    })
+    .filter((film): film is { id: string; title: string; embedSrc: string } => film !== null);
 
   const categories = [
     { id: 'all', label: 'All' },
@@ -352,12 +373,14 @@ export default function PortfolioPage() {
                 className="bg-white rounded-sm overflow-hidden"
               >
                 <div className="w-full aspect-video bg-black">
-                  <video
+                  <iframe
                     className="w-full h-full"
-                    controls
-                    playsInline
-                    preload="metadata"
-                    src={encodeURI(film.src)}
+                    src={film.embedSrc}
+                    title={film.title}
+                    loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    allowFullScreen
                   />
                 </div>
                 <div className="p-4">
