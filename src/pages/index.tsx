@@ -112,7 +112,7 @@ export default function HomePage() {
                   marginTop: '0',
                   padding: '0 10px'
                 }}>
-                Where Dreams Become Reality
+               Heavenly weds we make your special day heavenly!
               </motion.h1>
               
               {/* Subtitle - Italic */}
