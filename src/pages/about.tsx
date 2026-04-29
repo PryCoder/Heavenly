@@ -2,6 +2,9 @@ import { motion } from 'framer-motion';
 import { Heart, Award, Sparkles, Calendar } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
+// Import the new philosophy image
+import philosophyNewImage from '/fwdservicesphotosnew/complete Wedding Planning - photo.png';
+
 export default function AboutPage() {
   const values = [
     {
@@ -27,7 +30,7 @@ export default function AboutPage() {
   ];
 
   const philosophyImage = {
-    src: '/about/philosophy.jpg',
+    src: philosophyNewImage,
     fallbackSrc: 'https://bp37mc8dd9.preview.c36.airoapp.ai/airo-assets/images/pages/about/philosophy',
   };
 
@@ -151,12 +154,12 @@ export default function AboutPage() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="relative w-full overflow-hidden rounded-sm aspect-[4/3] sm:aspect-[16/10]"
+              className="relative w-full overflow-hidden rounded-sm aspect-[4/3] sm:aspect-[16/10] bg-[#f5f5f5]"
             >
               <img
                 src={philosophyImage.src}
-                alt="Luxury wedding setup"
-                className="absolute inset-0 h-full w-full object-cover"
+                alt="Complete Wedding Planning - Luxury wedding setup"
+                className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 hover:scale-105"
                 style={{ filter: 'brightness(0.98) saturate(0.85)' }}
                 onError={(e) => {
                   e.currentTarget.src = philosophyImage.fallbackSrc;
@@ -193,9 +196,9 @@ export default function AboutPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-white rounded-sm p-6 sm:p-8"
+                className="bg-white rounded-sm p-6 sm:p-8 shadow-sm hover:shadow-md transition-shadow duration-300"
               >
-                <div className="mb-5 inline-flex items-center justify-center w-14 h-14 bg-[#F2E8E6]">
+                <div className="mb-5 inline-flex items-center justify-center w-14 h-14 bg-[#F2E8E6] rounded-full">
                   <value.icon className="h-6 w-6 text-[#C9A7A0]" />
                 </div>
                 <h3 className="font-serif mb-3 text-lg sm:text-xl text-[#6F6F6F] font-medium">
@@ -241,15 +244,18 @@ export default function AboutPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.15 }}
-                className="text-center"
+                className="text-center group"
               >
-                <div className="mb-6 overflow-hidden rounded-sm w-full aspect-[3/4]">
+                <div className="mb-6 overflow-hidden rounded-sm w-full aspect-[3/4] bg-[#f5f5f5]">
                   <img
                     src={`/image-${index + 1}.png`}
                     alt={member.name}
-                    className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                     style={{ filter: 'brightness(0.98) saturate(0.85)' }}
                     loading="lazy"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src = 'https://placehold.co/600x800/f5f5f5/C9A7A0?text=Team+Member';
+                    }}
                   />
                 </div>
                 <h3 className="font-serif mb-2 text-xl sm:text-2xl text-[#6F6F6F] font-medium">
@@ -267,11 +273,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Global Reach */}
-     
-
       {/* CTA Section */}
-      <section className="py-16 md:py-20 lg:py-24 px-4 sm:px-8">
+      <section className="py-16 md:py-20 lg:py-24 px-4 sm:px-8 bg-[#FAFAFA]">
         <div className="mx-auto max-w-3xl text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -280,7 +283,7 @@ export default function AboutPage() {
             transition={{ duration: 0.6 }}
           >
             <h2 className="font-serif mb-4 md:mb-6 text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight text-[#C9A7A0] font-light">
-              Let’s Make Your Wedding Heavenly !
+              Let’s Make Your Wedding Heavenly!
             </h2>
             <p className="text-sm sm:text-base leading-relaxed mb-4 text-[#6F6F6F] font-light max-w-2xl mx-auto">
               Ready to begin planning the celebration of your wedding? Book your complimentary consultation today and let us transform your vision into a timeless experience of elegance and perfection.
@@ -290,7 +293,7 @@ export default function AboutPage() {
             </p>
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 uppercase tracking-[2px] transition-all duration-500 px-6 sm:px-8 md:px-12 py-4 sm:py-5 text-[11px] sm:text-xs bg-[#F2E8E6] text-[#6F6F6F] hover:bg-[#C9A7A0] hover:text-white font-sans"
+              className="inline-flex items-center gap-2 uppercase tracking-[2px] transition-all duration-500 px-6 sm:px-8 md:px-12 py-4 sm:py-5 text-[11px] sm:text-xs bg-[#C9A7A0] text-white hover:bg-[#B89690] font-sans"
             >
               <Calendar className="h-5 w-5" />
               Schedule Consultation
