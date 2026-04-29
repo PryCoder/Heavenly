@@ -50,104 +50,6 @@ export default function BlogPage() {
     }
   ];
 
-  const blogPosts = [
-    {
-      id: 3,
-      title: '10 Questions to Ask Your Destination Wedding Planner',
-      excerpt: 'Essential questions that will help you find the perfect planner for your vision and budget.',
-      image: 'https://images.unsplash.com/photo-1464368081811-1740e3b80f10?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250&q=80',
-      category: 'Planning Tips',
-      author: 'Elena Vitale',
-      date: 'March 8, 2024',
-      readTime: '6 min read',
-      views: '1.8k',
-      comments: 5
-    },
-    {
-      id: 4,
-      title: 'Indian Wedding Traditions: A Complete Guide',
-      excerpt: 'Understanding the beautiful ceremonies that make Indian weddings truly magical.',
-      image: 'https://images.unsplash.com/photo-1534265264056-4a5e9c816aa4?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250&q=80',
-      category: 'Traditions',
-      author: 'Priya Sharma',
-      date: 'March 5, 2024',
-      readTime: '10 min read',
-      views: '2.2k',
-      comments: 7
-    },
-    {
-      id: 5,
-      title: 'Top 10 Tuscany Wedding Venues for 2024',
-      excerpt: 'Our curated selection of the most romantic villas and estates in the Italian countryside.',
-      image: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250&q=80',
-      category: 'Destinations',
-      author: 'Marco Rossi',
-      date: 'March 2, 2024',
-      readTime: '8 min read',
-      views: '3.4k',
-      comments: 15
-    },
-    {
-      id: 6,
-      title: 'How to Style a Provençal Wedding',
-      excerpt: 'Lavender, olive branches, and rustic elegance: capturing the essence of the South of France.',
-      image: 'https://images.unsplash.com/photo-1549144511-f099e773c147?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250&q=80',
-      category: 'Vendors & Styling',
-      author: 'Sophie Martin',
-      date: 'Feb 28, 2024',
-      readTime: '7 min read',
-      views: '1.5k',
-      comments: 4
-    },
-    {
-      id: 7,
-      title: 'A Magical Wedding in Udaipur\'s City Palace',
-      excerpt: 'How Meera & Raj planned a royal Indian wedding that blended tradition with modern luxury.',
-      image: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250&q=80',
-      category: 'Real Weddings',
-      author: 'Anita Desai',
-      date: 'Feb 25, 2024',
-      readTime: '9 min read',
-      views: '2.9k',
-      comments: 11
-    },
-    {
-      id: 8,
-      title: 'Destination Wedding Photography: What to Know',
-      excerpt: 'Tips for choosing the right photographer and planning your wedding album.',
-      image: 'https://images.unsplash.com/photo-1464368081811-1740e3b80f10?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250&q=80',
-      category: 'Vendors & Styling',
-      author: 'James Wilson',
-      date: 'Feb 22, 2024',
-      readTime: '6 min read',
-      views: '1.2k',
-      comments: 3
-    }
-  ];
-
-  const popularPosts = [
-    {
-      title: 'How to Plan a Wedding in 12 Months',
-      views: '15.2k',
-      image: 'https://images.unsplash.com/photo-1464368081811-1740e3b80f10?ixlib=rb-4.0.3&auto=format&fit=crop&w=60&h=60&q=80'
-    },
-    {
-      title: 'Lake Como vs Tuscany: Which is Right for You?',
-      views: '12.8k',
-      image: 'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=60&h=60&q=80'
-    },
-    {
-      title: 'Average Cost of a Destination Wedding',
-      views: '11.4k',
-      image: 'https://images.unsplash.com/photo-1534265264056-4a5e9c816aa4?ixlib=rb-4.0.3&auto=format&fit=crop&w=60&h=60&q=80'
-    },
-    {
-      title: 'French Wedding Traditions Explained',
-      views: '9.7k',
-      image: 'https://images.unsplash.com/photo-1549144511-f099e773c147?ixlib=rb-4.0.3&auto=format&fit=crop&w=60&h=60&q=80'
-    }
-  ];
-
   const topics = [
     'Real Weddings', 'Planning Tips', 'Venue Guides', 
     'Budget', 'Vendors', 'Legal', 'Traditions', 'Honeymoon'
@@ -290,72 +192,12 @@ export default function BlogPage() {
         </div>
       </section>
 
-      {/* Main Blog Grid */}
+      {/* Sidebar Only Section - No Latest Posts */}
       <section className="py-12 px-4 md:px-8 bg-[#FAFAFA]">
         <div className="mx-auto max-w-7xl">
-          <div className="grid lg:grid-cols-3 gap-8">
-            {/* Blog Posts */}
-            <div className="lg:col-span-2">
-              <h2 className="font-heading text-2xl text-[#C9A7A0] font-light mb-6">
-                Latest Articles
-              </h2>
-              
-              <div className="space-y-8">
-                {blogPosts.map((post, index) => (
-                  <motion.div
-                    key={post.id}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                  >
-                    <Link to={`/blog/${post.id}`} className="flex gap-6 group">
-                      <div className="flex-shrink-0 w-40 h-32 overflow-hidden rounded-sm">
-                        <img
-                          src={post.image}
-                          alt={post.title}
-                          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                        />
-                      </div>
-                      <div>
-                        <div className="flex items-center gap-2 mb-2">
-                          <span className="text-xs px-2 py-1 bg-[#F2E8E6] rounded-full text-[#6F6F6F]">
-                            {post.category}
-                          </span>
-                          <span className="text-xs text-[#9A9A9A]">{post.date}</span>
-                        </div>
-                        <h3 className="font-heading text-lg text-[#C9A7A0] mb-2 group-hover:underline">
-                          {post.title}
-                        </h3>
-                        <p className="text-sm text-[#6F6F6F] mb-2 line-clamp-2">
-                          {post.excerpt}
-                        </p>
-                        <div className="flex items-center gap-3 text-xs text-[#9A9A9A]">
-                          <span>By {post.author}</span>
-                          <span>•</span>
-                          <span>{post.readTime}</span>
-                          <span>•</span>
-                          <span className="flex items-center gap-1">
-                            <Eye className="h-3 w-3" />
-                            {post.views}
-                          </span>
-                        </div>
-                      </div>
-                    </Link>
-                  </motion.div>
-                ))}
-              </div>
-
-              {/* Load More */}
-              <div className="mt-12 text-center">
-                <button className="px-8 py-3 border border-[#C9A7A0] text-[#6F6F6F] text-sm uppercase tracking-[2px] hover:bg-[#F2E8E6] transition-colors">
-                  Load More Articles
-                </button>
-              </div>
-            </div>
-
-            {/* Sidebar */}
-            <div className="lg:col-span-1">
+          <div className="flex justify-center">
+            {/* Sidebar Only - Centered */}
+            <div className="w-full max-w-md">
               {/* About */}
               <div className="bg-white p-6 rounded-sm mb-6">
                 <h3 className="font-heading text-lg text-[#C9A7A0] mb-4">About This Blog</h3>
@@ -368,33 +210,11 @@ export default function BlogPage() {
                 </div>
               </div>
 
-              {/* Popular Posts */}
-              <div className="bg-white p-6 rounded-sm mb-6">
-                <h3 className="font-heading text-lg text-[#C9A7A0] mb-4">Popular Posts</h3>
-                <div className="space-y-4">
-                  {popularPosts.map((post, index) => (
-                    <Link key={index} to="#" className="flex gap-3 group">
-                      <img
-                        src={post.image}
-                        alt=""
-                        className="w-16 h-16 object-cover rounded-sm"
-                      />
-                      <div>
-                        <h4 className="text-sm text-[#6F6F6F] mb-1 group-hover:text-[#C9A7A0] line-clamp-2">
-                          {post.title}
-                        </h4>
-                        <span className="text-xs text-[#9A9A9A]">{post.views} reads</span>
-                      </div>
-                    </Link>
-                  ))}
-                </div>
-              </div>
-
               {/* Topics */}
               <div className="bg-white p-6 rounded-sm mb-6">
                 <h3 className="font-heading text-lg text-[#C9A7A0] mb-4">Browse by Topic</h3>
                 <div className="flex flex-wrap gap-2">
-                  {topics.map((topic, index) => (
+                  {topics.map((topic) => (
                     <Link
                       key={topic}
                       to={`/blog/topic/${topic.toLowerCase().replace(/\s+/g, '-')}`}
@@ -434,7 +254,7 @@ export default function BlogPage() {
           <h2 className="font-heading text-2xl text-[#C9A7A0] font-light mb-4">
             Follow Our Journey
           </h2>
-          <p className="text-[#6F6F6F] mb-8">@yourweddingcompany on Instagram</p>
+          <p className="text-[#6F6F6F] mb-8">@heavenlyweds on Instagram</p>
           
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[1, 2, 3, 4].map((item) => (

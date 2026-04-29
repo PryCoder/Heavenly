@@ -7,12 +7,12 @@ interface MenuItem {
   name: string;
   href: string;
   children?: MenuItem[];
+  disabled?: boolean;
 }
 
 const menuStructure: MenuItem[] = [
-  { name: 'HOME', href: '/' },
+  { name: 'HOME PAGE', href: '/' },
   { name: 'ABOUT US', href: '/about' },
-  { name: 'PORTFOLIO', href: '/portfolio' },
   {
     name: 'SERVICES',
     href: '/services',
@@ -23,16 +23,9 @@ const menuStructure: MenuItem[] = [
       {name: 'Additional Services', href: '/services/additionalservices'}
     ],
   },
-  {
-    name: 'LOCATIONS',
-    href: '/locations',
-    children: [
-      { name: 'London', href: '/locations#london' },
-      { name: 'Goa', href: '/locations#goa' },
-      { name: 'Rajasthan', href: '/locations#rajasthan' },
-      { name: 'Mumbai', href: '/locations#mumbai' },
-    ],
-  },
+  { name: 'PORTFOLIO', href: '/portfolio' },
+  { name: 'WEDDING FILMS', href: '/wedding-films' },
+  { name: 'LOCATIONS', href: '/locations' },
   { name: 'CEREMONIES', href: '/ceremonies' },
   {
     name: 'VENUES',
@@ -41,9 +34,11 @@ const menuStructure: MenuItem[] = [
       { name: 'Lake Como', href: '/venues/lake-como' },
       { name: 'Tuscany', href: '/venues/tuscany' },
       { name: 'French Riviera', href: '/venues/french-riviera' },
+      { name: 'The Leela Palace, Rajasthan', href: '/venues/the-leela-palace-rajasthan' },
     ],
   },
   { name: 'BLOG', href: '/blog' },
+  { name: 'CONTACT US', href: '/contact' },
 ];
 
 export default function Header() {
@@ -131,11 +126,10 @@ export default function Header() {
     }, 200);
   };
 
-  // Toggle mobile dropdown - Fixed to prevent event bubbling
+  // Toggle mobile dropdown
   const toggleMobileDropdown = (e: React.MouseEvent, name: string) => {
     e.preventDefault();
     e.stopPropagation();
-    // Toggle the dropdown
     setMobileOpenDropdown(prev => prev === name ? null : name);
   };
 
@@ -151,13 +145,13 @@ export default function Header() {
         backgroundColor: scrolled ? 'rgba(255,255,255,0.98)' : '#FFFFFF'
       }}
     >
-      {/* Main Header - Responsive height */}
+      {/* Main Header - Reduced height */}
       <div className="relative" style={{ 
-        height: 'clamp(90px, 15vw, 117px)'
+        height: 'clamp(70px, 12vw, 90px)'  // Reduced from 90px-117px to 70px-90px
       }}>
-        <div className="mx-auto flex h-full max-w-[1902px] items-center justify-between px-4 sm:px-8 lg:px-[82px]">
+        <div className="mx-auto flex h-full max-w-[1902px] items-center justify-between px-4 sm:px-6 lg:px-[60px]">  {/* Reduced padding */}
           
-          {/* Logo - Responsive sizing */}
+          {/* Logo - Adjusted sizing */}
           <Link
             to="/"
             className="flex items-center h-full transition-opacity duration-300 hover:opacity-70"
@@ -170,39 +164,16 @@ export default function Header() {
             <img
               src="/heavenly logo- png-brown.png"
               alt="HeavenlyWeds Logo"
-              className="h-full w-auto max-w-[170px] sm:max-w-[220px] md:max-w-[280px] lg:max-w-[420px] xl:max-w-[480px] object-contain transition-transform duration-300 lg:scale-110"
+              className="h-full w-auto max-w-[140px] sm:max-w-[180px] md:max-w-[220px] lg:max-w-[260px] object-contain transition-transform duration-300"
               loading="eager"
               fetchPriority="high"
               decoding="async"
             />
           </Link>
 
-          {/* Desktop Navigation - Hidden on mobile/tablet */}
-          <div className="hidden lg:flex flex-col items-end gap-3">
-            {/* Top Right CTA Section */}
-            <div className="flex items-center gap-5 mt-4">
-              <Link
-                to="/contact"
-                className="uppercase transition-all duration-300 hover:bg-[#E8DCD8] hover:text-[#6F6F6F]"
-                style={{
-                  height: '30px',
-                  borderRadius: '16px',
-                  padding: '8px 18px',
-                  fontSize: '11px',
-                  letterSpacing: '1.5px',
-                  fontWeight: 400,
-                  backgroundColor: '#F2E8E6',
-                  color: '#8A8A8A',
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                }}
-              >
-                CONTACT US
-              </Link>
-            </div>
-
-            {/* Main Navigation */}
-            <nav className="flex gap-[30px] mt-1" role="navigation" aria-label="Main navigation">
+          {/* Desktop Navigation - Reduced gap */}
+          <div className="hidden lg:flex items-center gap-6">  {/* Added gap between nav and button */}
+            <nav className="flex gap-[20px]" role="navigation" aria-label="Main navigation">  {/* Reduced from 30px to 20px */}
               {menuStructure.map((item) => (
                 <div 
                   key={item.name} 
@@ -210,49 +181,98 @@ export default function Header() {
                   onMouseEnter={() => item.children && handleMouseEnter(item.name)}
                   onMouseLeave={handleMouseLeave}
                 >
-                  <Link
-                    to={item.href}
-                    className="uppercase tracking-wider transition-colors duration-300 relative group whitespace-nowrap"
-                    style={{
-                      fontSize: '12px',
-                      lineHeight: '14px',
-                      letterSpacing: '2.5px',
-                      fontWeight: 400,
-                      color: isActive(item.href) ? '#C9A7A0' : '#8A8A8A',
-                      textDecoration: 'none',
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      gap: '4px',
-                    }}
-                    aria-haspopup={item.children ? 'true' : 'false'}
-                    aria-expanded={openDropdown === item.name}
-                  >
-                    {item.name}
-                    {item.children && (
-                      <ChevronDown 
-                        className={`h-3 w-3 transition-transform duration-200 ${
-                          openDropdown === item.name ? 'rotate-180' : ''
-                        }`} 
+                  {item.disabled ? (
+                    <span
+                      className="uppercase tracking-wider relative whitespace-nowrap"
+                      style={{
+                        fontSize: '11px',  // Reduced from 12px
+                        lineHeight: '13px',
+                        letterSpacing: '2px',  // Reduced from 2.5px
+                        fontWeight: 400,
+                        color: '#B5B5B5',
+                        textDecoration: 'none',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '4px',
+                        cursor: 'not-allowed',
+                      }}
+                      aria-disabled="true"
+                      title="Coming soon"
+                    >
+                      {item.name}
+                    </span>
+                  ) : item.name === 'CONTACT US' ? (
+                    // Contact Us Button - Filled background, reduced size
+                    <Link
+                      to={item.href}
+                      className="uppercase tracking-wider transition-all duration-300 relative whitespace-nowrap px-4 py-1.5 rounded-md"
+                      style={{
+                        fontSize: '11px',
+                        lineHeight: '13px',
+                        letterSpacing: '2px',
+                        fontWeight: 500,
+                        color: '#FFFFFF',
+                        backgroundColor: '#C9A7A0',
+                        textDecoration: 'none',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '4px',
+                        border: 'none',
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.backgroundColor = '#B89690';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.backgroundColor = '#C9A7A0';
+                      }}
+                    >
+                      {item.name}
+                    </Link>
+                  ) : (
+                    <Link
+                      to={item.href}
+                      className="uppercase tracking-wider transition-colors duration-300 relative group whitespace-nowrap"
+                      style={{
+                        fontSize: '11px',  // Reduced from 12px
+                        lineHeight: '13px',
+                        letterSpacing: '2px',  // Reduced from 2.5px
+                        fontWeight: 400,
+                        color: isActive(item.href) ? '#C9A7A0' : '#8A8A8A',
+                        textDecoration: 'none',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '4px',
+                      }}
+                      aria-haspopup={item.children ? 'true' : 'false'}
+                      aria-expanded={openDropdown === item.name}
+                    >
+                      {item.name}
+                      {item.children && (
+                        <ChevronDown
+                          className={`h-3 w-3 transition-transform duration-200 ${
+                            openDropdown === item.name ? 'rotate-180' : ''
+                          }`}
+                        />
+                      )}
+
+                      {/* Active/Hover underline */}
+                      <span
+                        className={`absolute bottom-[-4px] left-0 right-0 h-[1px] transition-all duration-300 origin-left ${
+                          isActive(item.href) ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
+                        }`}
+                        style={{ backgroundColor: '#C9A7A0' }}
                       />
-                    )}
-                    
-                    {/* Active/Hover underline */}
-                    <span 
-                      className={`absolute bottom-[-4px] left-0 right-0 h-[1px] transition-all duration-300 origin-left ${
-                        isActive(item.href) ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
-                      }`}
-                      style={{ backgroundColor: '#C9A7A0' }}
-                    />
-                  </Link>
+                    </Link>
+                  )}
 
                   {/* Desktop Dropdown */}
                   {item.children && openDropdown === item.name && (
                     <div 
-                      className="absolute top-full left-0 mt-4 bg-white rounded-sm shadow-lg z-50"
+                      className="absolute top-full left-0 mt-3 bg-white rounded-sm shadow-lg z-50"  // Reduced mt-4 to mt-3
                       style={{
-                        minWidth: '220px',
+                        minWidth: '200px',  // Reduced from 220px
                         border: '1px solid #ECECEC',
-                        padding: '12px 0',
+                        padding: '8px 0',  // Reduced padding
                       }}
                       role="menu"
                       onMouseEnter={() => handleMouseEnter(item.name)}
@@ -262,9 +282,9 @@ export default function Header() {
                         <Link
                           key={child.name}
                           to={child.href}
-                          className="block px-6 py-3 transition-all duration-200 hover:bg-[#F2E8E6] hover:text-[#C9A7A0]"
+                          className="block px-5 py-2 transition-all duration-200 hover:bg-[#F2E8E6] hover:text-[#C9A7A0]"  // Reduced padding
                           style={{
-                            fontSize: '13px',
+                            fontSize: '12px',  // Reduced from 13px
                             color: isActive(child.href) ? '#C9A7A0' : '#6F6F6F',
                             fontWeight: isActive(child.href) ? 500 : 400,
                             textDecoration: 'none',
@@ -293,7 +313,7 @@ export default function Header() {
             aria-expanded={isMenuOpen}
             style={{ color: '#6F6F6F' }}
           >
-            {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}  {/* Reduced icon size */}
           </button>
         </div>
       </div>
@@ -301,28 +321,43 @@ export default function Header() {
       {/* Mobile Menu - Slide-in from right */}
       <div 
         ref={mobileMenuRef}
-        className={`fixed top-0 right-0 bottom-0 w-full sm:w-[400px] bg-white shadow-2xl transform transition-transform duration-300 ease-in-out lg:hidden z-[55] ${
+        className={`fixed top-0 right-0 bottom-0 w-full sm:w-[380px] bg-white shadow-2xl transform transition-transform duration-300 ease-in-out lg:hidden z-[55] ${
           isMenuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
         style={{
           borderLeft: '1px solid #ECECEC',
           overflowY: 'auto',
           WebkitOverflowScrolling: 'touch',
-          top: 'clamp(90px, 15vw, 117px)',
+          top: 'clamp(70px, 12vw, 90px)',  // Matches reduced header height
         }}
       >
-        <div className="px-6 sm:px-8 py-8 space-y-2">
+        <div className="px-5 py-6 space-y-2">  {/* Reduced padding */}
           {menuStructure.map((item) => (
             <div key={item.name} className="border-b border-gray-100 last:border-0">
               {/* Menu Item */}
               <div className="flex items-center justify-between">
-                {item.children ? (
+                {item.disabled ? (
+                  <div
+                    className="flex-1 text-left py-2 uppercase tracking-widest"  // Reduced padding
+                    style={{
+                      fontSize: '13px',  // Reduced from 14px
+                      letterSpacing: '1.8px',
+                      color: '#B5B5B5',
+                      fontWeight: 400,
+                      cursor: 'not-allowed',
+                    }}
+                    aria-disabled="true"
+                    title="Coming soon"
+                  >
+                    {item.name}
+                  </div>
+                ) : item.children ? (
                   <button
                     onClick={(e) => toggleMobileDropdown(e, item.name)}
-                    className="flex-1 text-left py-3 uppercase tracking-widest transition-colors"
+                    className="flex-1 text-left py-2 uppercase tracking-widest transition-colors"  // Reduced padding
                     style={{
-                      fontSize: '14px',
-                      letterSpacing: '2px',
+                      fontSize: '13px',
+                      letterSpacing: '1.8px',
                       color: isActive(item.href) ? '#C9A7A0' : '#6F6F6F',
                       fontWeight: isActive(item.href) ? 500 : 400,
                       background: 'none',
@@ -336,10 +371,10 @@ export default function Header() {
                 ) : (
                   <Link
                     to={item.href}
-                    className="block py-3 uppercase tracking-widest transition-colors flex-1"
+                    className="block py-2 uppercase tracking-widest transition-colors flex-1"  // Reduced padding
                     style={{
-                      fontSize: '14px',
-                      letterSpacing: '2px',
+                      fontSize: '13px',
+                      letterSpacing: '1.8px',
                       color: isActive(item.href) ? '#C9A7A0' : '#6F6F6F',
                       fontWeight: isActive(item.href) ? 500 : 400,
                       textDecoration: 'none',
@@ -355,7 +390,7 @@ export default function Header() {
                 {item.children && (
                   <button
                     onClick={(e) => toggleMobileDropdown(e, item.name)}
-                    className="p-2 transition-transform duration-200 hover:text-[#C9A7A0]"
+                    className="p-1 transition-transform duration-200 hover:text-[#C9A7A0]"  // Reduced padding
                     style={{
                       color: '#8A8A8A',
                       background: 'none',
@@ -366,7 +401,7 @@ export default function Header() {
                     aria-expanded={mobileOpenDropdown === item.name}
                   >
                     <ChevronDown 
-                      className={`h-4 w-4 transition-transform duration-200 ${
+                      className={`h-3.5 w-3.5 transition-transform duration-200 ${
                         mobileOpenDropdown === item.name ? 'rotate-180' : ''
                       }`} 
                     />
@@ -381,18 +416,18 @@ export default function Header() {
                     mobileOpenDropdown === item.name ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
                   }`}
                 >
-                  <div className="pl-4 space-y-1 py-2 border-l-2 border-[#F2E8E6] ml-2">
+                  <div className="pl-3 space-y-1 py-2 border-l-2 border-[#F2E8E6] ml-2">
                     {item.children.map((child) => (
                       <Link
                         key={child.name}
                         to={child.href}
-                        className="block py-2 transition-colors hover:text-[#C9A7A0]"
+                        className="block py-1.5 transition-colors hover:text-[#C9A7A0]"  // Reduced padding
                         style={{
-                          fontSize: '13px',
+                          fontSize: '12px',
                           color: isActive(child.href) ? '#C9A7A0' : '#9A9A9A',
                           fontWeight: isActive(child.href) ? 500 : 400,
                           textDecoration: 'none',
-                          paddingLeft: '16px',
+                          paddingLeft: '14px',
                         }}
                         onClick={() => {
                           setIsMenuOpen(false);
@@ -407,30 +442,6 @@ export default function Header() {
               )}
             </div>
           ))}
-
-          {/* Mobile CTA Buttons */}
-          <div className="border-t pt-6 mt-6 space-y-4" style={{ borderColor: '#ECECEC' }}>
-            
-            <Link
-              to="/contact"
-              className="block text-center uppercase transition-all duration-300 hover:bg-[#E8DCD8] hover:text-[#6F6F6F]"
-              style={{
-                borderRadius: '30px',
-                padding: '14px 24px',
-                fontSize: '13px',
-                letterSpacing: '2px',
-                backgroundColor: '#F2E8E6',
-                color: '#6F6F6F',
-                textDecoration: 'none',
-              }}
-              onClick={() => {
-                setIsMenuOpen(false);
-                setMobileOpenDropdown(null);
-              }}
-            >
-               CONTACT US
-            </Link>
-          </div>
         </div>
       </div>
 
@@ -439,7 +450,7 @@ export default function Header() {
         <div 
           className="fixed inset-0 bg-black/40 lg:hidden transition-opacity duration-300 z-[50]"
           style={{ 
-            top: 'clamp(90px, 15vw, 117px)',
+            top: 'clamp(70px, 12vw, 90px)',  // Matches reduced header height
             backdropFilter: 'blur(2px)'
           }}
           onClick={() => {

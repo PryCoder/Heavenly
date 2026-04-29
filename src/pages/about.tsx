@@ -1,30 +1,35 @@
 import { motion } from 'framer-motion';
-import { Heart, Award, Users, Sparkles, Calendar } from 'lucide-react';
+import { Heart, Award, Sparkles, Calendar } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export default function AboutPage() {
   const values = [
     {
+      icon: Sparkles,
+      title: 'ATTENTION TO DETAIL',
+      description: 'We believe the smallest details create the most unforgettable moments.',
+    },
+    {
       icon: Heart,
-      title: 'Passion',
-      description: 'We pour our hearts into every celebration, treating each wedding as if it were our own.',
-    },
-    {
-      icon: Award,
-      title: 'Excellence',
-      description: 'Uncompromising attention to detail and commitment to perfection in every element.',
-    },
-    {
-      icon: Users,
-      title: 'Partnership',
-      description: 'Building lasting relationships with couples, understanding their unique love story.',
+      title: 'STORY-FIRST APPROACH',
+      description: 'Every wedding is unique we focus on telling your story with authenticity and emotion.',
     },
     {
       icon: Sparkles,
-      title: 'Creativity',
-      description: 'Innovative designs and fresh perspectives that bring your vision to life.',
+      title: 'CREATIVE EXCELLENCE',
+      description: 'From planning to visuals, we blend artistry with innovation to deliver timeless elegance.',
+    },
+    {
+      icon: Award,
+      title: 'COMMITMENT TO QUALITY',
+      description: 'From the first frame to the final edit, perfection is our standard.',
     },
   ];
+
+  const philosophyImage = {
+    src: '/about/philosophy.jpg',
+    fallbackSrc: 'https://bp37mc8dd9.preview.c36.airoapp.ai/airo-assets/images/pages/about/philosophy',
+  };
 
   const stats = [
     { number: '500+', label: 'Weddings Planned' },
@@ -149,10 +154,13 @@ export default function AboutPage() {
               className="relative w-full overflow-hidden rounded-sm aspect-[4/3] sm:aspect-[16/10]"
             >
               <img
-                src="https://bp37mc8dd9.preview.c36.airoapp.ai/airo-assets/images/pages/about/philosophy"
+                src={philosophyImage.src}
                 alt="Luxury wedding setup"
                 className="absolute inset-0 h-full w-full object-cover"
                 style={{ filter: 'brightness(0.98) saturate(0.85)' }}
+                onError={(e) => {
+                  e.currentTarget.src = philosophyImage.fallbackSrc;
+                }}
               />
             </motion.div>
           </div>
@@ -272,11 +280,13 @@ export default function AboutPage() {
             transition={{ duration: 0.6 }}
           >
             <h2 className="font-serif mb-4 md:mb-6 text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight text-[#C9A7A0] font-light">
-              Let Us Make Your Wedding Heavenly!
+              Let’s Make Your Wedding Heavenly !
             </h2>
+            <p className="text-sm sm:text-base leading-relaxed mb-4 text-[#6F6F6F] font-light max-w-2xl mx-auto">
+              Ready to begin planning the celebration of your wedding? Book your complimentary consultation today and let us transform your vision into a timeless experience of elegance and perfection.
+            </p>
             <p className="text-sm sm:text-base leading-relaxed mb-8 md:mb-10 text-[#6F6F6F] font-light max-w-2xl mx-auto">
-              Ready to begin planning the celebration of your dreams? Book your complimentary consultation
-              and let's bring your vision to life with elegance, beauty, and perfection.
+              Ready to begin planning the celebration of your dreams? Book your photography & videography services with Heavenly Weds and let us turn your special moments into timeless memories.
             </p>
             <Link
               to="/contact"

@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ArrowRight, MapPin, Users, Calendar, Star, X } from 'lucide-react';
+import { ArrowRight, MapPin, Calendar, Star, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
@@ -19,17 +19,18 @@ import preweddingAlt6 from '/prewedding/fwdpreweddingshoot/hw-1 (6).jpg';
 import preweddingAlt7 from '/prewedding/fwdpreweddingshoot/hw-1 (7).jpg';
 import preweddingAlt8 from '/prewedding/fwdpreweddingshoot/hw-1 (8).jpg';
 import weddingImage1 from '/shivammansi/fwdwedding/wd-2 (1).jpg';
-import weddingImage2 from '/shivammansi/fwdwedding/wed-1 (7).jpg';
-import weddingImage3 from '/shivammansi/fwdwedding/wed-1 (4).jpg';
 import weddingImage4 from '/shivammansi/fwdwedding/wd-2 (2).jpg';
-import weddingImage6 from '/shivammansi/fwdwedding/wd-2 (2).jpg';
-import weddingImage7 from '/shivammansi/fwdwedding/wed-1 (3).jpg';
-import weddingImage8 from '/shivammansi/fwdwedding/wed-1 (4).jpg';
 import weddingImage9 from '/shivammansi/fwdwedding/wed-1 (1).jpg';
+import weddingImage10 from '/shivammansi/fwdwedding/wed-1 (2).jpg';
+import weddingImage7 from '/shivammansi/fwdwedding/wed-1 (3).jpg';
+import weddingImage3 from '/shivammansi/fwdwedding/wed-1 (4).jpg';
+import weddingImage8 from '/shivammansi/fwdwedding/wed-1 (5).jpg';
+import weddingImage11 from '/shivammansi/fwdwedding/wed-1 (6).jpg';
+import weddingImage2 from '/shivammansi/fwdwedding/wed-1 (7).jpg';
 import christianWed1 from '/christianwed/fwdchristianwedding/chr-1.jpg';
+import christianWed0 from '/christianwed/fwdchristianwedding/chr-1 (1).jpg';
 import christianWed2 from '/christianwed/fwdchristianwedding/chr-1 (2).jpg';
 import christianWed3 from '/christianwed/fwdchristianwedding/chr-1 (3).jpg';
-import christianWed4 from '/christianwed/fwdchristianwedding/chr-1.jpg';
 import bride1 from '/brideshoot/fwdbridephotoshoot/br-H-1 (3).jpg';
 import bride2 from '/brideshoot/fwdbridephotoshoot/br-H-1 (4).jpg';
 import bride3 from '/brideshoot/fwdbridephotoshoot/br-H-1 (5).jpg';
@@ -66,6 +67,43 @@ import joyLucy2 from '/joy&lucy/fwdjoylucy/lon-hw (2).jpg';
 import joyLucy3 from '/joy&lucy/fwdjoylucy/lon-hw (3).jpg';
 import joyLucy4 from '/joy&lucy/fwdjoylucy/lon-hw (4).jpg';
 
+import postWedding1 from '/fwdpostwedding/POST -W=1 (1).jpg';
+import postWedding2 from '/fwdpostwedding/POST -W=1 (2).jpg';
+import postWedding3 from '/fwdpostwedding/POST -W=1 (3).jpg';
+import postWedding4 from '/fwdpostwedding/POST -W=1 (4).jpg';
+import ritaMehendi1 from '/fwdmehendiritafeb18th2019/234w56.jpg';
+import ritaMehendi2 from '/fwdmehendiritafeb18th2019/46534.jpg';
+import ritaMehendi3 from '/fwdmehendiritafeb18th2019/5435.jpg';
+import ritaMehendi4 from '/fwdmehendiritafeb18th2019/543333333333.jpg';
+
+
+import nidhiRohanEngagement2 from '/fwdnidhirohanengagementceremony/2.jpg';
+import nidhiRohanEngagement3 from '/fwdnidhirohanengagementceremony/3.jpg';
+import nidhiRohanEngagement4 from '/fwdnidhirohanengagementceremony/4.jpg';
+import nidhiRohanEngagement5 from '/fwdnidhirohanengagementceremony/5.jpg';
+import nidhiRohanEngagement6 from '/fwdnidhirohanengagementceremony/Heavenly Weds  Insta Post  (16).jpg';
+
+import mankiRoshiniReception1 from '/fwdmankiroshini/1.jpg';
+import mankiRoshiniReception2 from '/fwdmankiroshini/5DM41467.jpg';
+import mankiRoshiniReception3 from '/fwdmankiroshini/5DM41470.jpg';
+import mankiRoshiniReception4 from '/fwdmankiroshini/5DM42062.jpg';
+import mankiRoshiniReception5 from '/fwdmankiroshini/5DM42129.jpg';
+import mankiRoshiniReception6 from '/fwdmankiroshini/5DM49911.jpg';
+import mankiRoshiniReception7 from '/fwdmankiroshini/5DM49997.jpg';
+
+// Haldi - Namrata & Anshuman
+import namrataAnshumanHaldi1 from '/fwdnamrataanshuman/1.jpg';
+import namrataAnshumanHaldi2 from '/fwdnamrataanshuman/HD-1 (1).jpg';
+import namrataAnshumanHaldi3 from '/fwdnamrataanshuman/HD-1 (2).jpg';
+
+// Haldi - Siddharth & Bhavya
+import siddharthBhavyaHaldi1 from '/fwdsiddharthbhavya/2.jpg';
+import siddharthBhavyaHaldi2 from '/fwdsiddharthbhavya/3.jpg';
+import siddharthBhavyaHaldi3 from '/fwdsiddharthbhavya/bh-1 (1).jpg';
+import siddharthBhavyaHaldi4 from '/fwdsiddharthbhavya/bh-1 (2).jpg';
+import siddharthBhavyaHaldi5 from '/fwdsiddharthbhavya/bh-1 (3).jpg';
+import siddharthBhavyaHaldi6 from '/fwdsiddharthbhavya/bh-1 (4).jpg';
+
 interface Wedding {
   id: string;
   couple: string;
@@ -91,47 +129,17 @@ export default function PortfolioPage() {
   const [selectedWedding, setSelectedWedding] = useState<Wedding | null>(null);
   const [lightboxImage, setLightboxImage] = useState<string | null>(null);
 
-  const weddingFilmLinks = [
-    'https://youtu.be/zQBn6EJSKNI?si=https://youtu.be/zQBn6EJSKNI?si=SqA94gQfsDQm4i3r',
-    'https://youtu.be/OiQJGiFqj7A?si=jEre234vUu36xg0k',
-    'https://youtu.be/5GKMismSKpI?si=8Ld6JQyKI1HEwZIh',
-    'https://youtu.be/Iuutqhrpd-A?si=mOoD_vMlCtz2irxw',
-    'https://youtu.be/RToNRUs_sU0?si=rr62WYiWifIQtVpQ',
-    'https://youtu.be/FBpFD3vQkLU?si=u2KWp024X0cWtwjG',
-    'https://youtu.be/SCLkNwGytvY?si=tn9ACClyqlBTx4lK',
-    'https://youtu.be/fHTX4r_vUBs?si=zWUA2OhhQR5UVwAS',
-  ];
-
-  const getYouTubeId = (link: string): string | null => {
-    const match = link.match(
-      /(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/))([A-Za-z0-9_-]{11})/
-    );
-    return match?.[1] ?? null;
-  };
-
-  const weddingFilms = weddingFilmLinks
-    .map((link, index) => {
-      const youTubeId = getYouTubeId(link);
-      if (!youTubeId) return null;
-      return {
-        id: `yt-${youTubeId}-${index}`,
-        title: `Wedding Film ${index + 1}`,
-        embedSrc: `https://www.youtube-nocookie.com/embed/${youTubeId}`,
-      };
-    })
-    .filter((film): film is { id: string; title: string; embedSrc: string } => film !== null);
-
   const categories = [
     { id: 'all', label: 'All' },
     { id: 'wedding', label: 'Wedding' },
     { id: 'pre-wedding', label: 'Pre - wedding' },
+    { id: 'postwedding', label: 'Postwedding' },
     { id: 'maternity', label: 'Maternity' },
     { id: 'destination', label: 'Destination' },
+      { id: 'mehendi', label: 'Mehendi' },
+      { id: 'haldi', label: 'Haldi' }, 
+       { id: 'reception', label: 'Reception' }, 
     { id: 'engagement', label: 'Engagement' },
-    { id: 'haldi', label: 'Haldi' },
-    { id: 'reception', label: 'Reception' },
-    { id: 'mehendi', label: 'Mehendi' },
-    { id: 'post-wedding', label: 'Post Wedding' },
     { id: 'bride', label: 'Bride' },
   ];
 
@@ -145,8 +153,20 @@ export default function PortfolioPage() {
       image: weddingImage1,
       category: 'wedding',
       description: 'A beautifully captured wedding celebration with every moment perfectly preserved.',
-      gallery: [weddingImage1, weddingImage2, weddingImage9, weddingImage3, weddingImage4, weddingImage7, weddingImage8, weddingImage6],
+      gallery: [weddingImage1, weddingImage4, weddingImage9, weddingImage10, weddingImage7, weddingImage3, weddingImage8, weddingImage11, weddingImage2],
       story: 'Shivam and Mansi\'s wedding was a beautiful blend of tradition and modernity. Set in Udaipur, their celebration spanned three days filled with laughter, tears of joy, and unforgettable moments. From the vibrant mehendi ceremony to the emotional varmala, every moment was captured with precision and artistry.'
+    },
+    {
+      id: 'shivam-mansi-destination',
+      couple: 'Shivam & Mansi',
+      location: 'Udaipur, Rajasthan',
+      date: 'February 2025',
+      guests: 0,
+      image: weddingImage2,
+      category: 'destination',
+      description: 'Destination wedding moments captured with timeless elegance and cinematic storytelling.',
+      gallery: [weddingImage1, weddingImage4, weddingImage9, weddingImage10, weddingImage7, weddingImage3, weddingImage8, weddingImage11, weddingImage2],
+      story: 'A destination celebration in Udaipur, captured with a focus on emotion, atmosphere, and timeless portraits.'
     },
     {
       id: 'roy-rachel',
@@ -157,18 +177,57 @@ export default function PortfolioPage() {
       image: christianWed1,
       category: 'wedding',
       description: 'A magical beachfront wedding with stunning decor and seamless execution.',
-      gallery: [christianWed1, christianWed2, christianWed3, christianWed4],
+      gallery: [christianWed1, christianWed0, christianWed2, christianWed3],
       story: 'Roy and Rachel exchanged vows on a pristine Goa beach at sunset. The Christian wedding ceremony was intimate yet grand, with the sound of waves providing a natural symphony. The reception under the stars featured a live band, delicious seafood, and dancing that continued until dawn.'
     },
     {
-      id: 'Sandesh & Sayli',
+  id: 'manki-roshini-reception',
+  couple: 'Manki & Roshini',
+  location: 'India',
+  date: '6th October 2022',
+  guests: 0,
+  image: mankiRoshiniReception1,
+  category: 'reception',
+  description: 'A grand reception ceremony celebrating love, elegance, and unforgettable moments.',
+  gallery: [
+    mankiRoshiniReception1,
+    mankiRoshiniReception2,
+    mankiRoshiniReception3,
+    mankiRoshiniReception4,
+    mankiRoshiniReception5,
+    mankiRoshiniReception6,
+    mankiRoshiniReception7
+  ],
+  story: 'Manki and Roshini\'s reception ceremony was a magnificent celebration of their union. The evening was filled with glamour, elegant décor, delicious cuisine, and heartfelt speeches from loved ones. The couple looked absolutely stunning as they made their grand entrance, and the dance floor was alive with energy throughout the night. Every precious moment was captured, from the couple\'s romantic first dance to the joyful celebrations with family and friends.'
+},
+    {
+  id: 'nidhi-rohan-engagement',
+  couple: 'Nidhi & Rohan',
+  location: 'India',
+  date: 'April 2025',
+  guests: 0,
+  image: nidhiRohanEngagement2,
+  category: 'engagement',
+  description: 'An elegant engagement ceremony filled with love, laughter, and beautiful moments.',
+  gallery: [
+    
+    nidhiRohanEngagement2,
+    nidhiRohanEngagement3,
+    nidhiRohanEngagement4,
+    nidhiRohanEngagement5,
+    nidhiRohanEngagement6
+  ],
+  story: 'Nidhi and Rohan\'s engagement ceremony was a beautiful celebration of love and commitment. Surrounded by family and friends, the couple exchanged rings in a heartwarming ceremony filled with emotional moments, joyful laughter, and beautiful décor. Every precious moment was captured, from the nervous excitement before the ceremony to the joyous celebrations that followed.'
+},
+    {
+      id: 'sandesh-sayli',
       couple: 'Sandesh & Sayli',
       location: 'Mumbai, India',
       date: 'November 2024',
       guests: 0,
       image: preweddingi1,
       category: 'pre-wedding',
-      description: 'A romantic pre-wedding photoshoot capturing beautiful moments in the City of Lakes.',
+      description: 'A romantic pre-wedding photoshoot capturing beautiful moments with candid storytelling.',
       gallery: [
         preweddingi1,
         preweddingi2,
@@ -181,8 +240,27 @@ export default function PortfolioPage() {
         preweddingAlt7,
         preweddingAlt8,
       ],
-      story: 'Nishita and Raj chose the majestic city of Udaipur for their pre-wedding shoot. The couple explored the City Palace, took a romantic boat ride on Lake Pichola, and captured stunning sunset moments at Sajjangarh Fort. Every frame tells a story of their love and the magical aura of Udaipur.'
+      story: 'Sandesh and Sayli\'s pre-wedding shoot focused on natural expressions, warm tones, and timeless portraits — captured with comfort, fun, and authentic emotion.'
     },
+    {
+  id: 'siddharth-bhavya-haldi',
+  couple: 'Siddharth & Bhavya',
+  location: 'India',
+  date: '19th December 2023',
+  guests: 0,
+  image: siddharthBhavyaHaldi1,
+  category: 'haldi',
+  description: 'A vibrant Haldi ceremony filled with traditional rituals, playful moments, and beautiful yellow hues.',
+  gallery: [
+    siddharthBhavyaHaldi1,
+    siddharthBhavyaHaldi2,
+    siddharthBhavyaHaldi3,
+    siddharthBhavyaHaldi4,
+    siddharthBhavyaHaldi5,
+    siddharthBhavyaHaldi6
+  ],
+  story: 'Siddharth and Bhavya\'s Haldi ceremony was a heartwarming celebration of love, tradition, and joy. Surrounded by close family and friends, the couple was blessed with the sacred turmeric paste amidst欢声笑语 and playful rituals. The vibrant yellow decor, energetic music, and candid moments of laughter made this ceremony truly special. Every precious moment, from the application of haldi to the joyful splashes, was captured beautifully.'
+},
     {
       id: 'bhaktisagar-pooja',
       couple: 'Bhaktisagar & Pooja',
@@ -202,8 +280,8 @@ export default function PortfolioPage() {
       date: '—',
       guests: 0,
       image: palakParth1,
-      category: 'wedding',
-      description: 'A joyful wedding celebration captured with candid moments and timeless portraits.',
+      category: 'engagement',
+      description: 'A joyful engagement celebration captured with candid moments and timeless portraits.',
       gallery: [
         palakParth1,
         palakParth2,
@@ -215,7 +293,7 @@ export default function PortfolioPage() {
         palakParth8,
         palakParth9,
       ],
-      story: 'Palak and Parth\'s wedding gallery highlights warm candid emotions, elegant portraits, and the beautiful details that made their day unforgettable.'
+      story: 'Palak and Parth\'s engagement gallery highlights warm candid emotions, elegant portraits, and the beautiful details that made their day unforgettable.'
     },
     {
       id: 'nimisha-dipak',
@@ -230,12 +308,41 @@ export default function PortfolioPage() {
       story: 'Nimisha and Dipak celebrated their journey into parenthood with a heartfelt maternity photoshoot. The session captured the glow of motherhood, the anticipation of new beginnings, and the couple\'s excitement. From elegant studio portraits to candid outdoor moments, every image radiates love and warmth.'
     },
     {
+  id: 'rita-mehendi',
+  couple: 'RITA',
+  location: 'India',
+  date: 'FEB - 18TH - 2019',
+  guests: 0,
+  image: ritaMehendi1,
+  category: 'mehendi',
+  description: 'A beautiful Mehendi ceremony filled with intricate henna designs, vibrant colors, and joyful celebrations.',
+  gallery: [ritaMehendi1, ritaMehendi2, ritaMehendi3, ritaMehendi4],
+  story: 'Rita\'s Mehendi ceremony was a vibrant celebration of art, music, and tradition. The intricate henna designs told stories of love and joy, while the colorful decor and energetic dance performances created an unforgettable atmosphere. Every moment was captured with beautiful detail, from the first application of henna to the final reveal.'
+},
+{
+  id: 'namrata-anshuman-haldi',
+  couple: 'Namrata & Anshuman',
+  location: 'India',
+  date: '30th November 2024',
+  guests: 0,
+  image: namrataAnshumanHaldi1,
+  category: 'haldi',
+  description: 'A vibrant Haldi ceremony filled with traditional rituals, joyful laughter, and beautiful yellow hues.',
+  gallery: [
+    namrataAnshumanHaldi1,
+    namrataAnshumanHaldi2,
+    namrataAnshumanHaldi3,
+    
+  ],
+  story: 'Namrata and Anshuman\'s Haldi ceremony was a celebration of joy, laughter, and vibrant traditions. The couple was showered with love as family and friends applied the sacred turmeric paste, blessing them for their upcoming wedding. The yellow hues, playful moments, and heartfelt rituals made this ceremony a memorable pre-wedding festivity. Every candid moment, from the couple\'s laughter to the emotional blessings, was beautifully captured.'
+},
+    {
       id: 'rohini-sahil',
       couple: 'Rohini & Sahil',
       location: 'Mumbai, India',
       date: '2024',
       guests: 0,
-      image: rohinisahil1,
+      image: rohinisahil3,
       category: 'maternity',
       description: 'A heartfelt maternity shoot celebrating love, warmth, and new beginnings.',
       gallery: [rohinisahil1, rohinisahil2, rohinisahil3],
@@ -244,7 +351,7 @@ export default function PortfolioPage() {
     {
       id: 'joy-lucy',
       couple: 'Joy & Lucy',
-      location: 'India',
+      location: 'London, United Kingdom',
       date: '—',
       guests: 0,
       image: joyLucy1,
@@ -259,7 +366,7 @@ export default function PortfolioPage() {
       location: 'Udaipur, India',
       date: 'March 2024',
       guests: 0,
-      image: bride1,
+      image: bride2,
       category: 'bride',
       description: 'Stunning bride portraits capturing timeless beauty.',
       gallery: [bride1, bride2, bride3, bride4],
@@ -269,7 +376,7 @@ export default function PortfolioPage() {
       id: 'priyal-bride',
       couple: 'Priyal',
       location: 'India',
-      date: '—',
+      date: 'January 2025',
       guests: 0,
       image: priyalBride1,
       category: 'bride',
@@ -288,6 +395,18 @@ export default function PortfolioPage() {
       description: 'A joyful engagement shoot capturing candid moments and timeless portraits.',
       gallery: [engagement1, engagement2, engagement3, engagement4, engagement5],
       story: 'A romantic engagement session focused on natural expressions, warm tones, and candid storytelling.'
+    },
+    {
+      id: 'harsh-madhuri-postwedding',
+      couple: 'HARSH & MADHURI',
+      location: 'India',
+      date: '—',
+      guests: 0,
+      image: postWedding1,
+      category: 'postwedding',
+      description: 'A romantic postwedding shoot capturing effortless moments and timeless portraits.',
+      gallery: [postWedding1, postWedding2, postWedding3, postWedding4],
+      story: 'Harsh and Madhuri\'s postwedding session was captured with a focus on natural chemistry, warm light, and elegant portraits — creating memories that feel timeless.'
     },
   ];
 
@@ -346,54 +465,6 @@ export default function PortfolioPage() {
         </div>
       </section>
 
-      {/* Wedding Films */}
-      <section className="py-12 md:py-16 lg:py-20 px-4 md:px-8 bg-[#FAFAFA]">
-        <div className="mx-auto max-w-7xl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-center mb-10 md:mb-12"
-          >
-            <p className="mb-4 uppercase tracking-[3px] text-[11px] text-[#9A9A9A] font-sans">
-              Wedding Film
-            </p>
-            <h2 className="font-serif mb-4 text-3xl sm:text-4xl md:text-5xl leading-tight text-[#C9A7A0] font-light">
-              Wedding Films
-            </h2>
-          </motion.div>
-
-          <div className="grid gap-6 sm:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-            {weddingFilms.map((film, index) => (
-              <motion.div
-                key={film.id}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.15 + index * 0.05 }}
-                className="bg-white rounded-sm overflow-hidden"
-              >
-                <div className="w-full aspect-video bg-black">
-                  <iframe
-                    className="w-full h-full"
-                    src={film.embedSrc}
-                    title={film.title}
-                    loading="lazy"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerPolicy="strict-origin-when-cross-origin"
-                    allowFullScreen
-                  />
-                </div>
-                <div className="p-4">
-                  <p className="text-sm font-sans uppercase tracking-[2px] text-[#6F6F6F]">
-                    {film.title}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Filter Categories */}
       <section className="py-8 md:py-10 lg:py-12 px-4 md:px-8">
         <div className="mx-auto max-w-7xl">
@@ -424,33 +495,18 @@ export default function PortfolioPage() {
       {/* Wedding Grid */}
       <section className="py-8 md:py-12 lg:py-16 px-4 md:px-8">
         <div className="mx-auto max-w-7xl">
-          <div className="grid gap-6 sm:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 grid-flow-dense">
+          <div className="grid gap-6 sm:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
             {filteredWeddings.map((wedding, index) => (
-              (() => {
-                const collageKey = index % 12;
-                const cardSpanClass =
-                  collageKey === 0 ? 'lg:col-span-2' :
-                  collageKey === 5 ? 'lg:row-span-2' :
-                  collageKey === 9 ? 'lg:col-span-2' :
-                  '';
-                const imageAspectClass =
-                  collageKey === 0 ? 'aspect-[16/10]' :
-                  collageKey === 5 ? 'aspect-[3/4]' :
-                  collageKey === 9 ? 'aspect-[3/2]' :
-                  collageKey === 2 ? 'aspect-square' :
-                  'aspect-[4/5]';
-
-                return (
               <motion.div
                 key={wedding.id}
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className={`group cursor-pointer ${cardSpanClass}`}
+                className="group cursor-pointer"
                 onClick={() => setSelectedWedding(wedding)}
               >
                 {/* Image Container */}
-                <div className={`relative mb-4 sm:mb-5 md:mb-6 overflow-hidden rounded-sm w-full ${imageAspectClass}`}>
+                <div className="relative mb-4 sm:mb-5 md:mb-6 overflow-hidden rounded-sm w-full aspect-[4/5]">
                   <img
                     src={wedding.image}
                     alt={`${wedding.couple} wedding at ${wedding.location}`}
@@ -493,18 +549,10 @@ export default function PortfolioPage() {
                         <Calendar className="h-3 w-3 sm:h-4 sm:w-4 text-[#C9A7A0] flex-shrink-0" />
                         <span>{wedding.date}</span>
                       </div>
-                      {wedding.guests > 0 && (
-                        <div className="flex items-center gap-2">
-                          <Users className="h-3 w-3 sm:h-4 sm:w-4 text-[#C9A7A0] flex-shrink-0" />
-                          <span>{wedding.guests} Guests</span>
-                        </div>
-                      )}
                     </div>
                   </div>
                 </div>
               </motion.div>
-                );
-              })()
             ))}
           </div>
 
@@ -559,12 +607,6 @@ export default function PortfolioPage() {
                     <Calendar className="h-4 w-4 text-[#C9A7A0]" />
                     <span>{selectedWedding.date}</span>
                   </div>
-                  {selectedWedding.guests > 0 && (
-                    <div className="flex items-center gap-2">
-                      <Users className="h-4 w-4 text-[#C9A7A0]" />
-                      <span>{selectedWedding.guests} Guests</span>
-                    </div>
-                  )}
                 </div>
               </div>
 
@@ -575,39 +617,30 @@ export default function PortfolioPage() {
               </div>
 
               {/* Gallery */}
-              <div className="p-6 md:p-8">
-                <h3 className="font-serif text-xl text-[#C9A7A0] font-light mb-6">Photo Gallery</h3>
-                <div className="grid gap-3 sm:gap-4 grid-cols-2 md:grid-cols-4 auto-rows-[120px] md:auto-rows-[140px] grid-flow-dense">
-                  {selectedWedding.gallery.map((img, idx) => (
-                    (() => {
-                      const collageKey = idx % 10;
-                      const tileSpanClass =
-                        collageKey === 0 ? 'md:col-span-2 md:row-span-2' :
-                        collageKey === 3 ? 'md:row-span-2' :
-                        collageKey === 6 ? 'md:col-span-2' :
-                        '';
-
-                      return (
-                    <div
-                      key={idx}
-                      className={`relative overflow-hidden rounded-lg cursor-pointer group ${tileSpanClass}`}
-                      onClick={() => setLightboxImage(img)}
-                    >
-                      <img
-                        src={img}
-                        alt={`${selectedWedding.couple} - ${idx + 1}`}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                        loading="lazy"
-                        decoding="async"
-                      />
-                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300" />
-                    </div>
-                      );
-                    })()
-                  ))}
-                </div>
-              </div>
-
+             {/* Gallery */}
+<div className="p-6 md:p-8">
+  <h3 className="font-serif text-xl text-[#C9A7A0] font-light mb-6">Photo Gallery</h3>
+  <div className="grid gap-3 sm:gap-4 grid-cols-2 md:grid-cols-3 auto-rows-[200px] md:auto-rows-[250px] grid-flow-dense">
+    {selectedWedding.gallery.map((img, idx) => (
+      <div
+        key={idx}
+        className={`relative overflow-hidden rounded-lg cursor-pointer group ${
+          idx === 0 ? 'md:col-span-2 md:row-span-2' : ''
+        }`}
+        onClick={() => setLightboxImage(img)}
+      >
+        <img
+          src={img}
+          alt={`${selectedWedding.couple} - ${idx + 1}`}
+          className="w-full h-full object-contain bg-[#f5f5f5] transition-transform duration-500 group-hover:scale-105"
+          loading="lazy"
+          decoding="async"
+        />
+        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300" />
+      </div>
+    ))}
+  </div>
+</div>
               {/* CTA */}
               <div className="p-6 md:p-8 bg-[#F2E8E6] text-center">
                 <Link

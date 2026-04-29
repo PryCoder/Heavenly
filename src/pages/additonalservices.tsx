@@ -8,7 +8,6 @@ import {
   Brush,
   PenTool,
   User,
-  Gift,
   BookOpen,
   Utensils,
   ArrowRight,
@@ -17,17 +16,18 @@ import {
   X,
 } from 'lucide-react';
 import { useState } from 'react';
-import maternityi1 from '/nimishadipak/fwdmaternityphotoshoot/mat-h-1 (1).jpg'
-import maternityi2 from '/nimishadipak/fwdmaternityphotoshoot/mat-h-1 (2).jpg'
-import maternityi3 from '/nimishadipak/fwdmaternityphotoshoot/mat-h-1 (3).jpg'
-import maternityi4 from '/nimishadipak/fwdmaternityphotoshoot/mat-h-1 (4).jpg'
-import preweddingi1 from '/prewedding/fwdpreweddingshoot/pre-wedding - hw-1 (1).jpg'
-import preweddingi2 from '/prewedding/fwdpreweddingshoot/pre-wedding - hw-1 (2).jpg'
-import preweddingi3 from '/prewedding/fwdpreweddingshoot/pre-wedding - hw-1 (3).jpg'
-import preweddingi4 from '/prewedding/fwdpreweddingshoot/pre-wedding - hw-1 (4).jpg'
+
+import maternityi1 from '/nimishadipak/fwdmaternityphotoshoot/mat-h-1 (1).jpg';
+import maternityi2 from '/nimishadipak/fwdmaternityphotoshoot/mat-h-1 (2).jpg';
+import maternityi3 from '/nimishadipak/fwdmaternityphotoshoot/mat-h-1 (3).jpg';
+import maternityi4 from '/nimishadipak/fwdmaternityphotoshoot/mat-h-1 (4).jpg';
+import preweddingi1 from '/prewedding/fwdpreweddingshoot/pre-wedding - hw-1 (1).jpg';
+import preweddingi2 from '/prewedding/fwdpreweddingshoot/pre-wedding - hw-1 (2).jpg';
+import preweddingi3 from '/prewedding/fwdpreweddingshoot/pre-wedding - hw-1 (3).jpg';
+import preweddingi4 from '/prewedding/fwdpreweddingshoot/pre-wedding - hw-1 (4).jpg';
 import weddingImage1 from '/shivammansi/fwdwedding/wd-2 (1).jpg';
 import weddingImage2 from '/shivammansi/fwdwedding/wed-1 (7).jpg';
-import weddingImage3 from '/prewedding/fwdpreweddingshoot/pre-wedding - hw-1 (6).jpg'
+import weddingImage3 from '/prewedding/fwdpreweddingshoot/pre-wedding - hw-1 (6).jpg';
 import weddingImage4 from '/christianwed/fwdchristianwedding/chr-1.jpg';
 import bride1 from '/brideshoot/fwdbridephotoshoot/br-H-1 (3).jpg';
 import bride2 from '/brideshoot/fwdbridephotoshoot/br-H-1 (4).jpg';
@@ -35,6 +35,71 @@ import wedding1 from '/bhaktisagar/fwdheavenlywedsphotos/bk-h-1 (1).jpg';
 import wedding2 from '/bhaktisagar/fwdheavenlywedsphotos/bk-h-1 (4).jpg';
 import wedding3 from '/shivammansi/fwdwedding/wed-1 (4).jpg';
 import wedding4 from '/shivammansi/fwdwedding/wed-1 (3).jpg';
+
+const additionalServicePhoto = (fileName: string) => `/fwdadditionalservicesphotos/${encodeURIComponent(fileName)}`;
+
+const ADDITIONAL_SERVICE_IMAGES = {
+  preWedding: [
+    additionalServicePhoto('pre-wedding - 3 (1).jpg'),
+    additionalServicePhoto('pre-wedding - 4(2).jpg'),
+  ],
+  maternity: [
+    additionalServicePhoto('MATERNITY PHOTOHOOT - 1.jpg'),
+    additionalServicePhoto('MATERNITY - 4.jpg'),
+  ],
+  destination: [
+    additionalServicePhoto('destination wedding - 3 (1).jpg'),
+    additionalServicePhoto('destination wedding - 3 (2).jpg'),
+    additionalServicePhoto('destination wedding - 3 (1).png'),
+  ],
+  editing: [
+    additionalServicePhoto('editing services -1 .jpeg'),
+    additionalServicePhoto('editing services - 2.png'),
+  ],
+  invitation: [
+    additionalServicePhoto('wedding invitation -1.jpeg'),
+    additionalServicePhoto('wedding invitation - 2.jpeg'),
+    additionalServicePhoto('wedding invitation 3.jpg'),
+  ],
+  makeup: [
+    additionalServicePhoto('MAKE UP ARTIST - 1 (1).jpeg'),
+    additionalServicePhoto('MAKE UP ARTIST - 1 (2).jpeg'),
+    additionalServicePhoto('MAKE UP ARTIST - 1 (3).jpeg'),
+  ],
+  album: [
+    additionalServicePhoto('wedding album - 1.jpeg'),
+    additionalServicePhoto('wedding album - (2).jpeg'),
+    additionalServicePhoto('wedding album - (3).jpeg'),
+  ],
+  catering: [
+    additionalServicePhoto('catering -1 (1).jpg'),
+    additionalServicePhoto('catering -1 (2).jpg'),
+    additionalServicePhoto('catering -1 (3).jpg'),
+    additionalServicePhoto('catering -1 (4).jpg'),
+  ],
+} as const;
+
+const pickFour = (primary: string[], fallback: string[] = []) => {
+  const result: string[] = [];
+  const addUnique = (items: string[]) => {
+    for (const item of items) {
+      if (result.length >= 4) return;
+      if (!result.includes(item)) result.push(item);
+    }
+  };
+
+  addUnique(primary);
+  addUnique(fallback);
+
+  // If still short (e.g., only 2-3 images exist), repeat from primary/fallback to reach 4.
+  const pool = [...primary, ...fallback].filter(Boolean);
+  while (result.length < 4 && pool.length > 0) {
+    result.push(pool[result.length % pool.length]);
+  }
+
+  return result.slice(0, 4);
+};
+
 interface AdditionalService {
   id: string;
   title: string;
@@ -51,47 +116,38 @@ export default function AdditionalServicesPage() {
   const additionalServices: AdditionalService[] = [
     {
       id: 'pre-wedding',
-      title: 'Pre-wedding shoot',
+      title: 'Pre-Wedding Shoots',  // Capital W and S
       icon: Camera,
       description: 'Capture the excitement and romance before your big day with a stunning pre-wedding photoshoot.',
       features: [
-        'Consultation to understand your love story and vision',
-        'Selection of picturesque locations (local or destination)',
-        'Professional guidance on poses and emotions',
-        'High-resolution edited digital images',
-        'Behind-the-scenes candid captures',
-        'Option to include drone shots for cinematic flair',
-        'Quick turnaround of edited photos',
+        'Concept planning based on your story',
+        'Location scouting and guidance',
+        'Professional photography & cinematic videography',
+        'Candid and natural moments capture',
+        'High-resolution edited images and films',
+        'Drone shots for cinematic appeal',
+        'Professional makeup artist for a flawless look',
+        'Complete shoot coordination',
       ],
       href: '/services/pre-wedding',
-      images: [
-        preweddingi1,
-        preweddingi2,
-        preweddingi3,
-        preweddingi4,
-      ],
+      images: pickFour([...ADDITIONAL_SERVICE_IMAGES.preWedding], [preweddingi1, preweddingi2, preweddingi3, preweddingi4]),
     },
     {
       id: 'maternity',
-      title: 'Maternity Photoshoot',
+      title: 'Maternity Photoshoot',  // Capital M
       icon: Heart,
       description: 'Celebrate the beautiful journey of parenthood with a professional maternity photoshoot.',
       features: [
-        'Consultation to plan the theme and style',
-        'Studio or on-location shoot options',
-        'Access to a collection of elegant maternity gowns',
-        'Professional hair and makeup artist (optional)',
-        'Artistic editing to enhance the glow of motherhood',
-        'High-quality digital images and prints',
-        'Private online gallery for easy sharing',
+        'Experienced photographers and videographers dedicated to capturing your special moments perfectly.',
+        'High-quality images and cinematic videos that beautifully tell your story.',
+        'Creative angles, storytelling visuals, and dreamy frames for a film-like experience.',
+        'Professionally edited photos and videos with soft tones, color grading, and artistic enhancements.',
+        'A beautifully crafted short film capturing the most special moments of your maternity journey.',
+        'Professional makeup services to ensure you look radiant and confident.',
+        'Elegant maternity gowns and styling guidance to enhance your look and comfort.',
       ],
       href: '/services/maternity',
-      images: [
-        maternityi1,
-        maternityi2,
-         maternityi3,
-         maternityi4,
-      ],
+      images: pickFour([...ADDITIONAL_SERVICE_IMAGES.maternity], [maternityi1, maternityi2, maternityi3, maternityi4]),
     },
     {
       id: 'destination',
@@ -99,21 +155,22 @@ export default function AdditionalServicesPage() {
       icon: Plane,
       description: 'Exchange vows in breathtaking locations around the world with our destination expertise.',
       features: [
-        'Complete destination wedding planning and coordination',
-        'Venue scouting and booking assistance',
-        'Travel and accommodation arrangements for guests',
-        'On-site vendor management at the destination',
-        'Legal paperwork and permit assistance',
-        'Full photography and videography coverage',
-        'Welcome dinner and post-wedding event planning',
+        'Destination consultation and location scouting',
+        'Venue selection and booking assistance',
+        'Travel and accommodation coordination',
+        'Vendor sourcing at destination',
+        'Budget planning and management',
+        'Wedding design and styling concept',
+        'Guest management and itinerary planning',
+        'Logistics and timeline coordination',
+        'On-site coordination with full team',
+        'Photography & videography coverage',
+        'Local permits and requirements handling',
+        'Post-wedding wrap-up services',
+        'Makeup Artist',
       ],
       href: '/services/destination',
-      images: [
-        weddingImage1,
-        weddingImage2,
-        weddingImage3,
-        weddingImage4,
-      ],
+      images: pickFour([...ADDITIONAL_SERVICE_IMAGES.destination], [weddingImage1, weddingImage2, weddingImage3, weddingImage4]),
     },
     {
       id: 'editing',
@@ -121,21 +178,16 @@ export default function AdditionalServicesPage() {
       icon: Brush,
       description: 'Professional photo and video editing to enhance every precious moment.',
       features: [
-        'Color correction and exposure adjustments',
-        'Skin smoothing and blemish removal',
-        'Background cleanup and object removal',
-        'Artistic filters and mood enhancement',
-        'Video color grading and sound design',
-        'Same-day or express editing options available',
-        'Secure file transfer and confidentiality',
+        'High-end retouching, color correction, skin smoothing, and enhancement for flawless images.',
+        'Cinematic Video Editing – Story-driven edits with smooth transitions, music synchronization, and a cinematic feel.',
+        'Professional color tones that enhance mood, lighting, and overall visual appeal.',
+        'Highlight Films – Short, engaging videos capturing the essence of your event with emotional storytelling.',
+        'Reels & Social Media Edits – Trendy, eye-catching edits perfect for Instagram and other platforms.',
+        'Background Enhancement',
+        'Sound Design & Music Sync – Perfectly balanced audio with cinematic sound effects and music.',
       ],
       href: '/services/editing',
-      images: [
-        'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=800',
-        'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800',
-        'https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=800',
-        'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800',
-      ],
+      images: pickFour([...ADDITIONAL_SERVICE_IMAGES.editing], [weddingImage2, weddingImage3, wedding3, wedding4]),
     },
     {
       id: 'invitation',
@@ -143,21 +195,14 @@ export default function AdditionalServicesPage() {
       icon: PenTool,
       description: 'Beautifully crafted invitations that set the tone for your celebration.',
       features: [
-        'Custom design consultation',
-        'Premium paper and printing options',
-        'Handcrafted embellishments (ribbons, wax seals, etc.)',
-        'Envelope addressing and calligraphy services',
-        'Coordinating RSVP cards and inserts',
-        'Digital proofs with unlimited revisions',
-        'Worldwide shipping and delivery',
+        'Custom Invitation Design – Personalized designs tailored to your theme, culture, and preferences.',
+        'Digital E-Invites – Stylish and animated invitations perfect for WhatsApp & social media sharing.',
+        'Luxury Print Invitations',
+        'Theme-Based Designs – Invitations designed to match your wedding theme and aesthetics.',
+        'RSVP & Wedding Website Integration – Easy guest management with digital RSVP options.',
       ],
       href: '/services/invitations',
-      images: [
-        'https://imgs.search.brave.com/vlTUiZ0eunRG878zclBDfnKhuWmg5CApKXUnZ5oD8Zo/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93d3cu/YnJpZGVzLmNvbS90/aG1iL1ByMllvc3hE/cnRzT2RrYkl2bUhX/UlljUVE0ST0vZml0/LWluLzE1MDB4NjQw/L2ZpbHRlcnM6bm9f/dXBzY2FsZSgpOm1h/eF9ieXRlcygxNTAw/MDApOnN0cmlwX2lj/YygpOmZvcm1hdCh3/ZWJwKS9NaXhib29r/LTQ1MWNhMzI1OWFj/MDRiMGQ5OTM5NDc5/ODQyNGMwYjg0Lmpw/Zw',
-        'https://imgs.search.brave.com/lBnrBybDArSkdXO76erRLlwe9gsYm7g-3eYhPR63NtI/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9zdGF0/aWMudmVjdGVlenku/Y29tL3N5c3RlbS9y/ZXNvdXJjZXMvdGh1/bWJuYWlscy8wMDgv/Njk2LzQ2My9zbWFs/bC9sdXh1cnktd2Vk/ZGluZy1pbnZpdGF0/aW9uLXRlbXBsYXRl/LWZyZWUtdmVjdG9y/LmpwZw',
-        'https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=800',
-        'https://imgs.search.brave.com/bmeqYZaneyEqdgaEIRUdmywCVNLRVg1SQ8d25LdjH-4/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly90My5m/dGNkbi5uZXQvanBn/LzA0Lzc1LzQzLzM4/LzM2MF9GXzQ3NTQz/Mzg1MV9IanNkMnYy/UDdJV2QzdjB1bUFt/bndpVWpTNlZFdmVX/Yi5qcGc',
-      ],
+      images: pickFour([...ADDITIONAL_SERVICE_IMAGES.invitation], [wedding1, wedding2, wedding3, wedding4]),
     },
     {
       id: 'makeup',
@@ -165,43 +210,15 @@ export default function AdditionalServicesPage() {
       icon: User,
       description: 'Expert makeup artists to make you look and feel your best on your special day.',
       features: [
-        'Pre-wedding makeup trial session',
-        'Bridal, bridesmaid, and mother-of-the-bride makeup',
-        'Airbrush makeup for long-lasting wear',
-        'Hairstyling for all hair types',
-        'Use of premium, hypoallergenic products',
-        'On-location service at your venue',
-        'Touch-up kit and assistance throughout the event',
+        'Pre-Wedding Makeup Trial – Personalized trial session to perfect your look before the big day.',
+        'Bridal & Family Makeup – Stunning makeup for the bride, bridesmaids, and mother-of-the-bride.',
+        'Hairstyling Services – Elegant hairstyles customized for all hair types and preferences.',
+        'Premium Products – Use of high-quality, hypoallergenic products safe for all skin types.',
+        'On-Location Service',
+        'Touch-Up Support – Complimentary touch-up kit and assistance to keep you looking fresh throughout the event.',
       ],
       href: '/services/makeup',
-      images: [
-        "https://imgs.search.brave.com/HUStIwD36gIxx46-Z6yLpObdF7N5v1MLsYaQbF2hzHQ/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMTc1/OTg2MTA1MC9waG90/by9wb3J0cmFpdC1v/Zi1iZWF1dGlmdWwt/aW5kaWFuLWJyaWRl/LWdldHRpbmctcmVh/ZHktZm9yLWhlci13/ZWRkaW5nLWNlcmVt/b255LmpwZz9zPTYx/Mng2MTImdz0wJms9/MjAmYz0tenUyVlBT/eFlrcW9HMV9CS0NI/a0lDRlR3Zi1pdTdw/UEFiYW1qTXROU1E4/PQ",
-        "https://imgs.search.brave.com/tKZFEXCc0ea7u1gOHZuOE7WIdop5G-m26EvazCIBbGg/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMTM0/MDMwMjUzNS9waG90/by9iZWF1dGlmdWwt/aW5kaWFuLXdvbWFu/LWdldHRpbmctcmVh/ZHktdG8tYS13ZWRk/aW5nLXJlY2VwdGlv/bi1hdC10aGUtYmVh/dXR5LXBhcmxvci5q/cGc_cz02MTJ4NjEy/Jnc9MCZrPTIwJmM9/R3poaXZ0YXFMSURY/QlE2OVIwRGxJT2Z3/WTRhT1lVSTY3Z3hX/S1RNM29vQT0",
-        bride1,
-        bride2
-      ]
-    },
-    {
-      id: 'e-invites',
-      title: 'Wedding E-Invites',
-      icon: Gift,
-      description: 'Elegant digital invitations for the modern, eco-conscious couple.',
-      features: [
-        'Custom animated or static digital designs',
-        'Interactive RSVP tracking and guest management',
-        'Wedding website integration',
-        'SMS and WhatsApp sharing options',
-        'Real-time guest list updates',
-        'Eco-friendly and cost-effective solution',
-        'Technical support for guest accessibility',
-      ],
-      href: '/services/e-invites',
-      images: [
-        'https://imgs.search.brave.com/Pu79DZ6yfFgyAQeC_J9dG9cXES19Nzs_YH3iWwaK1xk/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTIw/NDI0NDU5Ny92ZWN0/b3Ivd2VkZGluZy1m/bG9yYWwtaW52aXRh/dGlvbi10aGFuay15/b3UtbW9kZXJuLWNh/cmQtcm9zZW1hcnkt/ZXVjYWx5cHR1cy1i/cmFuY2hlcy13cmVh/dGgtb24td2hpdGUu/anBnP3M9NjEyeDYx/MiZ3PTAmaz0yMCZj/PXhQcUN4LUo1cmYx/NklPRkhPR0x4Yktz/WUVpWlVQcGRva0Fj/VWo0UnpQUnc9',
-        'https://imgs.search.brave.com/2K4hYmxgig0E8uk2JbUjXVCkpzL5mpcdNLOSp9b8VAY/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tYXJr/ZXRwbGFjZS5jYW52/YS5jb20vRUFHendm/dmRwMk0vMS8wLzE2/MDB3L2NhbnZhLXBl/YWNoLWVsZWdhbnQt/ZmxvcmFsLXdlZGRp/bmctaW52aXRhdGlv/bi1sYW5kc2NhcGUt/QzdsaFFUN3JfQkUu/anBn',
-        'https://imgs.search.brave.com/dIVmNXmKDf5CAD5cT278UjAWDY4Fqg04d1RUB8DkvSU/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zc3It/cmVsZWFzZXMtY2Ru/LnBhcGVybGVzc3Bv/c3QuY29tL19uZXh0/L3N0YXRpYy92aWRl/by9QYXBlclNvdXJj/ZUhvbGlkYXlCYW5u/ZXItMDg4MGJjZGM2/YmM5YWU0MTAwNmE2/NzdjZDdmN2E4ZTY4/OTc1MmY1OTQxY2Q1/NmIxNzNiN2Y1NDdh/YTA0NzkyZi5wbmc',
-        'https://imgs.search.brave.com/ohlb1xkSp0M2UF1NmzkhBSinUgfP4ARracE9sUh_X2k/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzAzLzU0Lzk2LzEz/LzM2MF9GXzM1NDk2/MTMxM19SQkY0aXZK/SnJtaFQ2bnkybTZK/OGhaUWExRE85OXpH/Ui5qcGc',
-      ],
+      images: pickFour([...ADDITIONAL_SERVICE_IMAGES.makeup], [bride1, bride2, wedding2, wedding3])
     },
     {
       id: 'album',
@@ -209,21 +226,16 @@ export default function AdditionalServicesPage() {
       icon: BookOpen,
       description: 'Beautifully designed albums to preserve your memories for generations.',
       features: [
-        'Custom album design consultation',
-        'Lay-flat pages with premium photo paper',
-        'Leather, linen, or acrylic cover options',
-        'Handcrafted box presentation',
-        'Pre-wedding and wedding day photo layouts',
-        'Unlimited design revisions until perfect',
-        'Archival quality for lasting preservation',
+        'Customized Album Design',
+        'Magazine-Style Albums – Trendy, editorial-style designs that give your album a modern and stylish look.',
+        'Luxury Finishes – Premium materials with elegant textures like matte, glossy, metallic, and velvet covers.',
+        'Professional Creative Team – Skilled designers and editors dedicated to delivering perfection in every detail.',
+        'High-Quality Printing',
+        'Elegant Storytelling Layouts',
+        'Premium Binding',
       ],
       href: '/services/album',
-      images: [
-        wedding1,
-        wedding2,
-        wedding3,
-        wedding4,
-      ],
+      images: pickFour([...ADDITIONAL_SERVICE_IMAGES.album], [wedding1, wedding2, wedding3, wedding4]),
     },
     {
       id: 'catering',
@@ -231,21 +243,17 @@ export default function AdditionalServicesPage() {
       icon: Utensils,
       description: 'Exquisite culinary experiences tailored to your taste and style.',
       features: [
-        'Personalized menu tasting session',
-        'Custom menu design (global cuisines, dietary needs)',
-        'Live food stations and interactive counters',
-        'Beverage pairing and bar service',
-        'Elegant tableware and setup coordination',
-        'Staffing for service and cleanup',
-        'Wedding cake and dessert table design',
+        'Customized Menu Planning – Menus to suit your taste, culture, and wedding theme.',
+        'Multi-Cuisine Options',
+        'Live Food Counters',
+        'Premium Quality Ingredients',
+        'Professional Service Staff – Well-trained team ensuring smooth and courteous service.',
+        'Elegant Food Presentation – Stylish setups and décor to match your wedding theme.',
+        'Beverage & Dessert Stations – Refreshing drinks and delicious sweets to complete the celebration.',
+        'Hygiene & Safety Standards',
       ],
       href: '/services/catering',
-      images: [
-        'https://images.unsplash.com/photo-1555244162-803834f70033?w=800',
-        'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800',
-        'https://imgs.search.brave.com/bgfrEkB3S34FU3fzeMIwdkNapwqdxV9xGPnu-4_ywkU/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly91cy4x/MjNyZi5jb20vNDUw/d20vbGVsaWs4My9s/ZWxpazgzMTcwMS9s/ZWxpazgzMTcwMTAw/MDU1LzcwMTkxMDM2/LWNhdGVyaW5nLWZv/b2Qtd2VkZGluZy1l/dmVudC10YWJsZS5q/cGc_dmVyPTY',
-        'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800',
-      ],
+      images: pickFour([...ADDITIONAL_SERVICE_IMAGES.catering], [wedding1, wedding2, wedding3, wedding4]),
     },
   ];
 
@@ -263,7 +271,7 @@ export default function AdditionalServicesPage() {
               className="mb-4 uppercase tracking-widest"
               style={{ fontSize: '11px', letterSpacing: '3px', color: '#9A9A9A' }}
             >
-              Enhanced Options
+              Heavenly Weds
             </p>
             <h1
               className="font-heading mb-6 sm:mb-8"
@@ -350,7 +358,7 @@ export default function AdditionalServicesPage() {
                   className="mb-6 text-center uppercase tracking-wider"
                   style={{ fontSize: '12px', letterSpacing: '3px', color: '#9A9A9A' }}
                 >
-                  What's Included
+                  Our Services
                 </p>
                 <div className="grid gap-3 md:grid-cols-2">
                   {service.features.map((feature, idx) => (

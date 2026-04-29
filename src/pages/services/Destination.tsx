@@ -32,8 +32,7 @@ export default function DestinationWeddingPage() {
               Destination Wedding Services
             </h1>
             <p className="text-base sm:text-lg leading-relaxed text-[#6F6F6F] max-w-2xl mx-auto font-light">
-              We curate unforgettable destination weddings, ensuring every detail is flawlessly executed no matter where your celebration takes you.
-              Based in Mumbai & London, capturing love stories worldwide.
+              Planning a destination wedding? Let Heavenly Weds take care of every detail with our complete wedding services, ensuring a beautifully curated and flawlessly executed celebration.
             </p>
           </motion.div>
         </div>
@@ -43,22 +42,17 @@ export default function DestinationWeddingPage() {
       <section className="py-16 md:py-24 px-4 md:px-8">
         <div className="mx-auto max-w-7xl grid gap-12 lg:gap-16 grid-cols-1 lg:grid-cols-2 items-start">
           
-          {/* Left Column - Image & Ideal For */}
+          {/* Left Column - Image */}
           <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
             <div className="mb-8 overflow-hidden rounded-sm aspect-[4/3] w-full">
+              {/* NOTE: Replace the photo attached through mail - update src prop with new image URL from email */}
               <img 
-                src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1200&q=80" 
+                src="/fwdservicesphotosnew/destination wedding services.png" 
                 alt="Destination Wedding" 
                 className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
               />
             </div>
-            <div className="bg-[#F2E8E6] p-8 md:p-10 rounded-sm">
-              <h3 className="font-serif text-2xl mb-3 text-[#C9A7A0]">Ideal For</h3>
-              <p className="text-[#6F6F6F] font-light leading-relaxed">
-                Couples who want to be deeply involved in selecting elements of their day but need a professional sounding board, 
-                vendor curation, and logistical oversight.
-              </p>
-            </div>
+            {/* Ideal For section removed as requested */}
           </motion.div>
 
           {/* Right Column - What's Included */}

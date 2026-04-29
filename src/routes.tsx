@@ -7,16 +7,18 @@ const ContactPage = lazy(() => import('./pages/contact'));
 const AboutPage = lazy(() => import('./pages/about'));
 const PortfolioPage = lazy(() => import('./pages/portfolio'));
 const ServicesPage = lazy(() => import('./pages/services'));
+const WeddingFilmsPage = lazy(() => import('./pages/wedding-films'));
 const LocationsPage = lazy(() => import('./pages/locations'));
 const CeremoniesPage = lazy(() => import('./pages/ceremonies'));
+const VenuesPage = lazy(() => import('./pages/venues'));
 const FullPlanningPage = lazy(() => import('./pages/services/photography'));
-const PartialPlanningPage = lazy(() => import('./pages/services/partial-planning'));
 const ItalyPage = lazy(() => import('./pages/locations/italy'));
 const FrancePage = lazy(() => import('./pages/locations/france'));
 const IndiaPage = lazy(() => import('./pages/locations/india'));
 const LakeComoPage = lazy(() => import('./pages/venues/lame-como'));
 const TuscanyPage = lazy(() => import('./pages/venues/tuscany'));
 const FrenchRivieraPage = lazy(() => import('./pages/venues/french-riviera'));
+const TheLeelaPalaceRajasthanPage = lazy(() => import('./pages/venues/the-leela-palace-rajasthan'));
 const GuidesPage = lazy(() => import('./pages/guides'));
 const PlanPage = lazy(() => import('./pages/plan'));
 const BlogPage = lazy(() => import('./pages/blog'));
@@ -40,6 +42,10 @@ export const routes: RouteObject[] = [
     element: <PortfolioPage />,
   },
   {
+    path: '/wedding-films',
+    element: <WeddingFilmsPage />,
+  },
+  {
     path: '/services/full-planning',
     element: <FullPlanningPage />,
   },
@@ -47,6 +53,7 @@ export const routes: RouteObject[] = [
 {path:"/locations/france" ,element:<FrancePage /> },
 { path:"/locations/india", element:<IndiaPage /> },
 {path:"/venues/lake-como", element:<LakeComoPage /> },
+{ path:"/venues/the-leela-palace-rajasthan", element:<TheLeelaPalaceRajasthanPage /> },
 { path:"/venues/tuscany", element:<TuscanyPage /> },
 { path:"/venues/french-riviera" ,element:<FrenchRivieraPage />},
 { path:"/guides" ,element:<GuidesPage />},
@@ -77,6 +84,10 @@ export const routes: RouteObject[] = [
     element: <CeremoniesPage />,
   },
   {
+    path: '/venues',
+    element: <VenuesPage />,
+  },
+  {
     path: '/contact',
     element: <ContactPage />,
   },
@@ -87,6 +98,7 @@ export const routes: RouteObject[] = [
 ];
 
 // Types for type-safe navigation
-export type Path = '/' | '/about' | '/portfolio' | '/services' | '/locations' | '/ceremonies' | '/contact';
+export type Path = '/' | '/about' | '/services' | '/portfolio' | '/wedding-films' | '/locations' | '/ceremonies' | '/venues' | '/blog' | '/contact';
+
 
 export type Params = Record<string, string | undefined>;

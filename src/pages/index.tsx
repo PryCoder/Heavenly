@@ -13,6 +13,7 @@ export default function HomePage() {
   // Hero image slider state
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [heroVideoFailed, setHeroVideoFailed] = useState(false);
+  const [activeTestimonialIndex, setActiveTestimonialIndex] = useState(0);
   const heroImages = [
     weddingImage1,
     weddingImage2,
@@ -22,35 +23,69 @@ export default function HomePage() {
   const heroVideoSrc = 'https://res.cloudinary.com/do4h3t3mk/video/upload/w_1280,q_auto,f_auto/home_page_1_zq0jbq.mp4';
   const API_URL = import.meta.env.VITE_API_URL
 
-  const weddingFilmLinks = [
-    'https://youtu.be/zQBn6EJSKNI?si=https://youtu.be/zQBn6EJSKNI?si=SqA94gQfsDQm4i3r',
-    'https://youtu.be/OiQJGiFqj7A?si=jEre234vUu36xg0k',
-    'https://youtu.be/5GKMismSKpI?si=8Ld6JQyKI1HEwZIh',
-    'https://youtu.be/Iuutqhrpd-A?si=mOoD_vMlCtz2irxw',
-    'https://youtu.be/RToNRUs_sU0?si=rr62WYiWifIQtVpQ',
-    'https://www.youtube.com/watch?v=FBpFD3vQkLU',
-    'https://youtu.be/SCLkNwGytvY?si=tn9ACClyqlBTx4lK',
-    'https://youtu.be/fHTX4r_vUBs?si=zWUA2OhhQR5UVwAS',
+  const portfolioImages = [
+    { src: '/memories/image.png', fallbackSrc: weddingImage1, alt: 'Portfolio 1' },
+    { src: '/memories/image1.png', fallbackSrc: weddingImage2, alt: 'Portfolio 2' },
+    { src: '/memories/image2.png', fallbackSrc: weddingImage7, alt: 'Portfolio 3' },
+    { src: '/memories/image3.png', fallbackSrc: weddingImage8, alt: 'Portfolio 4' },
+    { src:'/shivammansi/fwdwedding/wd-2 (1).jpg', fallbackSrc: christianWed1, alt: 'Portfolio 5' },
+    { src: christianWed2, fallbackSrc: christianWed2, alt: 'Portfolio 6' },
   ];
 
-  const getYouTubeId = (link: string): string | null => {
-    const match = link.match(
-      /(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/))([A-Za-z0-9_-]{11})/
-    );
-    return match?.[1] ?? null;
+  const serviceImages = {
+    completeWeddingPlanning: {
+      src: '/fwdservicesphotosnew/complete Wedding Planning - photo.png',
+      fallbackSrc: 'https://bp37mc8dd9.preview.c36.airoapp.ai/airo-assets/images/pages/home/service-planning',
+    },
+    destinationWeddings: {
+      src: '/fwdservicesphotosnew/destination wedding services.png',
+      fallbackSrc: 'https://bp37mc8dd9.preview.c36.airoapp.ai/airo-assets/images/pages/home/service-venue',
+    },
   };
 
-  const weddingFilms = weddingFilmLinks
-    .map((link, index) => {
-      const youTubeId = getYouTubeId(link);
-      if (!youTubeId) return null;
-      return {
-        id: `yt-${youTubeId}-${index}`,
-        title: `Wedding Film ${index + 1}`,
-        embedSrc: `https://www.youtube-nocookie.com/embed/${youTubeId}`,
-      };
-    })
-    .filter((film): film is { id: string; title: string; embedSrc: string } => film !== null);
+  const testimonials = [
+    {
+      id: 'roy-rachel',
+      quote:
+        '"Heavenly Weds are the best for wedding planning! From decor to photography, everything was handled perfectly. The team made our big day stress-free and truly magical. Highly recommended!"',
+      name: 'Roy & Rachel',
+      location: 'Goa, India',
+      profileSrc: christianWed2,
+    },
+    {
+      id: 'sandesh-sayli',
+      quote:
+        '"Heavenly Weds did a great pre-wedding photoshoot for us! They captured our moments beautifully and made the entire experience so comfortable and fun. Loved every bit of it — highly recommended!"',
+      name: 'Sandesh & Sayli',
+      location: 'Mumbai, India',
+      profileSrc: weddingImage8,
+    },
+    {
+      id: 'ananya-rohan',
+      quote:
+        '"The team was super professional and warm. The photos feel natural, the film looks cinematic, and every important moment was captured perfectly."',
+      name: 'Ananya & Rohan',
+      location: 'Pune, India',
+      profileSrc: weddingImage2,
+    },
+    {
+      id: 'meera-aarav',
+      quote:
+        '"From planning the shoot to final delivery, everything was smooth. Their attention to detail and storytelling is truly next level."',
+      name: 'Meera & Aarav',
+      location: 'Jaipur, India',
+      profileSrc: weddingImage7,
+    },
+    {
+      id: 'isha-kunal',
+      quote:
+        '"We loved how comfortable they made us feel in front of the camera. The final photos and video are exactly what we dreamed of."',
+      name: 'Isha & Kunal',
+      location: 'Udaipur, India',
+      profileSrc: weddingImage1,
+    },
+  ];
+
   useEffect(() => {
     const checkHealth = async () => {
       try {
@@ -71,6 +106,14 @@ export default function HomePage() {
     }, 7000);
     return () => clearInterval(interval);
   }, [heroVideoFailed, heroImages.length]);
+
+  const goToNextTestimonial = () => {
+    setActiveTestimonialIndex((prev) => (prev + 1) % testimonials.length);
+  };
+
+  const goToPrevTestimonial = () => {
+    setActiveTestimonialIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+  };
 
   return (
     <div className="min-h-screen" style={{ paddingTop: 'clamp(80px, 15vw, 117px)' }}>
@@ -112,7 +155,7 @@ export default function HomePage() {
                   marginTop: '0',
                   padding: '0 10px'
                 }}>
-                At Heavenly Weds we make your special day heavenly!
+                At Heavenly Weds We Make Your Special Day Heavenly!
               </motion.h1>
               
               {/* Subtitle - Italic */}
@@ -132,7 +175,7 @@ export default function HomePage() {
                   marginBottom: '0',
                   padding: '0 15px'
                 }}>
-                Exquisite celebrations in the world's most enchanting locations
+                At Heavenly Weds, we are a professional team of passionate wedding photographers and cinematographers dedicated to capturing the most beautiful moments of your special day.
               </motion.p>
               
               {/* Small Tagline */}
@@ -150,7 +193,7 @@ export default function HomePage() {
                   marginTop: 'clamp(15px, 3vw, 20px)',
                   marginBottom: '0'
                 }}>
-                Elegance · Refinement · Class
+                CRAFTING TIMELESS MOMENTS
               </motion.p>
             </motion.div>
 
@@ -224,16 +267,6 @@ export default function HomePage() {
             borderTop: '1px solid #ECECEC' 
           }}>
             <div className="flex h-full flex-col items-center justify-center" style={{ gap: 'clamp(8px, 2vw, 16px)' }}>
-              {/* Caption Text */}
-              <p className="uppercase text-center px-4" style={{ 
-                fontSize: 'clamp(9px, 2vw, 11px)', 
-                letterSpacing: 'clamp(2px, 1vw, 3.5px)', 
-                color: '#9A9A9A', 
-                fontWeight: 400 
-              }}>
-                Creating Timeless Moments
-              </p>
-              
               {/* Slider Dots (only shown if video fails to load) */}
               {heroVideoFailed && (
                 <div className="flex items-center" style={{ gap: 'clamp(8px, 2vw, 12px)' }}>
@@ -258,117 +291,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Introduction */}
-      <section style={{ padding: 'clamp(60px, 10vw, 120px) 0' }}>
-        <div className="mx-auto" style={{ 
-          maxWidth: '1200px', 
-          padding: '0 clamp(16px, 5vw, 60px)' 
-        }}>
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }} 
-            whileInView={{ opacity: 1, y: 0 }} 
-            viewport={{ once: true }} 
-            transition={{ duration: 0.6 }} 
-            className="text-center w-full"
-            style={{ maxWidth: '800px', margin: '0 auto' }}
-          >
-            <p className="mb-4 uppercase tracking-widest" style={{ 
-              fontSize: 'clamp(10px, 2vw, 11px)', 
-              letterSpacing: 'clamp(2px, 1vw, 3px)', 
-              color: '#9A9A9A' 
-            }}>
-              About Us
-            </p>
-            <h2 className="font-heading mb-6" style={{ 
-              fontSize: 'clamp(32px, 8vw, 44px)', 
-              lineHeight: '1.3', 
-              color: '#C9A7A0', 
-              fontWeight: 400,
-              padding: '0 10px'
-            }}>
-              Crafting Timeless Celebrations
-            </h2>
-            <p className="leading-relaxed px-4" style={{ 
-              fontSize: 'clamp(14px, 3vw, 16px)', 
-              lineHeight: '1.8', 
-              color: '#6F6F6F' 
-            }}>
-              For over a decade, we have been creating extraordinary wedding experiences 
-              in the world's most breathtaking destinations. Our approach combines 
-              meticulous planning with creative vision, ensuring every detail reflects 
-              your unique love story.
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Wedding Films */}
-      <section style={{ padding: 'clamp(60px, 8vw, 90px) 0' }}>
-        <div className="mx-auto" style={{
-          maxWidth: '1320px',
-          padding: '0 clamp(16px, 5vw, 60px)',
-        }}>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="mb-12 md:mb-16 text-center"
-          >
-            <p className="mb-4 uppercase tracking-widest" style={{
-              fontSize: 'clamp(10px, 2vw, 11px)',
-              letterSpacing: 'clamp(2px, 1vw, 3px)',
-              color: '#9A9A9A',
-            }}>
-              Wedding Film
-            </p>
-            <h2 className="font-heading mb-6" style={{
-              fontSize: 'clamp(32px, 8vw, 44px)',
-              lineHeight: '1.3',
-              color: '#C9A7A0',
-              fontWeight: 400,
-            }}>
-              Wedding Films
-            </h2>
-          </motion.div>
-
-          <div className="grid gap-4 sm:gap-6 md:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-            {weddingFilms.map((film, index) => (
-              <motion.div
-                key={film.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.05 }}
-                className="overflow-hidden rounded-lg"
-                style={{ border: '1px solid #ECECEC', backgroundColor: '#FFFFFF' }}
-              >
-                <div className="w-full aspect-video bg-black">
-                  <iframe
-                    className="w-full h-full"
-                    src={film.embedSrc}
-                    title={film.title}
-                    loading="lazy"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerPolicy="strict-origin-when-cross-origin"
-                    allowFullScreen
-                  />
-                </div>
-                <div className="p-4">
-                  <p className="uppercase" style={{
-                    fontSize: '11px',
-                    letterSpacing: '2px',
-                    color: '#7A7A7A',
-                  }}>
-                    {film.title}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Services */}
       <section style={{ 
         padding: 'clamp(60px, 8vw, 80px) 0', 
@@ -388,11 +310,14 @@ export default function HomePage() {
             >
               <div className="mb-6 overflow-hidden rounded-lg">
                 <img 
-                  src="https://bp37mc8dd9.preview.c36.airoapp.ai/airo-assets/images/pages/home/service-planning" 
+                  src={serviceImages.completeWeddingPlanning.src}
                   alt="Complete wedding planning" 
                   className="w-full object-cover transition-transform duration-700 group-hover:scale-105"
                   loading="lazy"
                   decoding="async"
+                  onError={(e) => {
+                    e.currentTarget.src = serviceImages.completeWeddingPlanning.fallbackSrc;
+                  }}
                   style={{ height: 'clamp(250px, 40vw, 400px)' }} 
                 />
               </div>
@@ -414,6 +339,31 @@ export default function HomePage() {
                 From the first consultation to your final farewell, we orchestrate every 
                 element of your celebration with precision and care.
               </p>
+
+              <Link
+                to="/services#full-planning"
+                className="inline-flex items-center gap-2 uppercase tracking-widest transition-all duration-500"
+                style={{
+                  padding: '12px 22px',
+                  fontSize: 'clamp(10px, 2vw, 11px)',
+                  letterSpacing: 'clamp(1.5px, 1vw, 2px)',
+                  backgroundColor: '#F2E8E6',
+                  color: '#6F6F6F',
+                  border: '1px solid transparent',
+                  textDecoration: 'none',
+                  borderRadius: '4px',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = '#C9A7A0';
+                  e.currentTarget.style.color = '#FFFFFF';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = '#F2E8E6';
+                  e.currentTarget.style.color = '#6F6F6F';
+                }}
+              >
+                Know More
+              </Link>
             </motion.div>
             <motion.div 
               initial={{ opacity: 0, y: 30 }} 
@@ -424,11 +374,14 @@ export default function HomePage() {
             >
               <div className="mb-6 overflow-hidden rounded-lg">
                 <img 
-                  src="https://bp37mc8dd9.preview.c36.airoapp.ai/airo-assets/images/pages/home/service-venue" 
-                  alt="Destination venue curation" 
+                  src={serviceImages.destinationWeddings.src}
+                  alt="Destination weddings" 
                   className="w-full object-cover transition-transform duration-700 group-hover:scale-105"
                   loading="lazy"
                   decoding="async"
+                  onError={(e) => {
+                    e.currentTarget.src = serviceImages.destinationWeddings.fallbackSrc;
+                  }}
                   style={{ height: 'clamp(250px, 40vw, 400px)' }} 
                 />
               </div>
@@ -439,7 +392,7 @@ export default function HomePage() {
                   color: '#6F6F6F', 
                   fontWeight: 400 
                 }}>
-                  Destination & Venue Curation
+                  Destination Weddings
                 </h3>
               </div>
               <p className="mb-6 leading-relaxed" style={{ 
@@ -450,6 +403,31 @@ export default function HomePage() {
                 Discover extraordinary venues in the world's most romantic destinations, 
                 from historic villas to pristine beachfront estates.
               </p>
+
+              <Link
+                to="/services#destination"
+                className="inline-flex items-center gap-2 uppercase tracking-widest transition-all duration-500"
+                style={{
+                  padding: '12px 22px',
+                  fontSize: 'clamp(10px, 2vw, 11px)',
+                  letterSpacing: 'clamp(1.5px, 1vw, 2px)',
+                  backgroundColor: '#F2E8E6',
+                  color: '#6F6F6F',
+                  border: '1px solid transparent',
+                  textDecoration: 'none',
+                  borderRadius: '4px',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = '#C9A7A0';
+                  e.currentTarget.style.color = '#FFFFFF';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = '#F2E8E6';
+                  e.currentTarget.style.color = '#6F6F6F';
+                }}
+              >
+                Know More
+              </Link>
             </motion.div>
           </div>
         </div>
@@ -473,7 +451,7 @@ export default function HomePage() {
               letterSpacing: 'clamp(2px, 1vw, 3px)', 
               color: '#9A9A9A' 
             }}>
-              Portfolio
+              Heavenly Weds
             </p>
             <h2 className="font-heading mb-6" style={{ 
               fontSize: 'clamp(32px, 8vw, 44px)', 
@@ -481,11 +459,11 @@ export default function HomePage() {
               color: '#C9A7A0', 
               fontWeight: 400 
             }}>
-              Recent Celebrations
+              Moments Becomes Memories
             </h2>
           </motion.div>
           <div className="grid gap-4 sm:gap-6 md:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-            {[weddingImage1, weddingImage2, weddingImage7, weddingImage8, christianWed1, christianWed2].map((imgSrc, index) => (
+            {portfolioImages.map((img, index) => (
               <motion.div 
                 key={index} 
                 initial={{ opacity: 0, y: 30 }} 
@@ -495,11 +473,14 @@ export default function HomePage() {
                 className="group overflow-hidden rounded-lg"
               >
                 <img 
-                  src={imgSrc} 
-                  alt={`Wedding ${index + 1}`} 
+                  src={img.src} 
+                  alt={img.alt} 
                   className="w-full object-cover transition-all duration-700 group-hover:scale-105"
                   loading="lazy"
                   decoding="async"
+                  onError={(e) => {
+                    e.currentTarget.src = img.fallbackSrc;
+                  }}
                   style={{ 
                     height: 'clamp(250px, 40vw, 380px)', 
                     filter: 'brightness(0.95)' 
@@ -541,86 +522,105 @@ export default function HomePage() {
               fontWeight: 400,
               padding: '0 10px'
             }}>
-              Kind Words from Our Couples
+              Cherished Words from Our Clients
             </h2>
           </motion.div>
-          <div className="grid gap-8 md:gap-12 grid-cols-1 md:grid-cols-2">
-            <motion.div 
-              initial={{ opacity: 0, y: 30 }} 
-              whileInView={{ opacity: 1, y: 0 }} 
-              viewport={{ once: true }} 
-              transition={{ duration: 0.6 }} 
+
+          <div className="relative mx-auto" style={{ maxWidth: '860px' }}>
+            <motion.div
+              key={testimonials[activeTestimonialIndex]?.id}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.25 }}
               className="bg-white rounded-lg"
               style={{ padding: 'clamp(24px, 5vw, 48px)' }}
             >
-              <p className="font-heading italic mb-8 leading-relaxed" style={{ 
-                fontSize: 'clamp(16px, 3vw, 18px)', 
-                lineHeight: '1.8', 
-                color: '#6F6F6F' 
+              <p className="font-heading italic mb-8 leading-relaxed" style={{
+                fontSize: 'clamp(16px, 3vw, 18px)',
+                lineHeight: '1.8',
+                color: '#6F6F6F',
               }}>
-                "Heavenly Weds are the best for wedding planning! From decor to photography, everything was handled perfectly. The team made our big day stress-free and truly magical. Highly recommended!"
+                {testimonials[activeTestimonialIndex]?.quote}
               </p>
+
               <div className="flex items-center gap-4">
-                <img 
-                  src= {christianWed2} 
-                  alt="Roy & Rachel" 
+                <img
+                  src={testimonials[activeTestimonialIndex]?.profileSrc}
+                  alt={testimonials[activeTestimonialIndex]?.name}
                   className="rounded-full object-cover"
                   loading="lazy"
                   decoding="async"
-                  style={{ width: 'clamp(48px, 8vw, 64px)', height: 'clamp(48px, 8vw, 64px)' }} 
+                  style={{ width: 'clamp(48px, 8vw, 64px)', height: 'clamp(48px, 8vw, 64px)' }}
                 />
                 <div>
-                  <p className="font-heading mb-1" style={{ 
-                    fontSize: 'clamp(14px, 2.5vw, 16px)', 
-                    color: '#6F6F6F', 
-                    fontWeight: 600 
+                  <p className="font-heading mb-1" style={{
+                    fontSize: 'clamp(14px, 2.5vw, 16px)',
+                    color: '#6F6F6F',
+                    fontWeight: 600,
                   }}>
-                  Roy & Rachel
+                    {testimonials[activeTestimonialIndex]?.name}
                   </p>
                   <p style={{ fontSize: 'clamp(12px, 2vw, 13px)', color: '#9A9A9A' }}>
-                    Goa, India
+                    {testimonials[activeTestimonialIndex]?.location}
                   </p>
                 </div>
               </div>
             </motion.div>
-            <motion.div 
-              initial={{ opacity: 0, y: 30 }} 
-              whileInView={{ opacity: 1, y: 0 }} 
-              viewport={{ once: true }} 
-              transition={{ duration: 0.6, delay: 0.2 }} 
-              className="bg-white rounded-lg"
-              style={{ padding: 'clamp(24px, 5vw, 48px)' }}
+
+            {/* Side navigation buttons */}
+            <button
+              type="button"
+              onClick={goToPrevTestimonial}
+              aria-label="Previous testimonial"
+              className="absolute top-1/2 -translate-y-1/2 left-0 -translate-x-1/2 hidden sm:flex items-center justify-center"
+              style={{
+                width: '44px',
+                height: '44px',
+                borderRadius: '9999px',
+                backgroundColor: '#FFFFFF',
+                border: '1px solid #ECECEC',
+                color: '#6F6F6F',
+              }}
             >
-              <p className="font-heading italic mb-8 leading-relaxed" style={{ 
-                fontSize: 'clamp(16px, 3vw, 18px)', 
-                lineHeight: '1.8', 
-                color: '#6F6F6F' 
-              }}>
-                "Heavenly Weds did a great pre-wedding photoshoot for us! They captured our moments beautifully and made the entire experience so comfortable and fun. Loved every bit of it — highly recommended!"
-              </p>
-              <div className="flex items-center gap-4">
-                <img 
-                  src="https://bp37mc8dd9.preview.c36.airoapp.ai/airo-assets/images/pages/home/testimonial-1" 
-                  alt="Nishita & Raj" 
-                  className="rounded-full object-cover"
-                  loading="lazy"
-                  decoding="async"
-                  style={{ width: 'clamp(48px, 8vw, 64px)', height: 'clamp(48px, 8vw, 64px)' }} 
-                />
-                <div>
-                  <p className="font-heading mb-1" style={{ 
-                    fontSize: 'clamp(14px, 2.5vw, 16px)', 
-                    color: '#6F6F6F', 
-                    fontWeight: 600 
-                  }}>
-                   Nishita & Raj
-                  </p>
-                  <p style={{ fontSize: 'clamp(12px, 2vw, 13px)', color: '#9A9A9A' }}>
-                    Udaipur, India
-                  </p>
-                </div>
-              </div>
-            </motion.div>
+              ‹
+            </button>
+            <button
+              type="button"
+              onClick={goToNextTestimonial}
+              aria-label="Next testimonial"
+              className="absolute top-1/2 -translate-y-1/2 right-0 translate-x-1/2 hidden sm:flex items-center justify-center"
+              style={{
+                width: '44px',
+                height: '44px',
+                borderRadius: '9999px',
+                backgroundColor: '#FFFFFF',
+                border: '1px solid #ECECEC',
+                color: '#6F6F6F',
+              }}
+            >
+              ›
+            </button>
+
+            {/* Mobile forward button */}
+            <div className="mt-6 flex justify-center sm:hidden">
+              <button
+                type="button"
+                onClick={goToNextTestimonial}
+                aria-label="Next testimonial"
+                className="uppercase tracking-widest transition-all duration-300"
+                style={{
+                  padding: '12px 22px',
+                  fontSize: '11px',
+                  letterSpacing: '2px',
+                  backgroundColor: '#F2E8E6',
+                  color: '#6F6F6F',
+                  borderRadius: '4px',
+                  border: '1px solid transparent',
+                }}
+              >
+                Next
+              </button>
+            </div>
           </div>
         </div>
       </section>
@@ -644,7 +644,7 @@ export default function HomePage() {
               fontWeight: 400,
               padding: '0 10px'
             }}>
-              Let's Create Your Perfect Day
+              Let’s Make Your Wedding Heavenly !
             </h2>
             <p className="mb-8 md:mb-10 leading-relaxed px-4" style={{ 
               fontSize: 'clamp(14px, 3vw, 16px)', 
