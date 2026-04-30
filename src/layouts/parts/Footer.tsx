@@ -18,10 +18,10 @@ export default function Footer() {
             </Link>
             <p className="mb-6 leading-relaxed" style={{ fontSize: '14px', lineHeight: '1.8', color: '#9A9A9A' }}>Creating unforgettable luxury weddings across the world's most breathtaking destinations.</p>
             <div className="flex gap-4">
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="flex h-10 w-10 items-center justify-center rounded-full border transition-all duration-300 hover:border-[#C9A7A0] hover:text-[#C9A7A0]" style={{ borderColor: '#ECECEC', color: '#9A9A9A' }} aria-label="Instagram">
+              <a href="https://www.instagram.com/heavenlyweds?utm_source=qr&igsh=MXU1bjFyZHF6Y280aA==" target="_blank" rel="noopener noreferrer" className="flex h-10 w-10 items-center justify-center rounded-full border transition-all duration-300 hover:border-[#C9A7A0] hover:text-[#C9A7A0]" style={{ borderColor: '#ECECEC', color: '#9A9A9A' }} aria-label="Instagram">
                 <Instagram className="h-5 w-5" />
               </a>
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="flex h-10 w-10 items-center justify-center rounded-full border transition-all duration-300 hover:border-[#C9A7A0] hover:text-[#C9A7A0]" style={{ borderColor: '#ECECEC', color: '#9A9A9A' }} aria-label="Facebook">
+              <a href="https://www.facebook.com/share/1Coeez8fGb/" target="_blank" rel="noopener noreferrer" className="flex h-10 w-10 items-center justify-center rounded-full border transition-all duration-300 hover:border-[#C9A7A0] hover:text-[#C9A7A0]" style={{ borderColor: '#ECECEC', color: '#9A9A9A' }} aria-label="Facebook">
                 <Facebook className="h-5 w-5" />
               </a>
             </div>

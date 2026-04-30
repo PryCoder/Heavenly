@@ -193,85 +193,61 @@ export default function BlogPage() {
       </section>
 
       {/* Sidebar Only Section - No Latest Posts */}
-      <section className="py-12 px-4 md:px-8 bg-[#FAFAFA]">
-        <div className="mx-auto max-w-7xl">
-          <div className="flex justify-center">
-            {/* Sidebar Only - Centered */}
-            <div className="w-full max-w-md">
-              {/* About */}
-              <div className="bg-white p-6 rounded-sm mb-6">
-                <h3 className="font-heading text-lg text-[#C9A7A0] mb-4">About This Blog</h3>
-                <p className="text-sm text-[#6F6F6F] mb-4">
-                  Insights and inspiration from our team of destination wedding experts. Real stories, practical advice, and beautiful inspiration.
-                </p>
-                <div className="flex items-center gap-2 text-sm text-[#C9A7A0]">
-                  <Camera className="h-4 w-4" />
-                  <span>100+ weddings featured</span>
-                </div>
-              </div>
-
-              {/* Topics */}
-              <div className="bg-white p-6 rounded-sm mb-6">
-                <h3 className="font-heading text-lg text-[#C9A7A0] mb-4">Browse by Topic</h3>
-                <div className="flex flex-wrap gap-2">
-                  {topics.map((topic) => (
-                    <Link
-                      key={topic}
-                      to={`/blog/topic/${topic.toLowerCase().replace(/\s+/g, '-')}`}
-                      className="px-3 py-1 bg-[#FAFAFA] rounded-full text-xs text-[#6F6F6F] hover:bg-[#F2E8E6] transition-colors"
-                    >
-                      {topic}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-
-              {/* Newsletter */}
-              <div className="bg-[#F2E8E6] p-6 rounded-sm">
-                <h3 className="font-heading text-lg text-[#C9A7A0] mb-2">Never Miss a Post</h3>
-                <p className="text-sm text-[#6F6F6F] mb-4">
-                  Get the latest articles delivered to your inbox
-                </p>
-                <div className="flex flex-col gap-2">
-                  <input
-                    type="email"
-                    placeholder="Your email"
-                    className="px-4 py-2 border border-[#E5D5D0] rounded-sm focus:outline-none focus:border-[#C9A7A0] text-sm"
-                  />
-                  <button className="px-4 py-2 bg-[#C9A7A0] text-white text-sm uppercase tracking-[2px] hover:bg-[#B89690] transition-colors">
-                    Subscribe
-                  </button>
-                </div>
-              </div>
-            </div>
+   {/* Sidebar Only Section - No Latest Posts */}
+<section className="py-12 px-4 md:px-8 bg-[#FAFAFA]">
+  <div className="mx-auto max-w-15xl">
+    <div className="flex justify-center">
+      {/* Sidebar Only - Wider and Centered */}
+      <div className="w-full max-w-2xl lg:max-w-3xl">
+        {/* About */}
+        <div className="bg-white p-8 rounded-sm mb-6">
+          <h3 className="font-heading text-xl text-[#C9A7A0] mb-4">About This Blog</h3>
+          <p className="text-base text-[#6F6F6F] mb-4">
+            Insights and inspiration from our team of destination wedding experts. Real stories, practical advice, and beautiful inspiration for your dream destination wedding.
+          </p>
+          <div className="flex items-center gap-2 text-sm text-[#C9A7A0]">
+            <Camera className="h-4 w-4" />
+            <span>100+ weddings featured</span>
           </div>
         </div>
-      </section>
 
-      {/* Instagram Feed */}
-      <section className="py-16 px-4 md:px-8">
-        <div className="mx-auto max-w-7xl text-center">
-          <h2 className="font-heading text-2xl text-[#C9A7A0] font-light mb-4">
-            Follow Our Journey
-          </h2>
-          <p className="text-[#6F6F6F] mb-8">@heavenlyweds on Instagram</p>
-          
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {[1, 2, 3, 4].map((item) => (
-              <div key={item} className="relative overflow-hidden rounded-sm aspect-square group">
-                <img
-                  src={`https://images.unsplash.com/photo-${item === 1 ? '1511795409834-ef04bbd61622' : item === 2 ? '1534265264056-4a5e9c816aa4' : item === 3 ? '1549144511-f099e773c147' : '1464368081811-1740e3b80f10'}?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400&q=80`}
-                  alt="Instagram post"
-                  className="h-full w-full object-cover"
-                />
-                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                  <Heart className="h-6 w-6 text-white" />
-                </div>
-              </div>
+        {/* Topics */}
+        <div className="bg-white p-8 rounded-sm mb-6">
+          <h3 className="font-heading text-xl text-[#C9A7A0] mb-4">Browse by Topic</h3>
+          <div className="flex flex-wrap gap-3">
+            {topics.map((topic) => (
+              <Link
+                key={topic}
+                to={`/blog/topic/${topic.toLowerCase().replace(/\s+/g, '-')}`}
+                className="px-4 py-2 bg-[#FAFAFA] rounded-full text-sm text-[#6F6F6F] hover:bg-[#F2E8E6] transition-colors"
+              >
+                {topic}
+              </Link>
             ))}
           </div>
         </div>
-      </section>
+
+        {/* Newsletter */}
+        <div className="bg-[#F2E8E6] p-8 rounded-sm">
+          <h3 className="font-heading text-xl text-[#C9A7A0] mb-3">Never Miss a Post</h3>
+          <p className="text-base text-[#6F6F6F] mb-6">
+            Get the latest articles delivered to your inbox
+          </p>
+          <div className="flex flex-col sm:flex-row gap-3">
+            <input
+              type="email"
+              placeholder="Your email address"
+              className="flex-1 px-4 py-3 border border-[#E5D5D0] rounded-sm focus:outline-none focus:border-[#C9A7A0] text-sm"
+            />
+            <button className="px-6 py-3 bg-[#C9A7A0] text-white text-sm uppercase tracking-[2px] hover:bg-[#B89690] transition-colors whitespace-nowrap">
+              Subscribe
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
     </div>
   );
 }
