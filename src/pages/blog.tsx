@@ -59,7 +59,7 @@ export default function BlogPage() {
     <div className="bg-white pt-[117px]">
       {/* Hero Section */}
       <section className="relative py-16 md:py-20 lg:py-24 px-4 md:px-8 bg-[#FAFAFA]">
-        <div className="mx-auto max-w-4xl text-center">
+        <div className="mx-auto max-w-7xl text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -80,14 +80,16 @@ export default function BlogPage() {
 
       {/* Search Bar */}
       <section className="py-8 px-4 md:px-8 border-b border-[#E5D5D0]">
-        <div className="mx-auto max-w-2xl">
-          <div className="relative">
-            <input
-              type="text"
-              placeholder="Search articles..."
-              className="w-full px-5 py-3 pl-12 border border-[#E5D5D0] rounded-sm focus:outline-none focus:border-[#C9A7A0] text-[#6F6F6F]"
-            />
-            <Search className="absolute left-4 top-3.5 h-5 w-5 text-[#9A9A9A]" />
+        <div className="mx-auto max-w-7xl">
+          <div className="max-w-2xl">
+            <div className="relative">
+              <input
+                type="text"
+                placeholder="Search articles..."
+                className="w-full px-5 py-3 pl-12 border border-[#E5D5D0] rounded-sm focus:outline-none focus:border-[#C9A7A0] text-[#6F6F6F]"
+              />
+              <Search className="absolute left-4 top-3.5 h-5 w-5 text-[#9A9A9A]" />
+            </div>
           </div>
         </div>
       </section>
@@ -95,7 +97,7 @@ export default function BlogPage() {
       {/* Categories */}
       <section className="py-6 px-4 md:px-8 border-b border-[#E5D5D0]">
         <div className="mx-auto max-w-7xl">
-          <div className="flex flex-wrap gap-2 justify-center">
+          <div className="flex flex-wrap gap-2">
             {categories.map((category) => (
               <button
                 key={category.id}
@@ -192,62 +194,58 @@ export default function BlogPage() {
         </div>
       </section>
 
-      {/* Sidebar Only Section - No Latest Posts */}
-   {/* Sidebar Only Section - No Latest Posts */}
-<section className="py-12 px-4 md:px-8 bg-[#FAFAFA]">
-  <div className="mx-auto max-w-15xl">
-    <div className="flex justify-center">
-      {/* Sidebar Only - Wider and Centered */}
-      <div className="w-full max-w-2xl lg:max-w-3xl">
-        {/* About */}
-        <div className="bg-white p-8 rounded-sm mb-6">
-          <h3 className="font-heading text-xl text-[#C9A7A0] mb-4">About This Blog</h3>
-          <p className="text-base text-[#6F6F6F] mb-4">
-            Insights and inspiration from our team of destination wedding experts. Real stories, practical advice, and beautiful inspiration for your dream destination wedding.
-          </p>
-          <div className="flex items-center gap-2 text-sm text-[#C9A7A0]">
-            <Camera className="h-4 w-4" />
-            <span>100+ weddings featured</span>
-          </div>
-        </div>
+      {/* Sidebar Only Section - Fixed Width */}
+      <section className="py-12 px-4 md:px-8 bg-[#FAFAFA]">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {/* About */}
+            <div className="bg-white p-8 rounded-sm">
+              <h3 className="font-heading text-xl text-[#C9A7A0] mb-4">About This Blog</h3>
+              <p className="text-base text-[#6F6F6F] mb-4">
+                Insights and inspiration from our team of destination wedding experts. Real stories, practical advice, and beautiful inspiration for your dream destination wedding.
+              </p>
+              <div className="flex items-center gap-2 text-sm text-[#C9A7A0]">
+                <Camera className="h-4 w-4" />
+                <span>100+ weddings featured</span>
+              </div>
+            </div>
 
-        {/* Topics */}
-        <div className="bg-white p-8 rounded-sm mb-6">
-          <h3 className="font-heading text-xl text-[#C9A7A0] mb-4">Browse by Topic</h3>
-          <div className="flex flex-wrap gap-3">
-            {topics.map((topic) => (
-              <Link
-                key={topic}
-                to={`/blog/topic/${topic.toLowerCase().replace(/\s+/g, '-')}`}
-                className="px-4 py-2 bg-[#FAFAFA] rounded-full text-sm text-[#6F6F6F] hover:bg-[#F2E8E6] transition-colors"
-              >
-                {topic}
-              </Link>
-            ))}
-          </div>
-        </div>
+            {/* Topics */}
+            <div className="bg-white p-8 rounded-sm">
+              <h3 className="font-heading text-xl text-[#C9A7A0] mb-4">Browse by Topic</h3>
+              <div className="flex flex-wrap gap-3">
+                {topics.map((topic) => (
+                  <Link
+                    key={topic}
+                    to={`/blog/topic/${topic.toLowerCase().replace(/\s+/g, '-')}`}
+                    className="px-4 py-2 bg-[#FAFAFA] rounded-full text-sm text-[#6F6F6F] hover:bg-[#F2E8E6] transition-colors"
+                  >
+                    {topic}
+                  </Link>
+                ))}
+              </div>
+            </div>
 
-        {/* Newsletter */}
-        <div className="bg-[#F2E8E6] p-8 rounded-sm">
-          <h3 className="font-heading text-xl text-[#C9A7A0] mb-3">Never Miss a Post</h3>
-          <p className="text-base text-[#6F6F6F] mb-6">
-            Get the latest articles delivered to your inbox
-          </p>
-          <div className="flex flex-col sm:flex-row gap-3">
-            <input
-              type="email"
-              placeholder="Your email address"
-              className="flex-1 px-4 py-3 border border-[#E5D5D0] rounded-sm focus:outline-none focus:border-[#C9A7A0] text-sm"
-            />
-            <button className="px-6 py-3 bg-[#C9A7A0] text-white text-sm uppercase tracking-[2px] hover:bg-[#B89690] transition-colors whitespace-nowrap">
-              Subscribe
-            </button>
+            {/* Newsletter */}
+            <div className="bg-[#F2E8E6] p-8 rounded-sm">
+              <h3 className="font-heading text-xl text-[#C9A7A0] mb-3">Never Miss a Post</h3>
+              <p className="text-base text-[#6F6F6F] mb-6">
+                Get the latest articles delivered to your inbox
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <input
+                  type="email"
+                  placeholder="Your email address"
+                  className="flex-1 px-4 py-3 border border-[#E5D5D0] rounded-sm focus:outline-none focus:border-[#C9A7A0] text-sm"
+                />
+                <button className="px-6 py-3 bg-[#C9A7A0] text-white text-sm uppercase tracking-[2px] hover:bg-[#B89690] transition-colors whitespace-nowrap">
+                  Subscribe
+                </button>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
+      </section>
     </div>
   );
 }
