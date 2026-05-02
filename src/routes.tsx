@@ -1,6 +1,7 @@
 import { RouteObject } from 'react-router-dom';
 import { lazy } from 'react';
 import HomePage from './pages/index';
+import ComingSoon from './pages/comingsoon';
 
 // Lazy load pages for code splitting (keep HomePage eager for instant landing)
 const ContactPage = lazy(() => import('./pages/contact'));
@@ -58,7 +59,7 @@ export const routes: RouteObject[] = [
 { path:"/venues/french-riviera" ,element:<FrenchRivieraPage />},
 { path:"/guides" ,element:<GuidesPage />},
 { path:"/lets-plan" ,element:<PlanPage />},
-{ path:"/blog" ,element:<BlogPage />},
+
   {
     path: '/services/photography',
     element: <PhotoVideoPage/>,
@@ -77,12 +78,9 @@ export const routes: RouteObject[] = [
   },
   {
     path: '/locations',
-    element: <LocationsPage />,
+    element: <ComingSoon />,
   },
-  {
-    path: '/ceremonies',
-    element: <CeremoniesPage />,
-  },
+  
   {
     path: '/venues',
     element: <VenuesPage />,

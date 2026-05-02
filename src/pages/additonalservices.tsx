@@ -147,7 +147,7 @@ export default function AdditionalServicesPage() {
         'Elegant maternity gowns and styling guidance to enhance your look and comfort.',
       ],
       href: '/services/maternity',
-      images: pickFour([...ADDITIONAL_SERVICE_IMAGES.maternity], [maternityi1, maternityi2, maternityi3, maternityi4]),
+      images: pickFour([ maternityi2, maternityi1],[...ADDITIONAL_SERVICE_IMAGES.maternity]),
     },
     {
       id: 'destination',
@@ -187,11 +187,11 @@ export default function AdditionalServicesPage() {
         'Sound Design & Music Sync – Perfectly balanced audio with cinematic sound effects and music.',
       ],
       href: '/services/editing',
-      images: pickFour([...ADDITIONAL_SERVICE_IMAGES.editing], [weddingImage2, weddingImage3, wedding3, wedding4]),
+      images: ADDITIONAL_SERVICE_IMAGES.editing,
     },
     {
       id: 'invitation',
-      title: 'Wedding Invitation',
+      title: 'Wedding Invitations',
       icon: PenTool,
       description: 'Beautifully crafted invitations that set the tone for your celebration.',
       features: [
@@ -202,11 +202,11 @@ export default function AdditionalServicesPage() {
         'RSVP & Wedding Website Integration – Easy guest management with digital RSVP options.',
       ],
       href: '/services/invitations',
-      images: pickFour([...ADDITIONAL_SERVICE_IMAGES.invitation], [wedding1, wedding2, wedding3, wedding4]),
+      images: ADDITIONAL_SERVICE_IMAGES.invitation,
     },
     {
       id: 'makeup',
-      title: 'Make Up Artist',
+      title: 'Make Up Artists',
       icon: User,
       description: 'Expert makeup artists to make you look and feel your best on your special day.',
       features: [
@@ -218,11 +218,11 @@ export default function AdditionalServicesPage() {
         'Touch-Up Support – Complimentary touch-up kit and assistance to keep you looking fresh throughout the event.',
       ],
       href: '/services/makeup',
-      images: pickFour([...ADDITIONAL_SERVICE_IMAGES.makeup], [bride1, bride2, wedding2, wedding3])
+      images: ADDITIONAL_SERVICE_IMAGES.makeup,
     },
     {
       id: 'album',
-      title: 'Wedding Album',
+      title: 'Wedding Albums',
       icon: BookOpen,
       description: 'Beautifully designed albums to preserve your memories for generations.',
       features: [
@@ -235,11 +235,11 @@ export default function AdditionalServicesPage() {
         'Premium Binding',
       ],
       href: '/services/album',
-      images: pickFour([...ADDITIONAL_SERVICE_IMAGES.album], [wedding1, wedding2, wedding3, wedding4]),
+      images: ADDITIONAL_SERVICE_IMAGES.album, 
     },
     {
       id: 'catering',
-      title: 'Catering',
+      title: 'Caterings',
       icon: Utensils,
       description: 'Exquisite culinary experiences tailored to your taste and style.',
       features: [

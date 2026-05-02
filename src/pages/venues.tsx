@@ -2,30 +2,14 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
 const venues = [
-  {
-    id: 'lake-como',
-    name: 'Lake Como',
-    href: '/venues/lake-como',
-    description: 'A romantic lakeside setting with timeless charm.',
-  },
+  
   {
     id: 'the-leela-palace-rajasthan',
     name: 'The Leela Palace, Rajasthan',
     href: '/venues/the-leela-palace-rajasthan',
     description: 'A regal lakeside palace setting in Udaipur.',
   },
-  {
-    id: 'tuscany',
-    name: 'Tuscany',
-    href: '/venues/tuscany',
-    description: 'Countryside elegance with breathtaking views.',
-  },
-  {
-    id: 'french-riviera',
-    name: 'French Riviera',
-    href: '/venues/french-riviera',
-    description: 'Coastal luxury for unforgettable celebrations.',
-  },
+ 
 ];
 
 export default function VenuesPage() {

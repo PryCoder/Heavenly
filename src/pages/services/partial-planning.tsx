@@ -41,17 +41,17 @@ export default function PhotoVideoPage() {
       <section className="py-16 md:py-24 px-4 md:px-8">
         <div className="mx-auto max-w-7xl grid gap-12 lg:gap-16 grid-cols-1 lg:grid-cols-2 items-start">
           
-          {/* Left Column - Image */}
+          {/* Left Column - Image - Fixed for proper fitting */}
           <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
-            <div className="mb-8 overflow-hidden rounded-sm aspect-[4/3] w-full">
+            <div className="relative overflow-hidden rounded-sm aspect-[4/5] md:aspect-[3/4] lg:aspect-[4/5] w-full bg-[#F2E8E6]">
               {/* NOTE: Replace the photo attached through mail - update src prop with new image URL from email */}
               <img 
                 src="/fwdservicesphotosnew/Photography & Videography - photo.png" 
                 alt="Wedding Photography" 
-                className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                className="w-full h-full object-contain transition-transform duration-700 hover:scale-105"
+                style={{ objectPosition: 'center' }}
               />
             </div>
-            {/* Ideal For section removed as requested */}
           </motion.div>
 
           {/* Right Column - What's Included */}

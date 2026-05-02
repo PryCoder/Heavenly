@@ -3,7 +3,7 @@ import { Heart, Award, Sparkles, Calendar } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 // Import the new philosophy image
-import philosophyNewImage from '/fwdservicesphotosnew/complete Wedding Planning - photo.png';
+import philosophyNewImage from '/memories/image1.png';
 
 export default function AboutPage() {
   const values = [
@@ -154,18 +154,19 @@ export default function AboutPage() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="relative w-full overflow-hidden rounded-sm aspect-[4/3] sm:aspect-[16/10] bg-[#f5f5f5]"
+              className="relative w-full overflow-hidden rounded-sm aspect-[4/5] sm:aspect-[3/4] md:aspect-[4/5] bg-[#F2E8E6]"
             >
               <img
                 src={philosophyImage.src}
                 alt="Complete Wedding Planning - Luxury wedding setup"
-                className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 hover:scale-105"
-                style={{ filter: 'brightness(0.98) saturate(0.85)' }}
+                className="absolute inset-0 h-full w-full object-contain transition-transform duration-700 hover:scale-105"
+                style={{ objectPosition: 'center' }}
                 onError={(e) => {
                   e.currentTarget.src = philosophyImage.fallbackSrc;
                 }}
               />
             </motion.div>
+
           </div>
         </div>
       </section>
@@ -285,9 +286,7 @@ export default function AboutPage() {
             <h2 className="font-serif mb-4 md:mb-6 text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight text-[#C9A7A0] font-light">
               Let’s Make Your Wedding Heavenly!
             </h2>
-            <p className="text-sm sm:text-base leading-relaxed mb-4 text-[#6F6F6F] font-light max-w-2xl mx-auto">
-              Ready to begin planning the celebration of your wedding? Book your complimentary consultation today and let us transform your vision into a timeless experience of elegance and perfection.
-            </p>
+           
             <p className="text-sm sm:text-base leading-relaxed mb-8 md:mb-10 text-[#6F6F6F] font-light max-w-2xl mx-auto">
               Ready to begin planning the celebration of your dreams? Book your photography & videography services with Heavenly Weds and let us turn your special moments into timeless memories.
             </p>

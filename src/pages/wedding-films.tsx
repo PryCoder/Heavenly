@@ -24,7 +24,7 @@ const weddingFilms = weddingFilmLinks
     if (!youTubeId) return null;
     return {
       id: `yt-${youTubeId}-${index}`,
-      title: `Wedding Film ${index + 1}`,
+      title: `Wedding Films ${index + 1}`,
       embedSrc: `https://www.youtube-nocookie.com/embed/${youTubeId}`,
     };
   })

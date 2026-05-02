@@ -5,7 +5,8 @@ import { Link } from 'react-router-dom';
 import weddingImage1 from '/shivammansi/fwdwedding/wd-2 (1).jpg';
 import weddingImage2 from '/shivammansi/fwdwedding/wd-2 (2).jpg';
 import weddingImage7 from '/shivammansi/fwdwedding/wed-1 (3).jpg';
-import weddingImage8 from '/shivammansi/fwdwedding/wed-1 (4).jpg';
+import weddingImage8 from '/prewedding/fwdpreweddingshoot/pre-wedding - hw-1 (1).jpg';
+import weddingImage9 from '/shivammansi/fwdwedding/wed-1 (4).jpg';
 import christianWed1 from '/christianwed/fwdchristianwedding/chr-1.jpg';
 import christianWed2 from '/christianwed/fwdchristianwedding/chr-1 (2).jpg';
 
@@ -23,18 +24,18 @@ export default function HomePage() {
   const heroVideoSrc = 'https://res.cloudinary.com/do4h3t3mk/video/upload/w_1280,q_auto,f_auto/home_page_1_zq0jbq.mp4';
   const API_URL = import.meta.env.VITE_API_URL
 
-  const portfolioImages = [
-    { src: '/memories/image.png', fallbackSrc: weddingImage1, alt: 'Portfolio 1' },
-    { src: '/memories/image1.png', fallbackSrc: weddingImage2, alt: 'Portfolio 2' },
+  const portfolioImages = [{ src:'/shivammansi/fwdwedding/wd-2 (1).jpg', fallbackSrc: christianWed1, alt: 'Portfolio 5' },
+     { src: '/memories/image1.png', fallbackSrc: weddingImage2, alt: 'Portfolio 2' },{ src: '/palak&parth/5DM42139.jpg', fallbackSrc: weddingImage1, alt: 'Portfolio 1' },
+   
     { src: '/memories/image2.png', fallbackSrc: weddingImage7, alt: 'Portfolio 3' },
-    { src: '/memories/image3.png', fallbackSrc: weddingImage8, alt: 'Portfolio 4' },
-    { src:'/shivammansi/fwdwedding/wd-2 (1).jpg', fallbackSrc: christianWed1, alt: 'Portfolio 5' },
-    { src: christianWed2, fallbackSrc: christianWed2, alt: 'Portfolio 6' },
+    { src: '/brideshoot/fwdbridephotoshootpriyal/hhww-1 (3).jpg', fallbackSrc: christianWed2, alt: 'Portfolio 6' }, { src: '/memories/image3.png', fallbackSrc: weddingImage8, alt: 'Portfolio 4' },
+    
+   
   ];
 
   const serviceImages = {
     completeWeddingPlanning: {
-      src: '/fwdservicesphotosnew/complete Wedding Planning - photo.png',
+      src: '/Complete Wedding Planning.jpeg',
       fallbackSrc: 'https://bp37mc8dd9.preview.c36.airoapp.ai/airo-assets/images/pages/home/service-planning',
     },
     destinationWeddings: {
@@ -61,12 +62,12 @@ export default function HomePage() {
       profileSrc: weddingImage8,
     },
     {
-      id: 'ananya-rohan',
+      id: 'shivam-mansi',
       quote:
         '"The team was super professional and warm. The photos feel natural, the film looks cinematic, and every important moment was captured perfectly."',
-      name: 'Ananya & Rohan',
-      location: 'Pune, India',
-      profileSrc: weddingImage2,
+      name: 'Shivam & Mansi',
+      location: 'Udaipur, India',
+      profileSrc: weddingImage9,
     },
     {
       id: 'meera-aarav',

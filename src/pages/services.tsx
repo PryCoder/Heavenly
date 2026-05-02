@@ -8,7 +8,6 @@ interface Service {
   subtitle: string;
   description: string;
   features: string[];
-  idealFor: string;
   href: string;
   featured?: boolean;
   icon?: React.ElementType;
@@ -45,7 +44,6 @@ export default function ServicesPage() {
         'Creative editing for timeless photos and cinematic films',
         'Post-wedding wrap-up services',
       ],
-      idealFor: 'Couples who want to be deeply involved in selecting elements of their day but need a professional sounding board, vendor curation, and logistical oversight.',
       href: '/services/full-planning',
       featured: true,
       icon: Calendar,
@@ -69,7 +67,6 @@ export default function ServicesPage() {
         'Makeup Artist (Optional)',
         'Props (Optional)',
       ],
-      idealFor: 'Couples who want to be deeply involved in selecting elements of their day but need a professional sounding board, vendor curation, and logistical oversight.',
       href: '/services/photo-video',
       icon: Camera,
     },
@@ -93,7 +90,6 @@ export default function ServicesPage() {
         'Post-wedding wrap-up services',
         'Makeup Artist',
       ],
-      idealFor: 'Couples who want to be deeply involved in selecting elements of their day but need a professional sounding board, vendor curation, and logistical oversight.',
       href: '/services/destination',
       icon: Plane,
     },
@@ -102,13 +98,13 @@ export default function ServicesPage() {
   const additionalServices: AdditionalService[] = [
     { id: 'pre-wedding', title: 'Pre-wedding shoot', icon: Camera, description: 'Capture the excitement and romance before your big day with a stunning pre-wedding photoshoot.', href: '/services/pre-wedding' },
     { id: 'maternity', title: 'Maternity Photoshoot', icon: Heart, description: 'Celebrate the beautiful journey of parenthood with a professional maternity photoshoot.', href: '/services/maternity' },
-    { id: 'destination', title: 'Destination Wedding', icon: Plane, description: 'Exchange vows in breathtaking locations around the world with our destination expertise.', href: '/services/destination' },
+    { id: 'destination', title: 'Destination Weddings', icon: Plane, description: 'Exchange vows in breathtaking locations around the world with our destination expertise.', href: '/services/destination' },
     { id: 'editing', title: 'Editing Services', icon: Brush, description: 'Professional photo and video editing to enhance every precious moment.', href: '/services/editing' },
-    { id: 'invitation', title: 'Wedding Invitation', icon: PenTool, description: 'Beautifully crafted invitations that set the tone for your celebration.', href: '/services/invitations' },
-    { id: 'makeup', title: 'Make Up Artist', icon: User, description: 'Expert makeup artists to make you look and feel your best on your special day.', href: '/services/makeup' },
+    { id: 'invitation', title: 'Wedding Invitations', icon: PenTool, description: 'Beautifully crafted invitations that set the tone for your celebration.', href: '/services/invitations' },
+    { id: 'makeup', title: 'Make Up Artists', icon: User, description: 'Expert makeup artists to make you look and feel your best on your special day.', href: '/services/makeup' },
     { id: 'e-invites', title: 'Wedding E-Invites', icon: Gift, description: 'Elegant digital invitations for the modern, eco-conscious couple.', href: '/services/e-invites' },
-    { id: 'album', title: 'Wedding Album', icon: BookOpen, description: 'Beautifully designed albums to preserve your memories for generations.', href: '/services/album' },
-    { id: 'catering', title: 'Catering', icon: Utensils, description: 'Exquisite culinary experiences tailored to your taste and style.', href: '/services/catering' },
+    { id: 'album', title: 'Wedding Albums', icon: BookOpen, description: 'Beautifully designed albums to preserve your memories for generations.', href: '/services/album' },
+    { id: 'catering', title: 'Caterings', icon: Utensils, description: 'Exquisite culinary experiences tailored to your taste and style.', href: '/services/catering' },
   ];
 
   return (
@@ -190,7 +186,7 @@ export default function ServicesPage() {
                   </p>
                 </div>
 
-                {/* Features List - Show first 5 features */}
+                {/* Features List */}
                 <div className="mb-8 flex-1">
                   <p className="mb-4 uppercase tracking-wider" style={{ fontSize: '11px', letterSpacing: '2px', color: '#9A9A9A' }}>
                     What's Included
@@ -213,16 +209,6 @@ export default function ServicesPage() {
                       </li>
                     )}
                   </ul>
-                </div>
-
-                {/* Ideal For */}
-                <div className="mb-8 p-4 rounded-sm" style={{ backgroundColor: service.featured ? '#FFFFFF' : '#F2E8E6' }}>
-                  <p className="mb-2 uppercase tracking-wider" style={{ fontSize: '10px', letterSpacing: '2px', color: '#9A9A9A' }}>
-                    Ideal For
-                  </p>
-                  <p style={{ fontSize: '13px', lineHeight: '1.6', color: '#6F6F6F', fontStyle: 'italic' }}>
-                    {service.idealFor}
-                  </p>
                 </div>
 
                 {/* CTA Button */}
@@ -257,7 +243,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Enhanced Options / Additional Services Section */}
+      {/* Additional Services Section */}
       <section style={{ padding: '80px 0 120px', backgroundColor: '#F2E8E6' }}>
         <div className="mx-auto" style={{ maxWidth: '1200px', padding: '0 60px' }}>
           <motion.div
@@ -329,65 +315,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-    
-
-      {/* Why Choose Us */}
-      <section style={{ padding: '80px 0 100px', backgroundColor: '#FAFAFA' }}>
-        <div className="mx-auto" style={{ maxWidth: '1000px', padding: '0 60px' }}>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-12"
-          >
-            <p className="mb-4 uppercase tracking-widest" style={{ fontSize: '11px', letterSpacing: '3px', color: '#9A9A9A' }}>
-              Why Choose Us
-            </p>
-            <h2 className="font-heading mb-6" style={{ fontSize: '42px', lineHeight: '1.2', color: '#C9A7A0', fontWeight: 400 }}>
-              The Heavenly Weds Difference
-            </h2>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="grid gap-6 md:grid-cols-2"
-          >
-            <div className="flex items-start gap-4 p-6 rounded-sm bg-white" style={{ border: '1px solid #ECECEC' }}>
-              <Heart className="h-6 w-6 flex-shrink-0" style={{ color: '#C9A7A0' }} />
-              <div>
-                <h3 className="font-medium mb-2" style={{ fontSize: '18px', color: '#6F6F6F' }}>Passionate Team</h3>
-                <p style={{ fontSize: '14px', color: '#9A9A9A' }}>Dedicated photographers and cinematographers capturing your most beautiful moments.</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-4 p-6 rounded-sm bg-white" style={{ border: '1px solid #ECECEC' }}>
-              <Sparkles className="h-6 w-6 flex-shrink-0" style={{ color: '#C9A7A0' }} />
-              <div>
-                <h3 className="font-medium mb-2" style={{ fontSize: '18px', color: '#6F6F6F' }}>Creative Excellence</h3>
-                <p style={{ fontSize: '14px', color: '#9A9A9A' }}>Blending artistry with innovation to deliver timeless elegance.</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-4 p-6 rounded-sm bg-white" style={{ border: '1px solid #ECECEC' }}>
-              <Camera className="h-6 w-6 flex-shrink-0" style={{ color: '#C9A7A0' }} />
-              <div>
-                <h3 className="font-medium mb-2" style={{ fontSize: '18px', color: '#6F6F6F' }}>Cinematic Storytelling</h3>
-                <p style={{ fontSize: '14px', color: '#9A9A9A' }}>Transforming real emotions into timeless photographs and cinematic films.</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-4 p-6 rounded-sm bg-white" style={{ border: '1px solid #ECECEC' }}>
-              <Plane className="h-6 w-6 flex-shrink-0" style={{ color: '#C9A7A0' }} />
-              <div>
-                <h3 className="font-medium mb-2" style={{ fontSize: '18px', color: '#6F6F6F' }}>Global Reach</h3>
-                <p style={{ fontSize: '14px', color: '#9A9A9A' }}>Based in Mumbai & London, capturing love stories worldwide.</p>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
+     
       {/* CTA Section */}
       <section style={{ padding: '80px 0 100px' }}>
         <div className="mx-auto text-center" style={{ maxWidth: '800px', padding: '0 60px' }}>
@@ -401,11 +329,10 @@ export default function ServicesPage() {
               <Heart className="h-12 w-12" style={{ color: '#C9A7A0' }} />
             </div>
             <h2 className="font-heading mb-6" style={{ fontSize: '48px', lineHeight: '1.2', color: '#C9A7A0', fontWeight: 400 }}>
-              Let's Create Your Perfect Day
+             Let’s Make Your Wedding Heavenly 
             </h2>
             <p className="leading-relaxed mb-10" style={{ fontSize: '16px', lineHeight: '1.8', color: '#6F6F6F' }}>
-              Ready to begin planning the celebration of your dreams? Schedule your complimentary consultation 
-              and let's start bringing your vision to life.
+             With creativity, precision, and a refined eye for detail, we transform genuine emotions and unforgettable moments into timeless photographs and cinematic films that last forever.
             </p>
             <Link
               to="/contact"

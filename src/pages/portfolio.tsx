@@ -131,7 +131,7 @@ export default function PortfolioPage() {
 
   const categories = [
     { id: 'all', label: 'All' },
-    { id: 'wedding', label: 'Wedding' },
+    { id: 'wedding', label: 'Weddings' },
     { id: 'pre-wedding', label: 'Pre - wedding' },
     { id: 'postwedding', label: 'Postwedding' },
     { id: 'maternity', label: 'Maternity' },
@@ -144,18 +144,7 @@ export default function PortfolioPage() {
   ];
 
   const weddings: Wedding[] = [
-    {
-      id: 'shivam-mansi',
-      couple: 'Shivam & Mansi',
-      location: 'Udaipur, Rajasthan',
-      date: 'February 2025',
-      guests: 180,
-      image: weddingImage1,
-      category: 'wedding',
-      description: 'A beautifully captured wedding celebration with every moment perfectly preserved.',
-      gallery: [weddingImage1, weddingImage4, weddingImage9, weddingImage10, weddingImage7, weddingImage3, weddingImage8, weddingImage11, weddingImage2],
-      story: 'Shivam and Mansi\'s wedding was a beautiful blend of tradition and modernity. Set in Udaipur, their celebration spanned three days filled with laughter, tears of joy, and unforgettable moments. From the vibrant mehendi ceremony to the emotional varmala, every moment was captured with precision and artistry.'
-    },
+   
     {
       id: 'shivam-mansi-destination',
       couple: 'Shivam & Mansi',
@@ -212,7 +201,7 @@ export default function PortfolioPage() {
   gallery: [
     
     nidhiRohanEngagement2,
-    nidhiRohanEngagement3,
+ 
     nidhiRohanEngagement4,
     nidhiRohanEngagement5,
     nidhiRohanEngagement6
@@ -236,12 +225,27 @@ export default function PortfolioPage() {
         preweddingi5,
         preweddingi6,
         preweddingi7,
-        preweddingAlt6,
-        preweddingAlt7,
-        preweddingAlt8,
+       
       ],
       story: 'Sandesh and Sayli\'s pre-wedding shoot focused on natural expressions, warm tones, and timeless portraits — captured with comfort, fun, and authentic emotion.'
     },
+    {
+  id: 'neha-amit',
+  couple: 'Neha & Amit',
+  location: 'Mumbai, India',
+  date: 'January 2024',
+  guests: 0,
+  image: preweddingAlt6,// Or use a specific image for Neha & Amit
+  category: 'pre-wedding',
+  description: 'An intimate pre-wedding celebration capturing the love and joy of Neha & Amit.',
+  gallery: [
+  
+    preweddingAlt6,
+    preweddingAlt7,
+    preweddingAlt8,
+  ].filter(Boolean),
+  story: 'Neha and Amit\'s pre-wedding shoot was all about candid moments, playful interactions, and romantic frames that truly reflect their beautiful journey together.'
+},
     {
   id: 'siddharth-bhavya-haldi',
   couple: 'Siddharth & Bhavya',
@@ -263,7 +267,7 @@ export default function PortfolioPage() {
 },
     {
       id: 'bhaktisagar-pooja',
-      couple: 'Bhaktisagar & Pooja',
+      couple: 'Bhakti & Sagar',
       location: 'Mumbai, India',
       date: ' February 2023',
       guests: 350,
@@ -277,7 +281,7 @@ export default function PortfolioPage() {
       id: 'palak-parth',
       couple: 'Palak & Parth',
       location: 'India',
-      date: '—',
+      date: 'December 2025',
       guests: 0,
       image: palakParth1,
       category: 'engagement',
@@ -386,9 +390,9 @@ export default function PortfolioPage() {
     },
     {
       id: 'engagement-shoot',
-      couple: 'Engagement',
+      couple: 'Priya & Rohan ',
       location: 'India',
-      date: '—',
+      date: 'dec 2023',
       guests: 0,
       image: engagement1,
       category: 'engagement',
@@ -398,14 +402,14 @@ export default function PortfolioPage() {
     },
     {
       id: 'harsh-madhuri-postwedding',
-      couple: 'HARSH & MADHURI',
+      couple: 'Harsh & Madhuri',
       location: 'India',
-      date: '—',
+      date: 'September 2021',
       guests: 0,
-      image: postWedding1,
+      image:postWedding3,
       category: 'postwedding',
       description: 'A romantic postwedding shoot capturing effortless moments and timeless portraits.',
-      gallery: [postWedding1, postWedding2, postWedding3, postWedding4],
+      gallery: [postWedding1,, postWedding3, postWedding4],
       story: 'Harsh and Madhuri\'s postwedding session was captured with a focus on natural chemistry, warm light, and elegant portraits — creating memories that feel timeless.'
     },
   ];

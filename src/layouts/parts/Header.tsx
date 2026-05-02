@@ -26,18 +26,16 @@ const menuStructure: MenuItem[] = [
   { name: 'PORTFOLIO', href: '/portfolio' },
   { name: 'WEDDING FILMS', href: '/wedding-films' },
   { name: 'LOCATIONS', href: '/locations' },
-  { name: 'CEREMONIES', href: '/ceremonies' },
+  
   {
     name: 'VENUES',
     href: '/venues',
     children: [
-      { name: 'Lake Como', href: '/venues/lake-como' },
-      { name: 'Tuscany', href: '/venues/tuscany' },
-      { name: 'French Riviera', href: '/venues/french-riviera' },
+     
       { name: 'The Leela Palace, Rajasthan', href: '/venues/the-leela-palace-rajasthan' },
     ],
   },
-  { name: 'BLOG', href: '/blog' },
+  
   { name: 'CONTACT US', href: '/contact' },
 ];
 
