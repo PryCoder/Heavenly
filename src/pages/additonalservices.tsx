@@ -134,7 +134,7 @@ export default function AdditionalServicesPage() {
     },
     {
       id: 'maternity',
-      title: 'Maternity Photoshoot',  // Capital M
+      title: 'Maternity Photoshoots',  // Capital M
       icon: Heart,
       description: 'Celebrate the beautiful journey of parenthood with a professional maternity photoshoot.',
       features: [
@@ -151,7 +151,7 @@ export default function AdditionalServicesPage() {
     },
     {
       id: 'destination',
-      title: 'Destination Wedding',
+      title: 'Destination Weddings',
       icon: Plane,
       description: 'Exchange vows in breathtaking locations around the world with our destination expertise.',
       features: [
