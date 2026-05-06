@@ -147,7 +147,7 @@ export default function AdditionalServicesPage() {
         'Elegant maternity gowns and styling guidance to enhance your look and comfort.',
       ],
       href: '/services/maternity',
-      images: pickFour([ maternityi2, maternityi1],[...ADDITIONAL_SERVICE_IMAGES.maternity]),
+      images: [maternityi2, ...ADDITIONAL_SERVICE_IMAGES.maternity],
     },
     {
       id: 'destination',
@@ -325,9 +325,9 @@ export default function AdditionalServicesPage() {
               </p>
             </div>
 
-            {/* Image Gallery Grid */}
+            {/* Image Gallery Grid - Updated for centering */}
             <div className="mb-12">
-              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              <div className="flex flex-wrap justify-center gap-4">
                 {service.images.map((image, imgIndex) => (
                   <motion.div
                     key={imgIndex}
@@ -336,15 +336,34 @@ export default function AdditionalServicesPage() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: imgIndex * 0.1 }}
                     className="group relative cursor-pointer overflow-hidden rounded-lg"
+                    style={{ 
+                      flex: service.images.length === 1 
+                        ? '0 1 auto' 
+                        : service.images.length === 2 
+                        ? '0 1 calc(50% - 0.5rem)' 
+                        : service.images.length === 3 
+                        ? '0 1 calc(33.333% - 0.7rem)' 
+                        : '0 1 calc(25% - 0.75rem)',
+                      minWidth: service.images.length === 1 ? '300px' : 
+                                service.images.length === 2 ? '280px' : 
+                                service.images.length === 3 ? '250px' : '220px',
+                      maxWidth: service.images.length === 1 ? '600px' : 
+                                service.images.length === 2 ? '500px' : '400px'
+                    }}
                     onClick={() => setSelectedImage(image)}
                   >
-                    <img
-                      src={image}
-                      alt={`${service.title} ${imgIndex + 1}`}
-                      className="h-56 sm:h-64 md:h-72 w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                      loading="lazy"
-                      decoding="async"
-                    />
+                    <div className="w-full" style={{ 
+                      paddingBottom: service.images.length === 1 ? '66.67%' : 
+                                    service.images.length === 2 ? '75%' : '100%'
+                    }}>
+                      <img
+                        src={image}
+                        alt={`${service.title} ${imgIndex + 1}`}
+                        className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </div>
                     <div className="absolute inset-0 bg-black/0 transition-all duration-300 group-hover:bg-black/20" />
                   </motion.div>
                 ))}

@@ -39,7 +39,7 @@ export default function HomePage() {
       fallbackSrc: 'https://bp37mc8dd9.preview.c36.airoapp.ai/airo-assets/images/pages/home/service-planning',
     },
     destinationWeddings: {
-      src: '/fwdservicesphotosnew/destination wedding services.png',
+      src: '/Destination & Venue Curation.jpg',
       fallbackSrc: 'https://bp37mc8dd9.preview.c36.airoapp.ai/airo-assets/images/pages/home/service-venue',
     },
   };
@@ -523,7 +523,7 @@ export default function HomePage() {
               fontWeight: 400,
               padding: '0 10px'
             }}>
-              Cherished Words from Our Clients
+              Cherished Words From Our Clients
             </h2>
           </motion.div>
 
