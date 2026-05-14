@@ -67,44 +67,70 @@ export default function ContactPage() {
     return () => clearTimeout(timer);
   }, [showWhatsAppModal, countdown]);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    closeToast();
+ const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  setIsSubmitting(true);
+  closeToast();
 
-    // Safely get the API URL whether using Vite (import.meta.env) or CRA (process.env)
-    // @ts-ignore (ignoring TS warning for process.env in Vite setups)
-    const API_URL = import.meta.env.VITE_API_URL || 'https://hevenlybac.onrender.com';
-console.log(API_URL);
-    try {
-      const res = await fetch(`${API_URL}/api/contact`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
+  const API_URLS = [
+    import.meta.env.VITE_API_URL,
+    'https://hevenlybac-6czg.onrender.com',
+    'https://hevenlybac.onrender.com'
+  ].filter(Boolean);
 
-      const data = await res.json();
+  let success = false;
+  let lastError = null;
 
-      if (!res.ok) {
-        const msg = data.errors?.[0]?.msg || data.message || 'Submission failed. Please try again.';
-        throw new Error(msg);
+  try {
+    for (const url of API_URLS) {
+      try {
+        const res = await fetch(`${url}/api/contact`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        });
+
+        if (res.ok) {
+          console.log(`Connected to: ${url}`);
+          success = true;
+          break;
+        } else {
+          console.error(`API failed on ${url}`);
+        }
+      } catch (err) {
+        console.error(`Failed on ${url}`, err);
+        lastError = err;
       }
-
-      showToast('success', "Thank you! We've received your inquiry and will be in touch within 24 hours.");
-      
-      // Save data for WhatsApp formatting, trigger modal, clear form
-      setSubmittedData(formData);
-      setCountdown(15);
-      setShowWhatsAppModal(true);
-      setFormData(EMPTY_FORM);
-      
-    } catch (error: unknown) {
-      const message = error instanceof Error ? error.message : 'Something went wrong. Please try again or contact us directly.';
-      showToast('error', message);
-    } finally {
-      setIsSubmitting(false);
     }
-  };
+
+    if (!success) {
+      throw new Error('All API servers failed.');
+    }
+
+    // Success
+    showToast(
+      'success',
+      "Thank you! We've received your inquiry and will be in touch within 24 hours."
+    );
+
+    setSubmittedData(formData);
+    setCountdown(15);
+    setShowWhatsAppModal(true);
+    setFormData(EMPTY_FORM);
+
+  } catch (error: unknown) {
+    const message =
+      error instanceof Error
+        ? error.message
+        : 'Something went wrong. Please try again or contact us directly.';
+
+    showToast('error', message);
+  } finally {
+    setIsSubmitting(false);
+  }
+};
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));

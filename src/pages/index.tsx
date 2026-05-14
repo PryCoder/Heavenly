@@ -88,18 +88,37 @@ export default function HomePage() {
   ];
 
   useEffect(() => {
-    const checkHealth = async () => {
-      try {
-        const res = await fetch(`${API_URL}/api/health`);
-        const data = await res.json();
-        console.log("Health API:", data);
-      } catch (error) {
-        console.error("Health API error:", error);
-      }
-    };
+  const API_URLS = [
+    import.meta.env.VITE_API_URL,
+    'https://hevenlybac-6czg.onrender.com',
+    'https://hevenlybac.onrender.com'
+  ].filter(Boolean);
 
-    checkHealth();
-  }, []);
+  const checkHealth = async () => {
+    for (const url of API_URLS) {
+      try {
+        const res = await fetch(`${url}/api/health`);
+
+        if (!res.ok) {
+          console.error(`Health check failed on ${url}`);
+          continue;
+        }
+
+        const data = await res.json();
+
+        console.log(`Health API success from ${url}`, data);
+
+        // stop after first successful server
+        break;
+
+      } catch (error) {
+        console.error(`Health API error on ${url}`, error);
+      }
+    }
+  };
+
+  checkHealth();
+}, []);
   useEffect(() => {
     if (!heroVideoFailed) return;
     const interval = setInterval(() => {
