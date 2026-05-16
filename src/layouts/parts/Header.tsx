@@ -17,7 +17,7 @@ const menuStructure: MenuItem[] = [
     name: 'SERVICES',
     href: '/services',
     children: [
-      { name: 'Full Wedding Planning', href: '/services/full-planning' },
+      { name: 'Complete Wedding Planning', href: '/services/full-planning' },
       { name: 'Photography & Videography', href: '/services/photography' },
       { name: 'Destination', href: '/services/destination' },
       {name: 'Additional Services', href: '/services/additionalservices'}
